@@ -18,15 +18,15 @@
 >- Nesta tela deve ser possível selecionar um cliente.
 >- Os tipos de conta vinculados ao cliente podem ser selecionadas de uma combobox. Os tipos de conta serão: Conta Corrente e Conta Investimento
 >- Uma vez selecionado o cliente e o tipo de conta a tela deve apresentar os campos para criação da conta
->>- i. Se o tipo de conta selecionada for Conta Corrente, os campos serão:
->>>- Depósito Inicial (valor em R$)
->>>- Limite (valor em R$)
->>>- O número da conta deve ser gerado automaticamente pelo sistema. Pode ser inteiro e gerado de forma sequencial.
->>- ii. Se o tipo da conta selecionada for Conta Investimento, os campos serão:
->>>- Montante Mínimo
->>>- Depósito Mínimo
->>>- Depósito Inicial
-
+>	- i. Se o tipo de conta selecionada for Conta Corrente, os campos serão:
+>		- Depósito Inicial (valor em R$)
+>		- Limite (valor em R$)
+>		- O número da conta deve ser gerado automaticamente pelo sistema. Pode ser inteiro e gerado de forma sequencial.
+>	- ii. Se o tipo da conta selecionada for Conta Investimento, os campos serão:
+>		- Montante Mínimo
+>		- Depósito Mínimo
+>		- Depósito Inicial
+>
 >### Uma tela para manipular a conta de um cliente.
 >- Nesta tela deve ser possível selecionar a conta de um cliente pelo CPF do cliente.
 >- Uma vez selecionada a conta o sistema deve mostrar três operações possíveis:
