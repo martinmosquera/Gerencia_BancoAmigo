@@ -16,8 +16,10 @@ public class ContaInvestimento extends Conta{
     private double depositoMinimo;
     private double montanteMinimo;
     
-    public ContaInvestimento(Cliente cliente,int num, double saldo, double depositoini) {
+    public ContaInvestimento(Cliente cliente,int num, double saldo, double depositoini,double depositoMin, double montanteMin) {
         super(cliente, num, saldo, depositoini);
+        this.depositoMinimo = depositoMin;
+        this.montanteMinimo = montanteMin;
     }
     
 @Override

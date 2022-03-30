@@ -9,7 +9,7 @@ package Model.cliente;
  *
  * @author dell
  */
-public class Cliente{
+public class Cliente implements Comparable{
     private long id;
     private String nome;
     private String sobrenome;
@@ -66,6 +66,11 @@ public class Cliente{
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+    // esta funcao permite comparar valores e temos que implementar para retornar a lista ordenada segundo os parametros que a gente estabeleça 
+    @Override
+    public int compareTo(Object o) {
+     return 0;   
     }
     
 }

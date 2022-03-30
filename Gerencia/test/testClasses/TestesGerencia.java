@@ -107,19 +107,33 @@ public class TestesGerencia {
             double num = cc.getSaldo();
             assertEquals(90.00,num,0.0);
         }
+     
+    @Test
+        public void testeContaC4Saca21(){
+            ContaCorriente cc = new ContaCorriente(100.00);
+            cc.saca(10.00);
+            double num = cc.getSaldo();
+            assertEquals(90.00,num,0.0);
+        }
+        
         
      @Test
-        public void testeContaC4Saca2(){
+        public boolean testeContaC4Saca2(){
             ContaCorriente cc = new ContaCorriente(100.00);
             String message = "";
             try{
                 cc.saca(-10.00);
             }catch(Exception e){
                 message = e.getMessage();
+                System.out.println(message);
+                return false;
             }
+            
             assertEquals("Não pode sacar valores negativos!!",message);
+            return true;
         }
-         @Test
+        
+    @Test
         public void testeContaC4Saca3(){
             ContaCorriente cc = new ContaCorriente(100.00);
             String message = "";

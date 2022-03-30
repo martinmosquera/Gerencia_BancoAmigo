@@ -23,10 +23,9 @@ public class ContaCorriente extends Conta{
         
     }
     
-    
     @Override
     public boolean saca(double valor) {
-        if(valor > this.getSaldo()){
+        if(valor > (this.getSaldo()+this.limite)){
             throw new RuntimeException("Sua conta não tem saldo Suficiente!!");
         };
         super.saca(valor);
