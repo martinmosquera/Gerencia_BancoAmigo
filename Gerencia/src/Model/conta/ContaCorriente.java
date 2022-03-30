@@ -5,6 +5,8 @@
  */
 package Model.conta;
 
+import Model.cliente.Cliente;
+
 /**
  *
  * @author dell
@@ -12,8 +14,8 @@ package Model.conta;
 public class ContaCorriente extends Conta{
     private double limite;
     
-    public ContaCorriente(int num,double saldo,double depositoinicial,double limite){
-        super(num,saldo,depositoinicial);
+    public ContaCorriente(Cliente cliente,int num,double saldo,double depositoinicial,double limite){
+        super(cliente,num,saldo,depositoinicial);
         this.limite = limite;
     }
     public ContaCorriente(double valor){
@@ -24,13 +26,10 @@ public class ContaCorriente extends Conta{
     
     @Override
     public boolean saca(double valor) {
-        if(valor < 0 ){
-            throw new RuntimeException("Não pode sacar valores negativos!!");
-        }
         if(valor > this.getSaldo()){
             throw new RuntimeException("Sua conta não tem saldo Suficiente!!");
         };
-        this.setSaldo(this.getSaldo()-valor);
+        super.saca(valor);
         return true;
     }
 

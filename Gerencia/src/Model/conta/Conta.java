@@ -19,7 +19,8 @@ public abstract class Conta implements ContaI{
     private double saldo;
     private double depositoInicial;
     
-    public Conta(int num,double saldo,double depini){
+    public Conta(Cliente cliente,int num,double saldo,double depini){
+        this.cliente = cliente;
         this.num = num;
         this.saldo = saldo;
         this.depositoInicial = depini;
@@ -40,7 +41,9 @@ public abstract class Conta implements ContaI{
 
     @Override
     public boolean saca(double valor) {
-        if(valor < 0) return false;
+        if(valor < 0 ){
+            throw new RuntimeException("Não pode sacar valores negativos!!");
+        }
         saldo -= valor;
         return true;
     }
@@ -64,8 +67,5 @@ public abstract class Conta implements ContaI{
     public void remunera() {
         
     }
-    public void setSaldo(double valor){
-    this.saldo = valor;
-    }
-    
+   
 }
