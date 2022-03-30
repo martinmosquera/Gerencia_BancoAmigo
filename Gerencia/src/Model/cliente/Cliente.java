@@ -9,7 +9,7 @@ package Model.cliente;
  *
  * @author dell
  */
-public class Cliente {
+public class Cliente{
     private long id;
     private String nome;
     private String sobrenome;
