@@ -6,7 +6,7 @@
 package Model.conta;
 
 import Model.cliente.Cliente;
-import static jdk.nashorn.internal.objects.NativeMath.random;
+//import static jdk.nashorn.internal.objects.NativeMath.random;
 
 /**
  *
