@@ -27,36 +27,38 @@ public class GerenciaView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
-        formularioCliente2 = new View.FormularioCliente();
         jLabel1 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        cienteView1 = new View.CienteView();
+        contaView2 = new View.ContaView();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTabbedPane1.addTab("tab1", jTabbedPane2);
-        jTabbedPane1.addTab("tab1", formularioCliente2);
-
         jLabel1.setText("Banco Bom Amigo");
+
+        jTabbedPane1.addTab("Clientes", cienteView1);
+        jTabbedPane1.addTab("Conta", contaView2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jTabbedPane1))
         );
+
+        jTabbedPane1.getAccessibleContext().setAccessibleName("Clientes");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -97,9 +99,9 @@ public class GerenciaView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private View.FormularioCliente formularioCliente2;
+    private View.CienteView cienteView1;
+    private View.ContaView contaView2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,12 +23,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane1" pref="419" max="32767" attributes="0"/>
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
+          <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -36,43 +36,44 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jTabbedPane1" min="-2" pref="274" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jTabbedPane1" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Banco Bom Amigo"/>
+      </Properties>
+    </Component>
     <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Clientes"/>
+      </AccessibilityProperties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JTabbedPane" name="jTabbedPane2">
+        <Component class="View.CienteView" name="cienteView1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="tab1">
-                <Property name="tabTitle" type="java.lang.String" value="tab1"/>
+              <JTabbedPaneConstraints tabName="Clientes">
+                <Property name="tabTitle" type="java.lang.String" value="Clientes"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
-        </Container>
-        <Component class="View.FormularioCliente" name="formularioCliente2">
+        </Component>
+        <Component class="View.ContaView" name="contaView2">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="tab1">
-                <Property name="tabTitle" type="java.lang.String" value="tab1"/>
+              <JTabbedPaneConstraints tabName="Conta">
+                <Property name="tabTitle" type="java.lang.String" value="Conta"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Banco Bom Amigo"/>
-      </Properties>
-    </Component>
   </SubComponents>
 </Form>
