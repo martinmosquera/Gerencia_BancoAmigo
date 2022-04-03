@@ -9,12 +9,12 @@ package View;
  *
  * @author dell
  */
-public class CienteView extends javax.swing.JPanel {
+public class ClienteView extends javax.swing.JPanel {
 
     /**
      * Creates new form CienteView
      */
-    public CienteView() {
+    public ClienteView() {
         initComponents();
     }
 

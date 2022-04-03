@@ -7,7 +7,7 @@ package testClasses;
 
 import Model.cliente.Cliente;
 import Model.conta.Conta;
-import Model.conta.ContaCorriente;
+import Model.conta.ContaCorrente;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -74,7 +74,7 @@ public class TestesGerencia {
     }
     @Test
         public void testeContaCSaldo(){
-        ContaCorriente cc = new ContaCorriente(1000.00);
+        ContaCorrente cc = new ContaCorrente(1000.00);
         double limite;
         limite = cc.getSaldo();
         assertEquals(1000.00,limite,0.0);
@@ -82,7 +82,7 @@ public class TestesGerencia {
         
     @Test
         public void testeContaC2LimteNegativo(){
-        ContaCorriente cc = new ContaCorriente(5000);
+        ContaCorrente cc = new ContaCorrente(5000);
         String message = "";
         try{
             cc.setLimite(-13.6);
@@ -94,7 +94,7 @@ public class TestesGerencia {
         
     @Test
         public void testeContaC3Remunera(){
-            ContaCorriente cc = new ContaCorriente(100.00);
+            ContaCorrente cc = new ContaCorrente(100.00);
             cc.remunera();
             double num = cc.getSaldo();
             assertEquals(101.00,num,0.0);
@@ -102,7 +102,7 @@ public class TestesGerencia {
         
     @Test
         public void testeContaC4Saca(){
-            ContaCorriente cc = new ContaCorriente(100.00);
+            ContaCorrente cc = new ContaCorrente(100.00);
             cc.saca(10.00);
             double num = cc.getSaldo();
             assertEquals(90.00,num,0.0);
@@ -110,7 +110,7 @@ public class TestesGerencia {
      
     @Test
         public void testeContaC4Saca21(){
-            ContaCorriente cc = new ContaCorriente(100.00);
+            ContaCorrente cc = new ContaCorrente(100.00);
             cc.saca(10.00);
             double num = cc.getSaldo();
             assertEquals(90.00,num,0.0);
@@ -119,7 +119,7 @@ public class TestesGerencia {
         
      @Test
         public boolean testeContaC4Saca2(){
-            ContaCorriente cc = new ContaCorriente(100.00);
+            ContaCorrente cc = new ContaCorrente(100.00);
             String message = "";
             try{
                 cc.saca(-10.00);
@@ -135,7 +135,7 @@ public class TestesGerencia {
         
     @Test
         public void testeContaC4Saca3(){
-            ContaCorriente cc = new ContaCorriente(100.00);
+            ContaCorrente cc = new ContaCorrente(100.00);
             String message = "";
             try{
                 cc.saca(200.00);

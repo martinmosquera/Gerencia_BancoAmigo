@@ -11,14 +11,14 @@ import Model.cliente.Cliente;
  *
  * @author dell
  */
-public class ContaCorriente extends Conta{
+public class ContaCorrente extends Conta{
     private double limite;
     
-    public ContaCorriente(Cliente cliente,int num,double saldo,double depositoinicial,double limite){
+    public ContaCorrente(Cliente cliente,int num,double saldo,double depositoinicial,double limite){
         super(cliente,num,saldo,depositoinicial);
         this.limite = limite;
     }
-    public ContaCorriente(double valor){
+    public ContaCorrente(double valor){
         super(valor);     
         
     }

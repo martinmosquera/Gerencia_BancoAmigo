@@ -29,7 +29,7 @@ public class GerenciaView extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        cienteView1 = new View.CienteView();
+        cienteView1 = new View.ClienteView();
         contaView2 = new View.ContaView();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -99,7 +99,7 @@ public class GerenciaView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private View.CienteView cienteView1;
+    private View.ClienteView cienteView1;
     private View.ContaView contaView2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTabbedPane jTabbedPane1;

@@ -27,9 +27,9 @@ public class ContaView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        botonesConta1 = new View.BotonesConta();
+        botonesConta1 = new View.BotoesConta();
         tabelaClienteView1 = new View.TabelaClienteView();
-        formularioContaCorrienteView1 = new View.FormularioContaCorrienteView();
+        formularioContaCorrienteView1 = new View.FormularioContaCorrenteView();
         formularioContaInvestimento1 = new View.FormularioContaInvestimento();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -66,8 +66,8 @@ public class ContaView extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private View.BotonesConta botonesConta1;
-    private View.FormularioContaCorrienteView formularioContaCorrienteView1;
+    private View.BotoesConta botonesConta1;
+    private View.FormularioContaCorrenteView formularioContaCorrienteView1;
     private View.FormularioContaInvestimento formularioContaInvestimento1;
     private View.TabelaClienteView tabelaClienteView1;
     // End of variables declaration//GEN-END:variables
