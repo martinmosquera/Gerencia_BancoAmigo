@@ -9,12 +9,12 @@ package View;
  *
  * @author dell
  */
-public class FormularioContaCorrenteView extends javax.swing.JPanel {
+public class ContaCorrenteFormularioView extends javax.swing.JPanel {
 
     /**
      * Creates new form FormularioContaView
      */
-    public FormularioContaCorrenteView() {
+    public ContaCorrenteFormularioView() {
         initComponents();
     }
 

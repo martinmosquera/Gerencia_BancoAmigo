@@ -9,12 +9,12 @@ package View;
  *
  * @author dell
  */
-public class GerenciaView extends javax.swing.JFrame {
+public class BancoView extends javax.swing.JFrame {
 
     /**
      * Creates new form GerenciaView
      */
-    public GerenciaView() {
+    public BancoView() {
         initComponents();
     }
 
@@ -29,8 +29,9 @@ public class GerenciaView extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        cienteView1 = new View.ClienteView();
-        contaView2 = new View.ContaView();
+        cienteView1 = new View.JanelaClienteView();
+        contaView2 = new View.JanelaContaView();
+        janelaManipulaView1 = new View.JanelaManipulaView();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,6 +39,7 @@ public class GerenciaView extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Clientes", cienteView1);
         jTabbedPane1.addTab("Conta", contaView2);
+        jTabbedPane1.addTab("Manipula", janelaManipulaView1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -47,7 +49,7 @@ public class GerenciaView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,28 +82,30 @@ public class GerenciaView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GerenciaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BancoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GerenciaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BancoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GerenciaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BancoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GerenciaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BancoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GerenciaView().setVisible(true);
+                new BancoView().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private View.ClienteView cienteView1;
-    private View.ContaView contaView2;
+    private View.JanelaClienteView cienteView1;
+    private View.JanelaContaView contaView2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private View.JanelaManipulaView janelaManipulaView1;
     // End of variables declaration//GEN-END:variables
 }

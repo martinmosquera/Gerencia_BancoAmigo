@@ -49,11 +49,11 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="View.BotoesClienteView" name="botoesClienteView1">
+    <Component class="View.ClienteBotoesView" name="botoesClienteView1">
     </Component>
-    <Component class="View.TabelaClienteView" name="tabelaClienteView1">
+    <Component class="View.ClienteTabelaView" name="tabelaClienteView1">
     </Component>
-    <Component class="View.FormularioCliente" name="formularioCliente1">
+    <Component class="View.ClienteFormularioView" name="formularioCliente1">
     </Component>
   </SubComponents>
 </Form>

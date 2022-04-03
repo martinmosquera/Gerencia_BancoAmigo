@@ -9,12 +9,12 @@ package View;
  *
  * @author dell
  */
-public class BotoesConta extends javax.swing.JPanel {
+public class ContaBotoesView extends javax.swing.JPanel {
 
     /**
      * Creates new form BotonesConta
      */
-    public BotoesConta() {
+    public ContaBotoesView() {
         initComponents();
     }
 

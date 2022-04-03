@@ -9,12 +9,12 @@ package View;
  *
  * @author dell
  */
-public class ContaView extends javax.swing.JPanel {
+public class JanelaContaView extends javax.swing.JPanel {
 
     /**
      * Creates new form Conta
      */
-    public ContaView() {
+    public JanelaContaView() {
         initComponents();
     }
 
@@ -27,10 +27,10 @@ public class ContaView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        botonesConta1 = new View.BotoesConta();
-        tabelaClienteView1 = new View.TabelaClienteView();
-        formularioContaCorrienteView1 = new View.FormularioContaCorrenteView();
-        formularioContaInvestimento1 = new View.FormularioContaInvestimento();
+        botonesConta1 = new View.ContaBotoesView();
+        tabelaClienteView1 = new View.ClienteTabelaView();
+        formularioContaCorrienteView1 = new View.ContaCorrenteFormularioView();
+        formularioContaInvestimento1 = new View.ContaInvestimentoFormularioView();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -66,9 +66,9 @@ public class ContaView extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private View.BotoesConta botonesConta1;
-    private View.FormularioContaCorrenteView formularioContaCorrienteView1;
-    private View.FormularioContaInvestimento formularioContaInvestimento1;
-    private View.TabelaClienteView tabelaClienteView1;
+    private View.ContaBotoesView botonesConta1;
+    private View.ContaCorrenteFormularioView formularioContaCorrienteView1;
+    private View.ContaInvestimentoFormularioView formularioContaInvestimento1;
+    private View.ClienteTabelaView tabelaClienteView1;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,16 +5,27 @@
  */
 package View;
 
+import java.awt.event.MouseAdapter;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JTable;
+//import org.ufpr.contato.controller.ContatoController;
+import Model.cliente.Cliente;
 /**
  *
- * @author janai
+ * 
  */
-public class TabelaClienteView extends javax.swing.JPanel {
-
+public class ClienteTabelaView extends javax.swing.JPanel {
     /**
      * Creates new form TabelaClienteView
      */
-    public TabelaClienteView() {
+    private ClienteTableModel modeloTabelaCliente = new ClienteTableModel();
+    private JanelaClienteView janela;
+    private int linhaClicadaParaAtualizacao = -1;
+    
+    
+    
+    public ClienteTabelaView() {
         initComponents();
     }
 
@@ -28,20 +39,17 @@ public class TabelaClienteView extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        modeloTabelaCliente = new javax.swing.JTable();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        modeloTabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
+            modeloTabelaCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    modeloTabelaClienteMouseClicked(evt);
+                }
             }
+
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(modeloTabelaCliente);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -58,6 +66,6 @@ public class TabelaClienteView extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable modeloTabelaCliente;
     // End of variables declaration//GEN-END:variables
 }

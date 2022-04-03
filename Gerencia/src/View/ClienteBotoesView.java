@@ -9,12 +9,12 @@ package View;
  *
  * @author janai
  */
-public class BotoesClienteView extends javax.swing.JPanel {
+public class ClienteBotoesView extends javax.swing.JPanel {
 
     /**
      * Creates new form BotoesClienteView
      */
-    public BotoesClienteView() {
+    public ClienteBotoesView() {
         initComponents();
     }
 

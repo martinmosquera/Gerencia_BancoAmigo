@@ -5,27 +5,25 @@
  */
 package Model.cliente;
 
+import java.time.LocalDate;
+
 /**
  *
- * @author dell
+ * 
  */
 public class Cliente implements Comparable{
-    private long id;
     private String nome;
     private String sobrenome;
     private String rg;
-    private long cpf;
+    private String cpf;
     private String endereco;
     
-    public Cliente(){
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+    public Cliente(String nome, String sobrenome , String rg, String cpf, String endereco) {
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.rg = rg;
+        this.cpf = cpf;
+        this.endereco = endereco;
     }
        
     public void setNome(String nome) {
@@ -52,11 +50,11 @@ public class Cliente implements Comparable{
         this.rg = rg;
     }
 
-    public long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 

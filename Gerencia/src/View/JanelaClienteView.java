@@ -9,12 +9,12 @@ package View;
  *
  * @author dell
  */
-public class ClienteView extends javax.swing.JPanel {
+public class JanelaClienteView extends javax.swing.JPanel {
 
     /**
      * Creates new form CienteView
      */
-    public ClienteView() {
+    public JanelaClienteView() {
         initComponents();
     }
 
@@ -27,9 +27,9 @@ public class ClienteView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        botoesClienteView1 = new View.BotoesClienteView();
-        tabelaClienteView1 = new View.TabelaClienteView();
-        formularioCliente1 = new View.FormularioCliente();
+        botoesClienteView1 = new View.ClienteBotoesView();
+        tabelaClienteView1 = new View.ClienteTabelaView();
+        formularioCliente1 = new View.ClienteFormularioView();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -62,8 +62,8 @@ public class ClienteView extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private View.BotoesClienteView botoesClienteView1;
-    private View.FormularioCliente formularioCliente1;
-    private View.TabelaClienteView tabelaClienteView1;
+    private View.ClienteBotoesView botoesClienteView1;
+    private View.ClienteFormularioView formularioCliente1;
+    private View.ClienteTabelaView tabelaClienteView1;
     // End of variables declaration//GEN-END:variables
 }

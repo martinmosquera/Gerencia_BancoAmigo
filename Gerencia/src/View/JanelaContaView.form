@@ -52,13 +52,13 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="View.BotoesConta" name="botonesConta1">
+    <Component class="View.ContaBotoesView" name="botonesConta1">
     </Component>
-    <Component class="View.TabelaClienteView" name="tabelaClienteView1">
+    <Component class="View.ClienteTabelaView" name="tabelaClienteView1">
     </Component>
-    <Component class="View.FormularioContaCorrenteView" name="formularioContaCorrienteView1">
+    <Component class="View.ContaCorrenteFormularioView" name="formularioContaCorrienteView1">
     </Component>
-    <Component class="View.FormularioContaInvestimento" name="formularioContaInvestimento1">
+    <Component class="View.ContaInvestimentoFormularioView" name="formularioContaInvestimento1">
     </Component>
   </SubComponents>
 </Form>

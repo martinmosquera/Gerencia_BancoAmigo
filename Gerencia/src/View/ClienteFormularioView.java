@@ -9,12 +9,12 @@ package View;
  *
  * @author janai
  */
-public class FormularioCliente extends javax.swing.JPanel {
+public class ClienteFormularioView extends javax.swing.JPanel {
 
     /**
      * Creates new form FormularioCliente
      */
-    public FormularioCliente() {
+    public ClienteFormularioView() {
         initComponents();
     }
 
