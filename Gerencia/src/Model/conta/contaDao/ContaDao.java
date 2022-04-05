@@ -5,10 +5,18 @@
  */
 package Model.conta.contaDao;
 
+import Model.ConnectionFactory.ConnectionFactory;
+
 /**
  *
  * @author dell
  */
 public class ContaDao {
+    
+    private ConnectionFactory connectionFactory;
+    
+    public ContaDao(ConnectionFactory connectionFactory) {
+        this.connectionFactory = connectionFactory;
+    }
     
 }

@@ -12,18 +12,39 @@ import java.time.LocalDate;
  * 
  */
 public class Cliente implements Comparable{
+    private int id;
     private String nome;
     private String sobrenome;
     private String rg;
-    private String cpf;
+    private long cpf;
     private String endereco;
     
-    public Cliente(String nome, String sobrenome , String rg, String cpf, String endereco) {
+    public Cliente(){
+    }
+    
+    public Cliente(String nome, String sobrenome , String rg, long cpf, String endereco) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.rg = rg;
         this.cpf = cpf;
         this.endereco = endereco;
+    }
+
+    public Cliente(int id, String nome, String sobrenome, String rg, Long cpf, String endereco) {
+        this.id = id;
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.rg = rg;
+        this.cpf = cpf;
+        this.endereco = endereco;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
        
     public void setNome(String nome) {
@@ -50,11 +71,11 @@ public class Cliente implements Comparable{
         this.rg = rg;
     }
 
-    public String getCpf() {
+    public long getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(long cpf) {
         this.cpf = cpf;
     }
 

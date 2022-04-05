@@ -71,7 +71,9 @@ public class ClienteTabelaView extends javax.swing.JPanel {
       // fazer o formularioClienteView
     }//GEN-LAST:event_tabelaClienteMouseClicked
 
-
+    public void setLista(List<Cliente> lista){
+    this.modeloTabelaCliente.setListaCliente(lista);
+    }
     
  
     

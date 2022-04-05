@@ -16,7 +16,7 @@ import Model.cliente.Cliente;
  *
  */
 public class ClienteTableModel extends AbstractTableModel{
-    private String[] colunas=new String[]{"Nome", "Sobrenome", "RG","CPF", "Endereco"};
+    private String[] colunas=new String[]{"#ID","Nome", "Sobrenome", "RG","CPF", "Endereco"};
 
     private List<Cliente> lista=new ArrayList();
 
@@ -55,11 +55,12 @@ public class ClienteTableModel extends AbstractTableModel{
     public Object getValueAt(int rowIndex, int columnIndex) {
         Cliente cliente= lista.get(rowIndex);
         switch (columnIndex) {
-            case 0: return cliente.getNome();//if column 0 (code)
-            case 1: return cliente.getSobrenome();//if column 1 (name)
-            case 2: return cliente.getRg();//if column 2 (birthday)
-            case 3: return cliente.getCpf();
-            case 4: return cliente.getEndereco() ;
+            case 0: return cliente.getId();
+            case 1: return cliente.getNome();//if column 0 (code)
+            case 2: return cliente.getSobrenome();//if column 1 (name)
+            case 3: return cliente.getRg();//if column 2 (birthday)
+            case 4: return cliente.getCpf();
+            case 5: return cliente.getEndereco() ;
             default : return null;
         }
     }
@@ -69,18 +70,21 @@ public class ClienteTableModel extends AbstractTableModel{
         Cliente cliente = lista.get(row);
         switch (col) {
             case 0:
-                cliente.setNome((String) value); //if column 0 (code)
+                cliente.setId((int)value);
                 break;
             case 1:
-                cliente.setSobrenome((String) value);
+                cliente.setNome((String) value); //if column 0 (code)
                 break;
             case 2:
-                cliente.setRg((String) value);
+                cliente.setSobrenome((String) value);
                 break;
             case 3:
-                cliente.setCpf((String) value);
+                cliente.setRg((String) value);
                 break;
             case 4:
+                cliente.setCpf((long) value);
+                break;
+            case 5:
                 cliente.setEndereco((String) value);
                 break;
             default:

@@ -5,6 +5,10 @@
  */
 package View;
 
+import Controller.GerenciaController;
+import Model.cliente.Cliente;
+import java.util.List;
+
 /**
  *
  * @author dell
@@ -66,4 +70,13 @@ public class JanelaClienteView extends javax.swing.JPanel {
     private View.ClienteFormularioView formularioCliente1;
     private View.ClienteTabelaView tabelaClienteView1;
     // End of variables declaration//GEN-END:variables
+
+      public void setController(GerenciaController controller) {
+        botoesClienteView1.setController(controller);
+        
+    }
+    
+        public void setListaClientes(List<Cliente> lista) {
+        tabelaClienteView1.setLista(lista);
+    }
 }

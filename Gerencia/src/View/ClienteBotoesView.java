@@ -5,6 +5,8 @@
  */
 package View;
 
+import Controller.GerenciaController;
+
 /**
  *
  * @author janai
@@ -84,4 +86,8 @@ public class ClienteBotoesView extends javax.swing.JPanel {
     private javax.swing.JButton btnIncluir;
     private javax.swing.JButton btnListar;
     // End of variables declaration//GEN-END:variables
+
+  public void setController(GerenciaController controller) {
+        this.btnListar.addActionListener(e -> controller.listarCliente());
+    }
 }

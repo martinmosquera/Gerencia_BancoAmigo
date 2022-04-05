@@ -118,7 +118,7 @@ public class TestesGerencia {
         
         
      @Test
-        public boolean testeContaC4Saca2(){
+        public void testeContaC4Saca2(){
             ContaCorrente cc = new ContaCorrente(100.00);
             String message = "";
             try{
@@ -126,11 +126,9 @@ public class TestesGerencia {
             }catch(Exception e){
                 message = e.getMessage();
                 System.out.println(message);
-                return false;
             }
             
             assertEquals("Não pode sacar valores negativos!!",message);
-            return true;
         }
         
     @Test
