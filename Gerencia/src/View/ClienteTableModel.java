@@ -103,12 +103,7 @@ public class ClienteTableModel extends AbstractTableModel{
         this.lista.add(cliente);
         //this.fireTableDataChanged();
         this.fireTableRowsInserted(lista.size()-1,lista.size()-1);//update JTable
-    }
-
-    
-    
-    //*********************verificar a lista Contato****************************************
-    
+    }   
     
     
     public void setListaCliente(List<Cliente> clientes) {

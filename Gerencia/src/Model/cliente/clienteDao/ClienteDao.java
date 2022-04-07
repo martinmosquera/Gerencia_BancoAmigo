@@ -27,7 +27,7 @@ public class ClienteDao {
     
     private final String insert = "insert into clientes (nome,sobrenome,rg,cpf,endereco) values (?,?,?,?,?)";
     private final String select = "select * from clientes";
-    private final String update = "update clientes set nome=?, sobrenome=?, rg=?, cpf=?,endereco=? WHERE id=?";
+    private final String update = "update clientes set nome=?, sobrenome=?, rg=?, cpf=?,endereco=? WHERE cliente_id=?";
     private final String delete = "delete from clientes WHERE id=?";
 
     public ClienteDao(ConnectionFactory conFactory) {
@@ -76,6 +76,7 @@ public class ClienteDao {
                 String endereco = rs.getString("endereco");
                 
                 // adicionando o objeto à lista
+               
                 clientes.add(new Cliente(id,nome,sobrenome,rg,cpf,endereco));
             }
             

@@ -85,6 +85,7 @@ public class BancoView extends javax.swing.JFrame {
  
      public void mostrarListaClientes(List<Cliente> lista) {
         cienteView1.setListaClientes(lista);
+        contaView2.setListaClientes(lista);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

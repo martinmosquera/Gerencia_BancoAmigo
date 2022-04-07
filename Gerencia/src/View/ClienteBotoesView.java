@@ -12,7 +12,7 @@ import Controller.GerenciaController;
  * @author janai
  */
 public class ClienteBotoesView extends javax.swing.JPanel {
-
+    
     /**
      * Creates new form BotoesClienteView
      */

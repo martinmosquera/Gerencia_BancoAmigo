@@ -5,6 +5,9 @@
  */
 package View;
 
+import Model.cliente.Cliente;
+import java.util.List;
+
 /**
  *
  * @author dell
@@ -71,4 +74,8 @@ public class JanelaContaView extends javax.swing.JPanel {
     private View.ContaInvestimentoFormularioView formularioContaInvestimento1;
     private View.ClienteTabelaView tabelaClienteView1;
     // End of variables declaration//GEN-END:variables
+
+    public void setListaClientes(List<Cliente> lista) {
+        tabelaClienteView1.setLista(lista);
+    }
 }
