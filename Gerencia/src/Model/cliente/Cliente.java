@@ -51,7 +51,7 @@ public class Cliente implements Comparable{
         this.nome = nome;
     }
 
-    public Object getNome() {
+    public String getNome() {
         return this.nome;
     }
 

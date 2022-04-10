@@ -17,10 +17,9 @@ public class ConnectionFactory {
 
     public Connection getConnection() {
         try {
-            
+//            mudar o nome do usuario e adicionar senha caso precissar
             return DriverManager.getConnection("jdbc:mysql://localhost/lpoo", "root", "");
         } catch (SQLException e) {
-//            Algum codifooasd
             throw new RuntimeException(e);
         }
     }

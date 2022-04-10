@@ -29,13 +29,7 @@ public class GerenciaController {
     
     private void initController(){
         this.view.setController(this);
-        try{
-            List<Cliente> lista = this.clienteDao.getLista();
-            view.mostrarListaClientes(lista);
-        }catch(Exception ex){
-            ex.printStackTrace();
-          System.out.println("Erro ao listar clientes.");
-        }
+        listarCliente();
         this.view.initView();
     }
 

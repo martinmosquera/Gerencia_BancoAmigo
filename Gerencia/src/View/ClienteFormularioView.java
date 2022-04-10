@@ -5,12 +5,15 @@
  */
 package View;
 
+import Model.cliente.Cliente;
+
 /**
  *
  * @author janai
  */
 public class ClienteFormularioView extends javax.swing.JPanel {
 
+    private Cliente ClienteSelecionadoParaAtualizacao;
     /**
      * Creates new form FormularioCliente
      */
@@ -131,4 +134,12 @@ public class ClienteFormularioView extends javax.swing.JPanel {
     private javax.swing.JTextField txtRg;
     private javax.swing.JTextField txtSobrenome;
     // End of variables declaration//GEN-END:variables
+
+    public void setCliente(Cliente cliente){   
+        this.ClienteSelecionadoParaAtualizacao = cliente;
+        System.out.println(cliente.getNome());
+//        txtNome.setText(cliente.getNome());
+        
+        
+    }
 }

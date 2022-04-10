@@ -8,6 +8,7 @@ package View;
 import Controller.GerenciaController;
 import Model.cliente.Cliente;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,7 +22,7 @@ public class JanelaClienteView extends javax.swing.JPanel {
     public JanelaClienteView() {
         initComponents();
     }
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,13 +71,43 @@ public class JanelaClienteView extends javax.swing.JPanel {
     private View.ClienteFormularioView formularioCliente1;
     private View.ClienteTabelaView tabelaClienteView1;
     // End of variables declaration//GEN-END:variables
-
-      public void setController(GerenciaController controller) {
+    
+    public void setController(GerenciaController controller) {
         botoesClienteView1.setController(controller);
         
     }
     
+    public void initView() {
+        /* Create and display the form */
+        tabelaClienteView1.setJanelaView(this);
+        java.awt.EventQueue.invokeLater(() -> this.setVisible(true));
+}
+    
         public void setListaClientes(List<Cliente> lista) {
         tabelaClienteView1.setLista(lista);
+    }
+        
+    ClienteFormularioView getClienteFormularioView(){
+        return formularioCliente1;
+    }
+    
+    public void inserirClienteView(Cliente cliente) {
+        tabelaClienteView1.inserirClienteTabela(cliente);
+    }
+    
+    public void apresentaErro(String erro) {
+    JOptionPane.showMessageDialog(null,erro + "\n", "Erro", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public void mostrarListaClientes(List<Cliente> lista) {
+        tabelaClienteView1.setListaClientesTabela(lista);
+    }
+    
+    public List<Cliente> getClientesParaExcluir() {
+        return this.tabelaClienteView1.getClientesParaExcluir();
+    }
+    
+     public ClienteBotoesView getClienteBotonesView() {
+        return botoesClienteView1;
     }
 }

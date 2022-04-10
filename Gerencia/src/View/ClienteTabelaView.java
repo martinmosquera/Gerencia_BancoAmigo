@@ -65,14 +65,43 @@ public class ClienteTabelaView extends javax.swing.JPanel {
         //Pega a linha clicada
         linhaClicadaParaAtualizacao = this.tabelaCliente.rowAtPoint(evt.getPoint());
         //Pega o contato da linha clicada
+        
         Cliente cliente = modeloTabelaCliente.getCliente(linhaClicadaParaAtualizacao);
-        //Seta os dados no formulário
-      //  janela.getFormularioContatoView().setCliente(cliente);
+        
+//        System.out.println(cliente.getNome());
+//        janela.setCliente(cliente);
+        //Seta os dados no formulári
+        janela.getClienteFormularioView().setCliente(cliente);
       // fazer o formularioClienteView
     }//GEN-LAST:event_tabelaClienteMouseClicked
-
+    
+    public JTable getTabelaCliente(){
+    return tabelaCliente;
+    }
+    
     public void setLista(List<Cliente> lista){
     this.modeloTabelaCliente.setListaCliente(lista);
+    }
+    
+    public void setJanelaView(JanelaClienteView janela){
+        this.janela = janela;
+    }
+    
+    public void inserirClienteTabela(Cliente cliente) {
+        modeloTabelaCliente.adicionaCliente(cliente);
+}
+    public void setListaClientesTabela(List<Cliente> lista){
+        modeloTabelaCliente.setListaCliente(lista);
+    }
+    
+    public List<Cliente> getClientesParaExcluir() {
+        int [] linhasSelecionadas = this.getTabelaCliente().getSelectedRows();
+        List<Cliente> listaExcluir = new ArrayList();
+        for (int i = 0; i < linhasSelecionadas.length; i++) {
+        Cliente cliente = modeloTabelaCliente.getCliente(linhasSelecionadas[i]);
+        listaExcluir.add(cliente);
+        }
+        return listaExcluir;
     }
     
  
