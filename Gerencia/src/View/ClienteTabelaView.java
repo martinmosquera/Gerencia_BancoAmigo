@@ -94,7 +94,7 @@ public class ClienteTabelaView extends javax.swing.JPanel {
         modeloTabelaCliente.setListaCliente(lista);
     }
     
-    public List<Cliente> getClientesParaExcluir() {
+    public List<Cliente> getClientesParaExcluirDaTabela() {
         int [] linhasSelecionadas = this.getTabelaCliente().getSelectedRows();
         List<Cliente> listaExcluir = new ArrayList();
         for (int i = 0; i < linhasSelecionadas.length; i++) {
@@ -105,9 +105,14 @@ public class ClienteTabelaView extends javax.swing.JPanel {
     }
     
  
+    public void excluirClientesDaTabela(List <Cliente> listaParaExcluir){
+        modeloTabelaCliente.removeClientes(listaParaExcluir);
+        
+    }
     
-    
-    
+    public void atualizarClienteNaTabela(Cliente clienteParaAtualizar){ 
+        modeloTabelaCliente.fireTableRowsUpdated(linhaClicadaParaAtualizacao, linhaClicadaParaAtualizacao); // passa a mesma linha porque queremos atualizar uma só
+    }
     
     
     

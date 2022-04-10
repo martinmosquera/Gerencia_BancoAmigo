@@ -142,4 +142,25 @@ public class ClienteFormularioView extends javax.swing.JPanel {
         
         
     }
+    
+    public Cliente getClienteParaAtualizar() {
+    
+    if(ClienteSelecionadoParaAtualizacao==null){
+    return null;
+    
+    }
+    
+    long Cpf = Long.parseLong(txtCpf.getText()); // faz conversão de string para long
+    ClienteSelecionadoParaAtualizacao.setNome(txtNome.getText());
+    ClienteSelecionadoParaAtualizacao.setSobrenome(txtSobrenome.getText());
+    ClienteSelecionadoParaAtualizacao.setRg(txtRg.getText());
+    ClienteSelecionadoParaAtualizacao.setCpf(Cpf);
+    ClienteSelecionadoParaAtualizacao.setEndereco(txtEndereco.getText());
+    return ClienteSelecionadoParaAtualizacao;
+
+
+
+    }
+    
+    
 }

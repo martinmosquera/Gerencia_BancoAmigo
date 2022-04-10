@@ -104,10 +104,48 @@ public class JanelaClienteView extends javax.swing.JPanel {
     }
     
     public List<Cliente> getClientesParaExcluir() {
-        return this.tabelaClienteView1.getClientesParaExcluir();
+        return this.tabelaClienteView1.getClientesParaExcluirDaTabela();
     }
     
-     public ClienteBotoesView getClienteBotonesView() {
+    
+    public void excluirClientesView(List<Cliente> lista) {
+        tabelaClienteView1.excluirClientesDaTabela(lista); 
+    
+    }
+    
+    public Cliente getClienteParaAtualizar() {
+        return formularioCliente1.getClienteParaAtualizar();
+    
+    }
+    
+    public void atualizarClientes(Cliente cliente){
+        tabelaClienteView1.atualizarClienteNaTabela(cliente);   
+    
+    
+    }
+    
+    
+   public void apresentaInfo(String info) {
+        JOptionPane.showMessageDialog(null,info + "\n", "Informação", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+
+
+    public ClienteBotoesView getBotoesClienteView() {
         return botoesClienteView1;
     }
+
+
+
+    public ClienteFormularioView getFormularioClienteView() {
+        return formularioCliente1;
+    }
+
+
+
+    public ClienteTabelaView getTabelaClienteView() {
+    return tabelaClienteView1;
 }
+}
+
+ 
