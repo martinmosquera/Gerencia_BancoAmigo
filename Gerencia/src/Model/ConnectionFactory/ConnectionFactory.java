@@ -20,6 +20,7 @@ public class ConnectionFactory {
             
             return DriverManager.getConnection("jdbc:mysql://localhost/lpoo", "root", "");
         } catch (SQLException e) {
+//            Algum codifooasd
             throw new RuntimeException(e);
         }
     }
