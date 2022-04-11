@@ -9,6 +9,7 @@ import Controller.GerenciaController;
 import Model.cliente.Cliente;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -20,6 +21,7 @@ public class JanelaClienteView extends javax.swing.JPanel {
      * Creates new form CienteView
      */
     public JanelaClienteView() {
+
         initComponents();
     }
    
@@ -74,23 +76,20 @@ public class JanelaClienteView extends javax.swing.JPanel {
     
     public void setController(GerenciaController controller) {
         botoesClienteView1.setController(controller);
+        tabelaClienteView1.setController(controller);
         
     }
-    
+  
     public void initView() {
         /* Create and display the form */
         tabelaClienteView1.setJanelaView(this);
         java.awt.EventQueue.invokeLater(() -> this.setVisible(true));
-}
+    }
     
-        public void setListaClientes(List<Cliente> lista) {
-        tabelaClienteView1.setLista(lista);
+    public Cliente getClienteFormulario() {
+       return this.formularioCliente1.getClienteFormulario();
     }
         
-    ClienteFormularioView getClienteFormularioView(){
-        return formularioCliente1;
-    }
-    
     public void inserirClienteView(Cliente cliente) {
         tabelaClienteView1.inserirClienteTabela(cliente);
     }
@@ -146,6 +145,22 @@ public class JanelaClienteView extends javax.swing.JPanel {
     public ClienteTabelaView getTabelaClienteView() {
     return tabelaClienteView1;
 }
+    
+    public void setListaClientes(List<Cliente> lista) {
+        tabelaClienteView1.setLista(lista);
+    }
+        
+    public ClienteFormularioView getClienteFormularioView(){
+        return this.formularioCliente1;
+    }
+    
+    
+       public void setJanela(JanelaClienteView janela){
+        tabelaClienteView1.setJanela(janela);
+    }
+    
+    
+    
 }
 
  

@@ -6,6 +6,9 @@
 package View;
 
 import Model.cliente.Cliente;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JPanel;
 
 /**
  *
@@ -135,12 +138,14 @@ public class ClienteFormularioView extends javax.swing.JPanel {
     private javax.swing.JTextField txtSobrenome;
     // End of variables declaration//GEN-END:variables
 
-    public void setCliente(Cliente cliente){   
+    public void setCliente(Cliente cliente){ 
+        String Cpf = String.valueOf(cliente.getCpf()); 
         this.ClienteSelecionadoParaAtualizacao = cliente;
-        System.out.println(cliente.getNome());
-//        txtNome.setText(cliente.getNome());
-        
-        
+        txtNome.setText(cliente.getNome());
+        txtSobrenome.setText(cliente.getSobrenome());
+        txtRg.setText(cliente.getRg());
+        txtCpf.setText(Cpf);
+        txtEndereco.setText(cliente.getEndereco());       
     }
     
     public Cliente getClienteParaAtualizar() {
@@ -157,10 +162,20 @@ public class ClienteFormularioView extends javax.swing.JPanel {
     ClienteSelecionadoParaAtualizacao.setCpf(Cpf);
     ClienteSelecionadoParaAtualizacao.setEndereco(txtEndereco.getText());
     return ClienteSelecionadoParaAtualizacao;
-
-
-
     }
+    
+    public Cliente getClienteFormulario() {
+        String Nome = txtNome.getText();
+        String Sobrenome = txtSobrenome.getText();
+        String Rg = txtRg.getText();
+        long Cpf = Long.parseLong(txtCpf.getText()); // faz conversão de string para long 
+        String Endereco = txtEndereco.getText();
+               
+        return new Cliente(Nome, Sobrenome, Rg, Cpf, Endereco);
+        }    
+    
+   
+    
     
     
 }

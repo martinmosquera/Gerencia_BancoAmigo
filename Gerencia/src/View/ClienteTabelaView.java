@@ -5,12 +5,14 @@
  */
 package View;
 
+import Controller.GerenciaController;
 import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTable;
 //import org.ufpr.contato.controller.ContatoController;
 import Model.cliente.Cliente;
+import javax.swing.JPanel;
 /**
  *
  * 
@@ -24,9 +26,14 @@ public class ClienteTabelaView extends javax.swing.JPanel {
     private int linhaClicadaParaAtualizacao = -1;
     
     
+    private GerenciaController controller;
+    
+    
     
     public ClienteTabelaView() {
+       
         initComponents();
+        
     }
 
     /**
@@ -62,16 +69,16 @@ public class ClienteTabelaView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tabelaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClienteMouseClicked
+        this.controller.setJanela(janela);
         //Pega a linha clicada
         linhaClicadaParaAtualizacao = this.tabelaCliente.rowAtPoint(evt.getPoint());
         //Pega o contato da linha clicada
         
+        
         Cliente cliente = modeloTabelaCliente.getCliente(linhaClicadaParaAtualizacao);
         
-//        System.out.println(cliente.getNome());
-//        janela.setCliente(cliente);
         //Seta os dados no formulári
-        janela.getClienteFormularioView().setCliente(cliente);
+        janela.getClienteFormularioView().setCliente(cliente); // retorna um formulário
       // fazer o formularioClienteView
     }//GEN-LAST:event_tabelaClienteMouseClicked
     
@@ -115,9 +122,14 @@ public class ClienteTabelaView extends javax.swing.JPanel {
     }
     
     
+  public void setJanela(JanelaClienteView janela){
+       this.janela = janela;
+    }
     
-    
-    
+  
+  public void setController(GerenciaController nomequalquer){
+      this.controller = nomequalquer;
+  }
     
     
     

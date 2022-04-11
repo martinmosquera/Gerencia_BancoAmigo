@@ -9,6 +9,7 @@ import Controller.GerenciaController;
 import Model.cliente.Cliente;
 import java.awt.event.MouseAdapter;
 import java.util.List;
+import javax.swing.JPanel;
 
 /**
  *
@@ -87,7 +88,11 @@ public class BancoView extends javax.swing.JFrame {
         cienteView1.setListaClientes(lista);
         contaView2.setListaClientes(lista);
     }
+public void setJanela(JanelaClienteView janela) {
+    cienteView1.setJanela(janela);
 
+
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private View.JanelaClienteView cienteView1;
     private View.JanelaContaView contaView2;

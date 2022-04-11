@@ -9,7 +9,9 @@ import Model.cliente.Cliente;
 import Model.cliente.clienteDao.ClienteDao;
 import Model.conta.contaDao.ContaDao;
 import View.BancoView;
+import View.JanelaClienteView;
 import java.util.List;
+import javax.swing.JPanel;
 
 /**
  *
@@ -43,4 +45,8 @@ public class GerenciaController {
         }
     }
     
+    public void setJanela(JanelaClienteView janela){
+        view.setJanela(janela);
+    
+    }
 }
