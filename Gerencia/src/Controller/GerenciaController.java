@@ -49,4 +49,8 @@ public class GerenciaController {
         view.setJanela(janela);
     
     }
+    
+    public JanelaClienteView getJanela(){
+     return view.getJanela();
+    }
 }

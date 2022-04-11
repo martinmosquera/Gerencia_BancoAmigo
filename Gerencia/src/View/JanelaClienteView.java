@@ -158,6 +158,9 @@ public class JanelaClienteView extends javax.swing.JPanel {
        public void setJanela(JanelaClienteView janela){
         tabelaClienteView1.setJanela(janela);
     }
+    public JanelaClienteView getJanela(){
+     return this;
+    }
     
     
     

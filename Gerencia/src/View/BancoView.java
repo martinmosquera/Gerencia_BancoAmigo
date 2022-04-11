@@ -93,6 +93,10 @@ public void setJanela(JanelaClienteView janela) {
 
 
 }
+
+public JanelaClienteView getJanela(){
+     return cienteView1.getJanela();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private View.JanelaClienteView cienteView1;
     private View.JanelaContaView contaView2;

@@ -31,7 +31,6 @@ public class ClienteTabelaView extends javax.swing.JPanel {
     
     
     public ClienteTabelaView() {
-       
         initComponents();
         
     }
@@ -69,14 +68,11 @@ public class ClienteTabelaView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tabelaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClienteMouseClicked
-        this.controller.setJanela(janela);
+        janela = controller.getJanela();
         //Pega a linha clicada
         linhaClicadaParaAtualizacao = this.tabelaCliente.rowAtPoint(evt.getPoint());
         //Pega o contato da linha clicada
-        
-        
         Cliente cliente = modeloTabelaCliente.getCliente(linhaClicadaParaAtualizacao);
-        
         //Seta os dados no formulári
         janela.getClienteFormularioView().setCliente(cliente); // retorna um formulário
       // fazer o formularioClienteView
