@@ -78,6 +78,9 @@ public class JanelaClienteView extends javax.swing.JPanel {
         botoesClienteView1.setController(controller);
         tabelaClienteView1.setController(controller);
         
+//        >> aqui paso a referencia da janela para a tabela
+        tabelaClienteView1.setJanela(this);
+        
     }
   
     public void initView() {

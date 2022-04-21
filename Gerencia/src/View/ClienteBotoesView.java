@@ -89,5 +89,6 @@ public class ClienteBotoesView extends javax.swing.JPanel {
 
   public void setController(GerenciaController controller) {
         this.btnListar.addActionListener(e -> controller.listarCliente());
+//        this.btnExcluir.addActionListener(e-> controller)
     }
 }

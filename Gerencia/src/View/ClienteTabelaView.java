@@ -68,7 +68,8 @@ public class ClienteTabelaView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tabelaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClienteMouseClicked
-        janela = controller.getJanela();
+//     mudei esta linha para pasar a referencia da janela para a tabela antes e nao aqui >>
+//janela = controller.getJanela();
         //Pega a linha clicada
         linhaClicadaParaAtualizacao = this.tabelaCliente.rowAtPoint(evt.getPoint());
         //Pega o contato da linha clicada

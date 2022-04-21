@@ -7,9 +7,7 @@ package View;
 
 import Controller.GerenciaController;
 import Model.cliente.Cliente;
-import java.awt.event.MouseAdapter;
 import java.util.List;
-import javax.swing.JPanel;
 
 /**
  *
