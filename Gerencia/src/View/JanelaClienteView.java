@@ -92,11 +92,11 @@ public class JanelaClienteView extends javax.swing.JPanel {
     public Cliente getClienteFormulario() {
        return this.formularioCliente1.getClienteFormulario();
     }
-        
-    public void inserirClienteView(Cliente cliente) {
+        /*
+    public void getClienteParaIncluir(Cliente cliente) {
         tabelaClienteView1.inserirClienteTabela(cliente);
     }
-    
+*/    
     public void apresentaErro(String erro) {
     JOptionPane.showMessageDialog(null,erro + "\n", "Erro", JOptionPane.ERROR_MESSAGE);
     }
@@ -169,8 +169,13 @@ public class JanelaClienteView extends javax.swing.JPanel {
     public JanelaClienteView getJanela(){
      return this;
     }
-    
-    
+
+   
+    public Cliente getClienteParaIncluir() {
+       return formularioCliente1.getClienteFormulario();
+       
+    }
+  
     
 }
 

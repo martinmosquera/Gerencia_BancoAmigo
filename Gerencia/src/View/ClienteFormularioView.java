@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 public class ClienteFormularioView extends javax.swing.JPanel {
 
     private Cliente ClienteSelecionadoParaAtualizacao;
+    private Cliente ClienteSelecionadoParaExcluir;
     /**
      * Creates new form FormularioCliente
      */
@@ -154,6 +155,16 @@ public class ClienteFormularioView extends javax.swing.JPanel {
         txtCpf.setText(Cpf);
         txtEndereco.setText(cliente.getEndereco());       
     }
+    /*
+    public void setClienteNull(){ 
+        String Cpf = null; 
+        txtNome.setText(null);
+        txtSobrenome.setText(null);
+        txtRg.setText(null);
+        txtCpf.setText(null);
+        txtEndereco.setText(null);       
+    }*/
+    
     
     public Cliente getClienteParaAtualizar() {
     
@@ -170,6 +181,26 @@ public class ClienteFormularioView extends javax.swing.JPanel {
     ClienteSelecionadoParaAtualizacao.setEndereco(txtEndereco.getText());
     return ClienteSelecionadoParaAtualizacao;
     }
+    
+    public Cliente getClienteParaExcluir() {
+    
+    if(ClienteSelecionadoParaExcluir==null){
+    return null;
+    
+    }
+    
+    long Cpf = Long.parseLong(txtCpf.getText()); // faz conversão de string para long
+    ClienteSelecionadoParaExcluir.setNome(txtNome.getText());
+    ClienteSelecionadoParaExcluir.setSobrenome(txtSobrenome.getText());
+    ClienteSelecionadoParaExcluir.setRg(txtRg.getText());
+    ClienteSelecionadoParaExcluir.setCpf(Cpf);
+    ClienteSelecionadoParaExcluir.setEndereco(txtEndereco.getText());
+    return ClienteSelecionadoParaExcluir;
+    }
+    
+    
+    
+    
     
     public Cliente getClienteFormulario() {
         String Nome = txtNome.getText();

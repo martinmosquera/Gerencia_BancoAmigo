@@ -99,6 +99,13 @@ public Cliente getClienteParaAtualizar(){
     return cliente;
 }
 
+/*
+public Cliente setClienteNull(){
+    Cliente cliente = cienteView1.setClienteNull();
+    return null;
+}
+*/
+
 public Cliente getClienteParaExcluir(){
     Cliente cliente = cienteView1.getClienteParaExcluir();
     return cliente;
@@ -119,4 +126,12 @@ public JanelaClienteView getJanela(){
         int resultado = JOptionPane.showConfirmDialog(null,info,"Excluir Usuário",JOptionPane.YES_NO_OPTION);
         return resultado;
     }
+    
+public Cliente getClienteParaIncluir(){
+    Cliente cliente = cienteView1.getClienteParaIncluir();
+    return cliente;
+}    
+    
+    
 }
+

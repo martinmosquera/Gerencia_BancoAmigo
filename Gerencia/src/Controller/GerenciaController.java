@@ -10,9 +10,11 @@ import Model.cliente.clienteDao.ClienteDao;
 import Model.conta.contaDao.ContaDao;
 import View.BancoView;
 import View.JanelaClienteView;
+import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
 
 /**
  *
@@ -40,6 +42,7 @@ public class GerenciaController {
         try{
             List<Cliente> lista = this.clienteDao.getLista();
             view.mostrarListaClientes(lista);
+           // view.setClienteNull();
         }catch(Exception ex){
             ex.printStackTrace();
           System.out.println("Erro ao listar clientes.");
@@ -61,17 +64,30 @@ public class GerenciaController {
          
     }
     
-    
+    public void incluirCliente(){
+        Cliente cliente = this.view.getClienteParaIncluir();
+        try{
+            this.clienteDao.inserir(cliente);
+            listarCliente();
+        }
+        catch (Exception ex){
+           ex.printStackTrace();
+          System.out.println("Erro ao inserir clientes.");
+        }
+    }
     
     public void excluirCliente(){
         Cliente cliente = this.view.getClienteParaExcluir();
         int resultado = this.view.opcaoDelete("Tem certeza que deseja excluir o usuário? \n Todas as contas serão apagadas!");
         
         try{
+            if (cliente != null){
             if(resultado==JOptionPane.YES_OPTION){
+                
                 this.clienteDao.excluir(cliente);
+                
                 listarCliente();
-            };
+            };}
         }catch (Exception ex) {
             ex.printStackTrace();
             System.out.println("Erro ao excluir cliente");
