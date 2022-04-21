@@ -28,7 +28,7 @@ public class ClienteDao {
     private final String insert = "insert into clientes (nome,sobrenome,rg,cpf,endereco) values (?,?,?,?,?)";
     private final String select = "select * from clientes";
     private final String update = "update clientes set nome=?, sobrenome=?, rg=?, cpf=?,endereco=? WHERE cliente_id=?";
-    private final String delete = "delete from clientes WHERE id=?";
+    private final String delete = "delete from clientes WHERE cpf=?";
 
     public ClienteDao(ConnectionFactory conFactory) {
         this.connectionFactory = conFactory;
@@ -119,7 +119,7 @@ public class ClienteDao {
         PreparedStatement stmtExcluir;
         stmtExcluir = connection.prepareStatement(delete);
         try {
-            stmtExcluir.setLong(1, cliente.getId());
+            stmtExcluir.setLong(1, cliente.getCpf());
             stmtExcluir.executeUpdate();
         } finally{
             stmtExcluir.close();

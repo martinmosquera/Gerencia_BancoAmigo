@@ -30,13 +30,19 @@ public class ClienteBotoesView extends javax.swing.JPanel {
     private void initComponents() {
 
         btnIncluir = new javax.swing.JButton();
-        btnAnalizar = new javax.swing.JButton();
+        btnAtualizar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         btnListar = new javax.swing.JButton();
 
         btnIncluir.setText("Incluir");
 
-        btnAnalizar.setText("Analizar");
+        btnAtualizar.setText("Atualizar");
+        btnAtualizar.setActionCommand("");
+        btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setText("Excluir");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -55,10 +61,10 @@ public class ClienteBotoesView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(btnIncluir)
                 .addGap(30, 30, 30)
-                .addComponent(btnAnalizar)
+                .addComponent(btnAtualizar)
                 .addGap(27, 27, 27)
                 .addComponent(btnExcluir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(btnListar)
                 .addGap(25, 25, 25))
         );
@@ -68,20 +74,26 @@ public class ClienteBotoesView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnIncluir)
-                    .addComponent(btnAnalizar)
+                    .addComponent(btnAtualizar)
                     .addComponent(btnExcluir)
                     .addComponent(btnListar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        btnAtualizar.getAccessibleContext().setAccessibleName("Atualizar");
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExcluirActionPerformed
 
+    private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAtualizarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAnalizar;
+    private javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnIncluir;
     private javax.swing.JButton btnListar;
@@ -89,6 +101,9 @@ public class ClienteBotoesView extends javax.swing.JPanel {
 
   public void setController(GerenciaController controller) {
         this.btnListar.addActionListener(e -> controller.listarCliente());
+        this.btnAtualizar.addActionListener(e -> controller.atualizarCliente());
+        this.btnExcluir.addActionListener(e -> controller.excluirCliente());
+       // this.btnAtualizar.addActionListener(e -> controller.listarCliente());
 //        this.btnExcluir.addActionListener(e-> controller)
     }
 }

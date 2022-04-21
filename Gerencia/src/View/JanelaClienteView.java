@@ -104,10 +104,15 @@ public class JanelaClienteView extends javax.swing.JPanel {
     public void mostrarListaClientes(List<Cliente> lista) {
         tabelaClienteView1.setListaClientesTabela(lista);
     }
-    
+    /*
     public List<Cliente> getClientesParaExcluir() {
         return this.tabelaClienteView1.getClientesParaExcluirDaTabela();
+    }*/
+    
+    public Cliente getClienteParaExcluir() {
+        return this.tabelaClienteView1.getClienteParaExcluirDaTabela();
     }
+    
     
     
     public void excluirClientesView(List<Cliente> lista) {

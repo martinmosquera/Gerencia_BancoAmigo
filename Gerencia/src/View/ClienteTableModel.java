@@ -62,7 +62,7 @@ public class ClienteTableModel extends AbstractTableModel{
             case 4: return cliente.getCpf();
             case 5: return cliente.getEndereco() ;
             default : return null;
-        }
+        } 
     }
 
     @Override

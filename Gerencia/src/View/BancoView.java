@@ -8,6 +8,7 @@ package View;
 import Controller.GerenciaController;
 import Model.cliente.Cliente;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -92,6 +93,17 @@ public void setJanela(JanelaClienteView janela) {
 
 }
 
+
+public Cliente getClienteParaAtualizar(){
+    Cliente cliente = cienteView1.getClienteParaAtualizar();
+    return cliente;
+}
+
+public Cliente getClienteParaExcluir(){
+    Cliente cliente = cienteView1.getClienteParaExcluir();
+    return cliente;
+}
+
 public JanelaClienteView getJanela(){
      return cienteView1.getJanela();
     }
@@ -102,4 +114,9 @@ public JanelaClienteView getJanela(){
     private javax.swing.JTabbedPane jTabbedPane1;
     private View.JanelaManipulaView janelaManipulaView1;
     // End of variables declaration//GEN-END:variables
+
+    public int opcaoDelete(String info) {
+        int resultado = JOptionPane.showConfirmDialog(null,info,"Excluir Usuário",JOptionPane.YES_NO_OPTION);
+        return resultado;
+    }
 }

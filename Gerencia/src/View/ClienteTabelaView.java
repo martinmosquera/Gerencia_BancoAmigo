@@ -97,7 +97,7 @@ public class ClienteTabelaView extends javax.swing.JPanel {
     public void setListaClientesTabela(List<Cliente> lista){
         modeloTabelaCliente.setListaCliente(lista);
     }
-    
+    /*
     public List<Cliente> getClientesParaExcluirDaTabela() {
         int [] linhasSelecionadas = this.getTabelaCliente().getSelectedRows();
         List<Cliente> listaExcluir = new ArrayList();
@@ -106,6 +106,11 @@ public class ClienteTabelaView extends javax.swing.JPanel {
         listaExcluir.add(cliente);
         }
         return listaExcluir;
+    }*/
+    
+    public Cliente getClienteParaExcluirDaTabela() {
+        Cliente cliente = modeloTabelaCliente.getCliente(linhaClicadaParaAtualizacao);
+        return cliente;
     }
     
  

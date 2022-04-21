@@ -11,6 +11,7 @@ import Model.conta.contaDao.ContaDao;
 import View.BancoView;
 import View.JanelaClienteView;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -44,6 +45,41 @@ public class GerenciaController {
           System.out.println("Erro ao listar clientes.");
         }
     }
+    
+    public void atualizarCliente() {
+        Cliente cliente = this.view.getClienteParaAtualizar();
+        
+        try{ 
+            this.clienteDao.atualizar(cliente);
+            listarCliente();
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+          System.out.println("Erro ao atualizar clientes.");
+            
+        }
+         
+    }
+    
+    
+    
+    public void excluirCliente(){
+        Cliente cliente = this.view.getClienteParaExcluir();
+        int resultado = this.view.opcaoDelete("Tem certeza que deseja excluir o usuário? \n Todas as contas serão apagadas!");
+        
+        try{
+            if(resultado==JOptionPane.YES_OPTION){
+                this.clienteDao.excluir(cliente);
+                listarCliente();
+            };
+        }catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("Erro ao excluir cliente");
+                   
+        }
+    
+    }
+    
     
     public void setJanela(JanelaClienteView janela){
         view.setJanela(janela);
