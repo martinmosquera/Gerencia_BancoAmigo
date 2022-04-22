@@ -5,12 +5,15 @@
  */
 package View;
 
+import Controller.GerenciaController;
+import Model.cliente.Cliente;
+
 /**
  *
  * @author dell
  */
 public class ContaBotoesView extends javax.swing.JPanel {
-
+    private GerenciaController controller;
     /**
      * Creates new form BotonesConta
      */
@@ -76,7 +79,10 @@ public class ContaBotoesView extends javax.swing.JPanel {
     }//GEN-LAST:event_cbxTipoContaActionPerformed
 
     private void btnVincularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVincularActionPerformed
-        // TODO add your handling code here:
+        String tipoConta = cbxTipoConta.getSelectedItem().toString();
+        Cliente cliente = new Cliente();
+        this.btnVincular.addActionListener(e -> controller.vincularConta(tipoConta,cliente)); 
+        
     }//GEN-LAST:event_btnVincularActionPerformed
 
     private void cbxTipoContaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbxTipoContaMouseClicked
@@ -88,4 +94,8 @@ public class ContaBotoesView extends javax.swing.JPanel {
     private javax.swing.JButton btnVincular;
     private javax.swing.JComboBox<String> cbxTipoConta;
     // End of variables declaration//GEN-END:variables
+
+    public void setController(GerenciaController controller){
+        this.controller = controller;
+    }
 }

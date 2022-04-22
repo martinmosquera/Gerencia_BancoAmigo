@@ -6,6 +6,7 @@
 package Controller;
 
 import Model.cliente.Cliente;
+import Model.cliente.ValidaCpf;
 import Model.cliente.clienteDao.ClienteDao;
 import Model.conta.contaDao.ContaDao;
 import View.BancoView;
@@ -42,45 +43,40 @@ public class GerenciaController {
         try{
             List<Cliente> lista = this.clienteDao.getLista();
             view.mostrarListaClientes(lista);
-           // view.setClienteNull();
+            view.setClienteNull();
         }catch(Exception ex){
-            ex.printStackTrace();
-          System.out.println("Erro ao listar clientes.");
+            this.view.showInfo("Erro ao listar clientes.\n"+ex.getMessage());
         }
     }
     
-    public void atualizarCliente() {
-        Cliente cliente = this.view.getClienteParaAtualizar();
-        
+    public void atualizarCliente() {        
         try{ 
+            Cliente cliente = this.view.getClienteParaAtualizar();
             this.clienteDao.atualizar(cliente);
             listarCliente();
         }
         catch (Exception ex){
-            ex.printStackTrace();
-          System.out.println("Erro ao atualizar clientes.");
+          this.view.showInfo("Erro ao atualizar clientes.\n"+ex.getMessage());
             
         }
          
     }
     
     public void incluirCliente(){
-        Cliente cliente = this.view.getClienteParaIncluir();
         try{
+            Cliente cliente = this.view.getClienteParaIncluir();
             this.clienteDao.inserir(cliente);
             listarCliente();
         }
         catch (Exception ex){
-           ex.printStackTrace();
-          System.out.println("Erro ao inserir clientes.");
+            this.view.showInfo("Erro ao inserir o Cliente. \n"+ex.getMessage());
         }
     }
     
-    public void excluirCliente(){
-        Cliente cliente = this.view.getClienteParaExcluir();
-        int resultado = this.view.opcaoDelete("Tem certeza que deseja excluir o usuário? \n Todas as contas serão apagadas!");
-        
+    public void excluirCliente(){        
         try{
+            Cliente cliente = this.view.getClienteParaExcluir();
+            int resultado = this.view.opcaoDelete("Tem certeza que deseja excluir o usuário? \n Todas as contas serão apagadas!");
             if (cliente != null){
             if(resultado==JOptionPane.YES_OPTION){
                 
@@ -89,9 +85,7 @@ public class GerenciaController {
                 listarCliente();
             };}
         }catch (Exception ex) {
-            ex.printStackTrace();
-            System.out.println("Erro ao excluir cliente");
-                   
+            this.view.showInfo("Erro ao excluir cliente.\n"+ex.getMessage());                   
         }
     
     }
@@ -102,7 +96,37 @@ public class GerenciaController {
     
     }
     
-    public JanelaClienteView getJanela(){
+    public JPanel getJanela(){
      return view.getJanela();
     }
+    
+    public void setCliente(Cliente cliente){
+        try{
+            this.view.setCliente(cliente);
+        }catch(Exception e){
+            this.view.showInfo(e.getMessage());
+        }
+        
+    }
+    
+    public boolean validaCPF(String cpf){
+        return ValidaCpf.isCPF(cpf);
+    }
+    
+    public void vincularConta(String tipoConta,Cliente cliente){
+        // criar uma conta vinculada com o cliente
+        
+//        this.clienteDao.vincular(cliente, tipoConta);
+        
+        this.view.showInfo(tipoConta+"Holaa");
+    }
+    
+    public int NumeroJanela(){
+        return this.view.NumeroJanela();
+    }
+    
+    public void setJanelaCliente(JanelaClienteView janela){
+        this.view.setJanela(janela);
+    }
+  
 }

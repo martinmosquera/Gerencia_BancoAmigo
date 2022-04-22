@@ -5,14 +5,19 @@
  */
 package View;
 
+import Controller.GerenciaController;
 import Model.cliente.Cliente;
 import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
  * @author dell
  */
-public class JanelaContaView extends javax.swing.JPanel {
+public class JanelaContaView extends JPanel {
+    
+    private GerenciaController controller;
 
     /**
      * Creates new form Conta
@@ -76,21 +81,23 @@ public class JanelaContaView extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     
-    
-    
-    
-    
     public void setListaClientes(List<Cliente> lista) {
         tabelaClienteView1.setLista(lista);
         
     }
     
-    
-    
+    public JPanel getJanela(){
+     return this;
+    }
 
     
+    public void setCliente(Cliente cliente){
+        JOptionPane.showMessageDialog(null, cliente.getNome(), "Clicado em conta", JOptionPane.INFORMATION_MESSAGE);
+    }
     
-    
-    
+    public void setController(GerenciaController controller){
+        this.controller = controller;
+        this.botonesConta1.setController(controller);
+    }
 }
 

@@ -5,17 +5,16 @@
  */
 package View;
 
+import Controller.GerenciaController;
 import Model.cliente.Cliente;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import javax.swing.JPanel;
 
 /**
  *
  * @author janai
  */
 public class ClienteFormularioView extends javax.swing.JPanel {
-
+    
+    private GerenciaController controller;
     private Cliente ClienteSelecionadoParaAtualizacao;
     private Cliente ClienteSelecionadoParaExcluir;
     /**
@@ -143,19 +142,14 @@ public class ClienteFormularioView extends javax.swing.JPanel {
         txtNome.setText(cliente.getNome());
         txtSobrenome.setText(cliente.getSobrenome());
         txtRg.setText(cliente.getRg());
+        if(cliente.getCpf()==0)
+            Cpf = "";
+        else if(Cpf.length() == 10){
+            Cpf = "0"+Cpf;
+        }
         txtCpf.setText(Cpf);
         txtEndereco.setText(cliente.getEndereco());       
     }
-    /*
-    public void setClienteNull(){ 
-        String Cpf = null; 
-        txtNome.setText(null);
-        txtSobrenome.setText(null);
-        txtRg.setText(null);
-        txtCpf.setText(null);
-        txtEndereco.setText(null);       
-    }*/
-    
     
     public Cliente getClienteParaAtualizar() {
     
@@ -189,7 +183,9 @@ public class ClienteFormularioView extends javax.swing.JPanel {
     return ClienteSelecionadoParaExcluir;
     }
     
-    
+    public void setController(GerenciaController controller){
+        this.controller = controller;
+    }
     
     
     
@@ -197,10 +193,12 @@ public class ClienteFormularioView extends javax.swing.JPanel {
         String Nome = txtNome.getText();
         String Sobrenome = txtSobrenome.getText();
         String Rg = txtRg.getText();
-        long Cpf = Long.parseLong(txtCpf.getText()); // faz conversão de string para long 
+        if(controller.validaCPF(txtCpf.getText())){
+            long Cpf = Long.parseLong(txtCpf.getText()); // faz conversão de string para long 
         String Endereco = txtEndereco.getText();
                
         return new Cliente(Nome, Sobrenome, Rg, Cpf, Endereco);
+        }else throw new RuntimeException("CPF invalido");
         }    
     
    

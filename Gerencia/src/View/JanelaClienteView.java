@@ -78,6 +78,7 @@ public class JanelaClienteView extends javax.swing.JPanel {
         
 //        >> aqui paso a referencia da janela para a tabela
         tabelaClienteView1.setJanela(this);
+        formularioCliente1.setController(controller);
         
     }
   
@@ -108,6 +109,9 @@ public class JanelaClienteView extends javax.swing.JPanel {
     }*/
     
     public Cliente getClienteParaExcluir() {
+        //se o formulario estiver vazio retorna um usuario nullo
+        
+        //se nao retorna cliente dda tabela
         return this.tabelaClienteView1.getClienteParaExcluirDaTabela();
     }
     
@@ -172,6 +176,20 @@ public class JanelaClienteView extends javax.swing.JPanel {
     public Cliente getClienteParaIncluir() {
        return formularioCliente1.getClienteFormulario();
        
+    }
+    
+    public void setCliente(Cliente cliente){
+        if(this.formularioCliente1.isShowing())
+            formularioCliente1.setCliente(cliente);
+    }
+    
+    public void setClienteFormularioNull(Cliente cliente){
+        
+        this.formularioCliente1.setCliente(cliente);
+    }
+    
+    public void setClienteNull(){
+        tabelaClienteView1.setLinhaNull();
     }
   
     

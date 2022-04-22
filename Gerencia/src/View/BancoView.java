@@ -9,13 +9,15 @@ import Controller.GerenciaController;
 import Model.cliente.Cliente;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
  * @author dell
  */
 public class BancoView extends javax.swing.JFrame {
-
+    
+    GerenciaController controller;
     /**
      * Creates new form GerenciaView
      */
@@ -77,6 +79,7 @@ public class BancoView extends javax.swing.JFrame {
      */
  public void setController(GerenciaController controller) {
         cienteView1.setController(controller);
+        contaView2.setController(controller);
         
     }
  
@@ -88,12 +91,14 @@ public class BancoView extends javax.swing.JFrame {
      public void mostrarListaClientes(List<Cliente> lista) {
         cienteView1.setListaClientes(lista);
         contaView2.setListaClientes(lista);
+        cienteView1.setClienteNull();
     }
 public void setJanela(JanelaClienteView janela) {
     cienteView1.setJanela(janela);
 
 
 }
+    
 
 
 public Cliente getClienteParaAtualizar(){
@@ -101,20 +106,22 @@ public Cliente getClienteParaAtualizar(){
     return cliente;
 }
 
-/*
-public Cliente setClienteNull(){
-    Cliente cliente = cienteView1.setClienteNull();
-    return null;
+public void setClienteNull(){
+    Cliente cliente = new Cliente();
+    cienteView1.setClienteFormularioNull(cliente);
 }
-*/
+
 
 public Cliente getClienteParaExcluir(){
     Cliente cliente = cienteView1.getClienteParaExcluir();
     return cliente;
 }
 
-public JanelaClienteView getJanela(){
-     return cienteView1.getJanela();
+public JPanel getJanela(){
+    if(cienteView1.isShowing())
+     return cienteView1;
+    else if(contaView2.isShowing())return contaView2;
+    else return janelaManipulaView1;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private View.JanelaClienteView cienteView1;
@@ -129,11 +136,29 @@ public JanelaClienteView getJanela(){
         return resultado;
     }
     
+    public void showInfo(String info){
+        JOptionPane.showMessageDialog(null,info,"Atenção" ,JOptionPane.ERROR_MESSAGE);
+    }
+    
 public Cliente getClienteParaIncluir(){
     Cliente cliente = cienteView1.getClienteParaIncluir();
     return cliente;
-}    
-    
+}
+public void setCliente(Cliente cliente){
+        try{
+            if(cienteView1.isShowing())
+                    this.cienteView1.setCliente(cliente);
+            else if(contaView2.isShowing())
+                this.contaView2.setCliente(cliente);    
+        }catch(Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
+        
+}
+
+    public int NumeroJanela(){
+        return jTabbedPane1.getSelectedIndex();
+}
     
 }
 

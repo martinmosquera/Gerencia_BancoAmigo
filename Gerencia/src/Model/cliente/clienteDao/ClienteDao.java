@@ -54,15 +54,16 @@ public class ClienteDao {
             cliente.setId(i);
             
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Falha na conexão com o Banco de Dados ao Inserir " + e.getMessage());
         } 
     }
 
-    public List<Cliente> getLista() throws SQLException{
-        Connection connection=connectionFactory.getConnection();
+    public List<Cliente> getLista(){
         ResultSet rs = null;
-        PreparedStatement stmtLista = connection.prepareStatement(select);
+        PreparedStatement stmtLista = null;
         try {
+            Connection connection=connectionFactory.getConnection();
+            stmtLista = connection.prepareStatement(select);
             rs = stmtLista.executeQuery();
             List<Cliente> clientes = new ArrayList<Cliente>();
             while (rs.next()) {
@@ -82,19 +83,20 @@ public class ClienteDao {
             
             return clientes;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Falha na conexão com o Banco de Dados ao Listar " +e.getMessage());
         } finally{
-            rs.close();
-            stmtLista.close();
+            try{rs.close();}catch(SQLException e){throw new RuntimeException(e.getMessage());};
+            try{stmtLista.close();}catch(SQLException e){throw new RuntimeException(e.getMessage());};
         }
 
     }
 
 
-    public void atualizar(Cliente cliente) throws SQLException{
-        Connection connection=connectionFactory.getConnection();
-        PreparedStatement stmtAtualiza = connection.prepareStatement(update);
+    public void atualizar(Cliente cliente){
+        PreparedStatement stmtAtualiza = null;
         try {
+            Connection connection=connectionFactory.getConnection();
+            stmtAtualiza = connection.prepareStatement(update);
             stmtAtualiza.setString(1, (String)cliente.getNome());
             stmtAtualiza.setString(2, (String)cliente.getSobrenome());
             stmtAtualiza.setString(3, (String)cliente.getRg());
@@ -102,8 +104,10 @@ public class ClienteDao {
             stmtAtualiza.setString(5, (String)cliente.getEndereco());
             stmtAtualiza.setInt(6, cliente.getId());
             stmtAtualiza.executeUpdate();
+        }catch(SQLException e){
+            throw new RuntimeException("Falha na conexão com o Banco de Dados ao Atualizar " +e.getMessage());
         } finally{
-            stmtAtualiza.close();
+            try{stmtAtualiza.close();}catch(SQLException e){throw new RuntimeException(e.getMessage());};
         }
 
     }
@@ -114,15 +118,17 @@ public class ClienteDao {
         }
     }
 
-    public void excluir(Cliente cliente) throws SQLException {
-        Connection connection=connectionFactory.getConnection();
-        PreparedStatement stmtExcluir;
-        stmtExcluir = connection.prepareStatement(delete);
+    public void excluir(Cliente cliente){
+        PreparedStatement stmtExcluir = null;
         try {
+            Connection connection=connectionFactory.getConnection();
+            stmtExcluir = connection.prepareStatement(delete);
             stmtExcluir.setLong(1, cliente.getCpf());
             stmtExcluir.executeUpdate();
+        }catch(SQLException e){
+            throw new RuntimeException("Falha na conexão com o Banco de Dados ao Excluir " +e.getMessage());
         } finally{
-            stmtExcluir.close();
+            try{stmtExcluir.close();}catch(SQLException e){throw new RuntimeException(e.getMessage());};
         }
 
     }    

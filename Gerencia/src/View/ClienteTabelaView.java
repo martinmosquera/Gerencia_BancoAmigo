@@ -13,6 +13,7 @@ import javax.swing.JTable;
 //import org.ufpr.contato.controller.ContatoController;
 import Model.cliente.Cliente;
 import javax.swing.JPanel;
+import View.JanelaClienteView;
 /**
  *
  * 
@@ -22,7 +23,7 @@ public class ClienteTabelaView extends javax.swing.JPanel {
      * Creates new form TabelaClienteView
      */
     private ClienteTableModel modeloTabelaCliente = new ClienteTableModel();
-    private JanelaClienteView janela;
+    private JPanel janela;
     private int linhaClicadaParaAtualizacao = -1;
     
     
@@ -74,8 +75,13 @@ public class ClienteTabelaView extends javax.swing.JPanel {
         linhaClicadaParaAtualizacao = this.tabelaCliente.rowAtPoint(evt.getPoint());
         //Pega o contato da linha clicada
         Cliente cliente = modeloTabelaCliente.getCliente(linhaClicadaParaAtualizacao);
-        //Seta os dados no formulári
-        janela.getClienteFormularioView().setCliente(cliente); // retorna um formulário
+        int num = controller.NumeroJanela();
+        if(num == 0){
+            controller.setCliente(cliente);
+        }
+        
+        //Seta os dados no formulário
+//        
       // fazer o formularioClienteView
     }//GEN-LAST:event_tabelaClienteMouseClicked
     
@@ -129,13 +135,13 @@ public class ClienteTabelaView extends javax.swing.JPanel {
     }
     
   
-  public void setController(GerenciaController nomequalquer){
-      this.controller = nomequalquer;
+  public void setController(GerenciaController controller){
+      this.controller = controller;
   }
-    
-    
-    
-    
+  
+  public void setLinhaNull(){
+      this.linhaClicadaParaAtualizacao = -1;
+  }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
