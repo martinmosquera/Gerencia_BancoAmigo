@@ -91,5 +91,9 @@ public class Cliente implements Comparable{
     public int compareTo(Object o) {
      return 0;   
     }
+
+    public void setName(String name) {
+        this.nome = name;
+    }
     
 }

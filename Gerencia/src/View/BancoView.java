@@ -7,6 +7,7 @@ package View;
 
 import Controller.GerenciaController;
 import Model.cliente.Cliente;
+import Model.conta.ContaCorrente;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -18,6 +19,7 @@ import javax.swing.JPanel;
 public class BancoView extends javax.swing.JFrame {
     
     GerenciaController controller;
+    Cliente clienteClicado = null;
     /**
      * Creates new form GerenciaView
      */
@@ -41,11 +43,17 @@ public class BancoView extends javax.swing.JFrame {
         janelaManipulaView1 = new View.JanelaManipulaView();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(66, 156, 125));
         jLabel1.setText("BANCO BOM AMIGO");
 
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
+            }
+        });
         jTabbedPane1.addTab("Clientes", cienteView1);
         jTabbedPane1.addTab("Conta", contaView2);
         jTabbedPane1.addTab("Manipula", janelaManipulaView1);
@@ -54,11 +62,14 @@ public class BancoView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(110, 110, 110)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(274, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -73,6 +84,14 @@ public class BancoView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        this.clienteClicado = new Cliente();
+        cienteView1.setClienteFormularioNull(clienteClicado);
+        cienteView1.setLinhaClicadaNull();
+        contaView2.setLinhaClicadaNull();
+        this.clienteClicado = null;
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -92,13 +111,7 @@ public class BancoView extends javax.swing.JFrame {
         cienteView1.setListaClientes(lista);
         contaView2.setListaClientes(lista);
         cienteView1.setClienteNull();
-    }
-public void setJanela(JanelaClienteView janela) {
-    cienteView1.setJanela(janela);
-
-
-}
-    
+    } 
 
 
 public Cliente getClienteParaAtualizar(){
@@ -116,13 +129,6 @@ public Cliente getClienteParaExcluir(){
     Cliente cliente = cienteView1.getClienteParaExcluir();
     return cliente;
 }
-
-public JPanel getJanela(){
-    if(cienteView1.isShowing())
-     return cienteView1;
-    else if(contaView2.isShowing())return contaView2;
-    else return janelaManipulaView1;
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private View.JanelaClienteView cienteView1;
     private View.JanelaContaView contaView2;
@@ -144,23 +150,37 @@ public Cliente getClienteParaIncluir(){
     Cliente cliente = cienteView1.getClienteParaIncluir();
     return cliente;
 }
-public void setCliente(Cliente cliente){
+public void setClienteClicado(Cliente cliente){
+    this.clienteClicado = cliente;
+    this.cienteView1.setClienteClicado(cliente);
+    this.contaView2.setClienteClicado(cliente);
+}
+
+    public void setInvestimentoNull(){
+        contaView2.setInvestimentoNull();
+    }
+    
+    public void setCorrenteNull(){
+        contaView2.setCorrenteNull();
+    }
+    
+    public Cliente getClienteClicado(){
+            return this.clienteClicado;
+        }
+    public String getTipoConta(){
+        return contaView2.getTipoConta();
+    }
+    
+    public ContaCorrente getContaCorrente(){
         try{
-            if(cienteView1.isShowing())
-                    this.cienteView1.setCliente(cliente);
-            else if(contaView2.isShowing())
-                this.contaView2.setCliente(cliente);    
+            return contaView2.getContaCorrente();
         }catch(Exception e){
             throw new RuntimeException(e.getMessage());
         }
-        
-}
-
-    public int NumeroJanela(){
-        return jTabbedPane1.getSelectedIndex();
-}
-    public void setInvestimentoNull(){
-        contaView2.setInvestimentoNull();
+    }
+    
+    public void setTipoConta(String tipo){
+        this.contaView2.setTipoConta(tipo);
     }
 }
 

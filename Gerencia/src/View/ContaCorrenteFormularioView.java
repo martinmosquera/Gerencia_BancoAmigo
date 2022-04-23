@@ -5,6 +5,8 @@
  */
 package View;
 
+import Model.conta.ContaCorrente;
+
 /**
  *
  * @author dell
@@ -97,4 +99,18 @@ public class ContaCorrenteFormularioView extends javax.swing.JPanel {
     private javax.swing.JTextField txtDepositoInicial;
     private javax.swing.JTextField txtLimite;
     // End of variables declaration//GEN-END:variables
+
+    public ContaCorrente getContaCorrente(){
+        ContaCorrente cc = new ContaCorrente();
+        try{
+            double dep_ini = Double.parseDouble(txtDepositoInicial.getText());
+            double limite = Double.parseDouble(txtLimite.getText());
+            cc.setDepositoInicial(dep_ini);
+            cc.setLimite(limite);
+            return cc;
+        }catch(NumberFormatException e){
+            throw new RuntimeException("Preencha as informações! "+e.getMessage());
+        }
+        
+    }
 }

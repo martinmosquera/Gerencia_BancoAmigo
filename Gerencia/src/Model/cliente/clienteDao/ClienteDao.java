@@ -131,5 +131,5 @@ public class ClienteDao {
             try{stmtExcluir.close();}catch(SQLException e){throw new RuntimeException(e.getMessage());};
         }
 
-    }    
+    }
 }

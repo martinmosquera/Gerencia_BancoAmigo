@@ -7,6 +7,7 @@ package View;
 
 import Controller.GerenciaController;
 import Model.cliente.Cliente;
+import javax.swing.JLabel;
 
 /**
  *
@@ -32,6 +33,7 @@ public class ContaBotoesView extends javax.swing.JPanel {
 
         cbxTipoConta = new javax.swing.JComboBox<>();
         btnVincular = new javax.swing.JButton();
+        labelClienteName = new javax.swing.JLabel();
 
         cbxTipoConta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o tipo de conta", "Conta Corrente", "Conta Investimento" }));
         cbxTipoConta.addItemListener(new java.awt.event.ItemListener() {
@@ -57,6 +59,8 @@ public class ContaBotoesView extends javax.swing.JPanel {
             }
         });
 
+        labelClienteName.setText("Cliente:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -64,7 +68,9 @@ public class ContaBotoesView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cbxTipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
+                .addComponent(labelClienteName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addComponent(btnVincular)
                 .addContainerGap())
         );
@@ -74,7 +80,8 @@ public class ContaBotoesView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxTipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVincular))
+                    .addComponent(btnVincular)
+                    .addComponent(labelClienteName))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -85,7 +92,7 @@ public class ContaBotoesView extends javax.swing.JPanel {
 
     private void btnVincularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVincularActionPerformed
         String tipoConta = cbxTipoConta.getSelectedItem().toString();
-//        Cliente cliente = controller.getClienteClicado();
+        Cliente cliente = controller.getClienteClicado();
 //        this.btnVincular.addActionListener(e -> controller.vincularConta(tipoConta,cliente)); 
         
     }//GEN-LAST:event_btnVincularActionPerformed
@@ -98,19 +105,31 @@ public class ContaBotoesView extends javax.swing.JPanel {
          String tipoConta = cbxTipoConta.getSelectedItem().toString();
         
         if(tipoConta.equalsIgnoreCase("Conta Corrente")){
-        controller.setInvestimentoNull();
+            controller.setInvestimentoNull();
         }else if(tipoConta.equalsIgnoreCase("Conta Investimento")){
-            //faz o outro controller.setCorrenteNull();
-        }        // TODO add your handling code here:
+            controller.setCorrenteNull();
+        }else
+            controller.resetTipoContaSelector();// TODO add your handling code here:
     }//GEN-LAST:event_cbxTipoContaItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVincular;
     private javax.swing.JComboBox<String> cbxTipoConta;
+    private javax.swing.JLabel labelClienteName;
     // End of variables declaration//GEN-END:variables
 
     public void setController(GerenciaController controller){
         this.controller = controller;
+        this.btnVincular.addActionListener(e -> controller.VincularConta());
     }
+    
+    public void setClienteClicado(Cliente cliente){
+        if(cliente == null){
+            cliente = new Cliente();
+            cliente.setName("");
+        }
+        labelClienteName.setText("Cliente: "+cliente.getNome());
+    }
+
 }

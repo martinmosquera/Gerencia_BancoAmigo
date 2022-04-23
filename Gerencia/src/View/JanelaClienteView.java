@@ -16,6 +16,8 @@ import javax.swing.JPanel;
  * @author dell
  */
 public class JanelaClienteView extends javax.swing.JPanel {
+    
+    Cliente clienteclicado;
 
     /**
      * Creates new form CienteView
@@ -77,14 +79,12 @@ public class JanelaClienteView extends javax.swing.JPanel {
         tabelaClienteView1.setController(controller);
         
 //        >> aqui paso a referencia da janela para a tabela
-        tabelaClienteView1.setJanela(this);
         formularioCliente1.setController(controller);
         
     }
   
     public void initView() {
         /* Create and display the form */
-        tabelaClienteView1.setJanelaView(this);
         java.awt.EventQueue.invokeLater(() -> this.setVisible(true));
     }
     
@@ -132,13 +132,6 @@ public class JanelaClienteView extends javax.swing.JPanel {
     
     
     }
-    
-    
-   public void apresentaInfo(String info) {
-        JOptionPane.showMessageDialog(null,info + "\n", "Informação", JOptionPane.INFORMATION_MESSAGE);
-        }
-
-
 
     public ClienteBotoesView getBotoesClienteView() {
         return botoesClienteView1;
@@ -163,35 +156,30 @@ public class JanelaClienteView extends javax.swing.JPanel {
     public ClienteFormularioView getClienteFormularioView(){
         return this.formularioCliente1;
     }
-    
-    
-       public void setJanela(JanelaClienteView janela){
-        tabelaClienteView1.setJanela(janela);
-    }
-    public JanelaClienteView getJanela(){
-     return this;
-    }
-
    
     public Cliente getClienteParaIncluir() {
        return formularioCliente1.getClienteFormulario();
        
     }
     
-    public void setCliente(Cliente cliente){
-        if(this.formularioCliente1.isShowing())
-            formularioCliente1.setCliente(cliente);
-    }
-    
     public void setClienteFormularioNull(Cliente cliente){
         
-        this.formularioCliente1.setCliente(cliente);
+        this.formularioCliente1.setClienteClicado(cliente);
+    }
+    
+    public void setClienteClicado(Cliente cliente){
+        if (this.isVisible())
+            this.formularioCliente1.setClienteClicado(cliente);
     }
     
     public void setClienteNull(){
         tabelaClienteView1.setLinhaNull();
     }
-  
+    
+    public void setLinhaClicadaNull(){
+        tabelaClienteView1.getTabelaCliente().getSelectionModel().removeSelectionInterval(0,10);
+        tabelaClienteView1.setLinhaNull();
+    }
     
 }
 

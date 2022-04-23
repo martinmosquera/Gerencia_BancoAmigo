@@ -136,7 +136,7 @@ public class ClienteFormularioView extends javax.swing.JPanel {
     private javax.swing.JTextField txtSobrenome;
     // End of variables declaration//GEN-END:variables
 
-    public void setCliente(Cliente cliente){ 
+    public void setClienteClicado(Cliente cliente){
         String Cpf = String.valueOf(cliente.getCpf()); 
         this.ClienteSelecionadoParaAtualizacao = cliente;
         txtNome.setText(cliente.getNome());
@@ -194,11 +194,11 @@ public class ClienteFormularioView extends javax.swing.JPanel {
         String Sobrenome = txtSobrenome.getText();
         String Rg = txtRg.getText();
         if(controller.validaCPF(txtCpf.getText())){
-            long Cpf = Long.parseLong(txtCpf.getText()); // faz conversão de string para long 
-        String Endereco = txtEndereco.getText();
-               
-        return new Cliente(Nome, Sobrenome, Rg, Cpf, Endereco);
-        }else throw new RuntimeException("CPF invalido");
+            long Cpf = Long.parseLong(txtCpf.getText()); // faz conversão de string para long
+            String Endereco = txtEndereco.getText();   
+            return new Cliente(Nome, Sobrenome, Rg, Cpf, Endereco);
+        }else 
+            throw new RuntimeException("CPF invalido");
         }    
     
    

@@ -22,6 +22,9 @@ public class ContaInvestimento extends Conta{
         this.montanteMinimo = montanteMin;
     }
     
+    public ContaInvestimento(){
+    }
+    
 @Override
     public boolean deposita(double valor){
         if(valor >= depositoMinimo){

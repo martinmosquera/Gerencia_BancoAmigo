@@ -23,13 +23,8 @@ public class ClienteTabelaView extends javax.swing.JPanel {
      * Creates new form TabelaClienteView
      */
     private ClienteTableModel modeloTabelaCliente = new ClienteTableModel();
-    private JPanel janela;
     private int linhaClicadaParaAtualizacao = -1;
-    
-    
     private GerenciaController controller;
-    
-    
     
     public ClienteTabelaView() {
         initComponents();
@@ -75,14 +70,9 @@ public class ClienteTabelaView extends javax.swing.JPanel {
         linhaClicadaParaAtualizacao = this.tabelaCliente.rowAtPoint(evt.getPoint());
         //Pega o contato da linha clicada
         Cliente cliente = modeloTabelaCliente.getCliente(linhaClicadaParaAtualizacao);
-        int num = controller.NumeroJanela();
-        if(num == 0){
-            controller.setCliente(cliente);
-        }
-        
-        //Seta os dados no formulário
-//        
-      // fazer o formularioClienteView
+        controller.setClienteClicado(cliente);
+        // envia o cliente da tabela clicada para o controller
+
     }//GEN-LAST:event_tabelaClienteMouseClicked
     
     public JTable getTabelaCliente(){
@@ -90,13 +80,9 @@ public class ClienteTabelaView extends javax.swing.JPanel {
     }
     
     public void setLista(List<Cliente> lista){
-    this.modeloTabelaCliente.setListaCliente(lista);
+        this.modeloTabelaCliente.setListaCliente(lista);
     }
-    
-    public void setJanelaView(JanelaClienteView janela){
-        this.janela = janela;
-    }
-    
+
     public void inserirClienteTabela(Cliente cliente) {
         modeloTabelaCliente.adicionaCliente(cliente);
 }
@@ -129,12 +115,6 @@ public class ClienteTabelaView extends javax.swing.JPanel {
         modeloTabelaCliente.fireTableRowsUpdated(linhaClicadaParaAtualizacao, linhaClicadaParaAtualizacao); // passa a mesma linha porque queremos atualizar uma só
     }
     
-    
-  public void setJanela(JanelaClienteView janela){
-       this.janela = janela;
-    }
-    
-  
   public void setController(GerenciaController controller){
       this.controller = controller;
   }

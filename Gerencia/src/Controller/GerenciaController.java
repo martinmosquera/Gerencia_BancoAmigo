@@ -8,10 +8,10 @@ package Controller;
 import Model.cliente.Cliente;
 import Model.cliente.ValidaCpf;
 import Model.cliente.clienteDao.ClienteDao;
+import Model.conta.ContaCorrente;
 import Model.conta.contaDao.ContaDao;
 import View.BancoView;
 import View.JanelaClienteView;
-import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -90,47 +90,66 @@ public class GerenciaController {
     
     }
     
-    
-    public void setJanela(JanelaClienteView janela){
-        view.setJanela(janela);
-    
+    // pega a informacao do cliente clicado da tabela
+    public void setClienteClicado(Cliente cliente){
+    // envia o cliente para BancoView
+        this.view.setClienteClicado(cliente);
     }
     
-    public JPanel getJanela(){
-     return view.getJanela();
-    }
-    
-    public void setCliente(Cliente cliente){
-        try{
-            this.view.setCliente(cliente);
-        }catch(Exception e){
-            this.view.showInfo(e.getMessage());
-        }
-        
+    public Cliente getClienteClicado(){
+        return this.view.getClienteClicado();
     }
     
     public boolean validaCPF(String cpf){
         return ValidaCpf.isCPF(cpf);
     }
     
-    public void vincularConta(String tipoConta,Cliente cliente){
-        // criar uma conta vinculada com o cliente
+    public void VincularConta(){
+        Cliente cliente = this.view.getClienteClicado();
+        String tipo = this.view.getTipoConta();
+        if(cliente == null){
+            this.view.showInfo("Escolha um Cliente para vincular");
+            return;
+        }
         
-//        this.clienteDao.vincular(cliente, tipoConta);
+        switch(tipo){
         
-        this.view.showInfo(tipoConta+"Holaa");
-    }
-    
-    public int NumeroJanela(){
-        return this.view.NumeroJanela();
-    }
-    
-    public void setJanelaCliente(JanelaClienteView janela){
-        this.view.setJanela(janela);
+            case "Conta Corrente":
+                ContaCorrente cc = null;
+                try{
+                    cc = this.view.getContaCorrente();
+                    cc = this.contaDao.vincularConta(cliente,tipo,cc);
+                    this.view.showInfo("Conta # "+cc.getNum()+"\n Vinculada com Cliente "+cc.getCliente().getNome());
+                }catch(Exception e){
+                    if(cc == null) cc.setMsg("");
+                    this.view.showInfo("Não é possivel Vincular a Conta \n"+cc.getMsg());
+            
+                }
+                break;
+                
+            case "Conta Investimento":
+                break;
+            default:
+                this.view.showInfo("Escolha uma das opções");
+                break;
+        }
+ 
+        
     }
     
     public void setInvestimentoNull(){
         this.view.setInvestimentoNull();
+    }
+    public void setCorrenteNull(){
+        this.view.setCorrenteNull();
+    }
+    
+    public void showErro(String info){
+        this.view.showInfo(info);
+    }
+    
+    public void resetTipoContaSelector(){
+        this.view.setTipoConta("");
     }
   
 }

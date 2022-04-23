@@ -30,6 +30,33 @@ public abstract class Conta implements ContaI{
         saldo = valor;
         depositoInicial = valor;
     }
+    public Conta(){
+        
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
+    public double getDepositoInicial() {
+        return depositoInicial;
+    }
+
+    public void setDepositoInicial(double depositoInicial) {
+        this.depositoInicial = depositoInicial;
+    }
     
     @Override
     public boolean deposita(double valor) {
