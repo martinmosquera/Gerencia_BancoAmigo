@@ -16,7 +16,7 @@ import Model.cliente.Cliente;
  *
  */
 public class ClienteTableModel extends AbstractTableModel{
-    private String[] colunas=new String[]{"#ID","Nome", "Sobrenome", "RG","CPF", "Endereco"};
+    private final String[] colunas=new String[]{"#ID","Nome", "Sobrenome", "RG","CPF", "Endereco"};
 
     private List<Cliente> lista=new ArrayList();
 

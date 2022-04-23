@@ -118,13 +118,14 @@ public class GerenciaController {
             case "conta corrente":
                 ContaCorrente cc = null;
                 try{
-                    System.out.println("entrou no try " + cliente);
                     cc = this.view.getContaCorrente();
-                    System.out.println("Passou pelo get");
-                    cc = this.contaDao.vincularCC(cliente,tipo,cc);
-                    this.view.showInfo("Conta # "+cc.getNum()+"\n Vinculada com Cliente "+cc.getCliente().getNome());
+                    if(cc != null){
+                        cc = this.contaDao.vincularCC(cliente,tipo,cc);
+                        this.view.setContaNum(cc.getNum());
+                        this.view.showInfo("Conta # "+cc.getNum()+"\n Vinculada com Cliente "+cc.getCliente().getNome());
+                    }
                 }catch(Exception e){
-                    //if(cc == null) cc.setMsg("");
+                    if(cc == null) cc.setMsg("");
                     this.view.showInfo("Não é possivel Vincular a Conta \n"+cc.getMsg());
             
                 }

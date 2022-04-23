@@ -193,5 +193,9 @@ public void setClienteClicado(Cliente cliente){
             throw new RuntimeException(e.getMessage());
         }
     }
+    
+    public void setContaNum(int num){
+        this.contaView2.setContaNum(num);
+    }
 }
 

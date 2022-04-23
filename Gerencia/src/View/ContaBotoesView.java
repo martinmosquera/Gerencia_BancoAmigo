@@ -34,6 +34,7 @@ public class ContaBotoesView extends javax.swing.JPanel {
         cbxTipoConta = new javax.swing.JComboBox<>();
         btnVincular = new javax.swing.JButton();
         labelClienteName = new javax.swing.JLabel();
+        labelContaNum = new javax.swing.JLabel();
 
         cbxTipoConta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o tipo de conta", "Conta Corrente", "Conta Investimento" }));
         cbxTipoConta.addItemListener(new java.awt.event.ItemListener() {
@@ -61,6 +62,8 @@ public class ContaBotoesView extends javax.swing.JPanel {
 
         labelClienteName.setText("Cliente:");
 
+        labelContaNum.setText("Numero de Conta: ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -68,9 +71,13 @@ public class ContaBotoesView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cbxTipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(labelClienteName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelClienteName)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(labelContaNum, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addComponent(btnVincular)
                 .addContainerGap())
         );
@@ -78,10 +85,14 @@ public class ContaBotoesView extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxTipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVincular)
-                    .addComponent(labelClienteName))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cbxTipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnVincular))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelClienteName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelContaNum)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -117,6 +128,7 @@ public class ContaBotoesView extends javax.swing.JPanel {
     private javax.swing.JButton btnVincular;
     private javax.swing.JComboBox<String> cbxTipoConta;
     private javax.swing.JLabel labelClienteName;
+    private javax.swing.JLabel labelContaNum;
     // End of variables declaration//GEN-END:variables
 
     public void setController(GerenciaController controller){
@@ -131,5 +143,8 @@ public class ContaBotoesView extends javax.swing.JPanel {
         }
         labelClienteName.setText("Cliente: "+cliente.getNome());
     }
-
+    
+    public void setContaNum(int num){
+        labelContaNum.setText("Numero de Conta: "+num);
+    }
 }
