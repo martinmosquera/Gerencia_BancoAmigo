@@ -5,6 +5,8 @@
  */
 package View;
 
+import Model.conta.ContaCorrente;
+import Model.conta.ContaInvestimento;
 import java.awt.Color;
 
 /**
@@ -38,7 +40,7 @@ public class ContaInvestimentoFormularioView extends javax.swing.JPanel {
 
         jLabel1.setText("Montante Minimo:");
 
-        jLabel2.setText("Depositto Minimo:");
+        jLabel2.setText("Deposito Minimo:");
 
         jLabel3.setText("Deposito Inicial:");
 
@@ -113,5 +115,16 @@ public class ContaInvestimentoFormularioView extends javax.swing.JPanel {
 
     void setVisible() {
         txtDepositoInicial.setEnabled(true);
+    }
+
+    ContaInvestimento getContaInvestimento() {
+          ContaInvestimento ci = new ContaInvestimento();
+        try{
+            double dep_ini = Double.parseDouble(txtDepositoInicial.getText());
+            ci.setDepositoInicial(dep_ini);
+            return ci;
+        }catch(NumberFormatException e){
+            throw new RuntimeException("Preencha as informações! "+e.getMessage());
+        }
     }
 }

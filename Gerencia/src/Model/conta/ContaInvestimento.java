@@ -15,6 +15,7 @@ public class ContaInvestimento extends Conta{
     
     private double depositoMinimo;
     private double montanteMinimo;
+    private String msg;
     
     public ContaInvestimento(Cliente cliente,int num, double saldo, double depositoini,double depositoMin, double montanteMin) {
         super(cliente, num, saldo, depositoini);
@@ -53,5 +54,23 @@ public class ContaInvestimento extends Conta{
 @Override
     public void remunera(){
         super.deposita(this.getSaldo()*0.02);
+    }
+
+    public double getMontanteMin() {
+        return 100.00;
+    }
+
+    public double getDepositoMin() {
+         return 50.00;
+    }
+
+    public void setMsg(String msg) {
+         
+        this.msg = msg;
+    
+    }
+
+    public String getMsg() {
+          return this.msg;
     }
 }

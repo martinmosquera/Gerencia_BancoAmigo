@@ -18,6 +18,7 @@ public abstract class Conta implements ContaI{
     private int num;
     private double saldo;
     private double depositoInicial;
+    private String tipo;
     
     public Conta(Cliente cliente,int num,double saldo,double depini){
         this.cliente = cliente;
@@ -94,5 +95,11 @@ public abstract class Conta implements ContaI{
     public void remunera() {
         
     }
+
+    public String getTipo() {
+        return this.tipo;
+    }
+
+    
    
 }

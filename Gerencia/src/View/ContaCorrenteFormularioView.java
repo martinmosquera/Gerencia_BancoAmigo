@@ -5,6 +5,8 @@
  */
 package View;
 
+import Model.cliente.Cliente;
+import Model.conta.Conta;
 import Model.conta.ContaCorrente;
 
 /**
@@ -123,4 +125,18 @@ public class ContaCorrenteFormularioView extends javax.swing.JPanel {
         txtDepositoInicial.setEnabled(false);
        txtLimite.setEnabled(false);
     }
+    
+   /* public void setNumConta(Conta conta){
+        if(cliente == null){
+            cliente = new Cliente();
+            cliente.setName("");
+}
+        
+        labelConta.setText(conta.getNum());
+    } 
+    
+    
+    }
+*/    
+    
 }

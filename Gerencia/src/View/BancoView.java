@@ -8,6 +8,7 @@ package View;
 import Controller.GerenciaController;
 import Model.cliente.Cliente;
 import Model.conta.ContaCorrente;
+import Model.conta.ContaInvestimento;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -181,6 +182,16 @@ public void setClienteClicado(Cliente cliente){
     
     public void setTipoConta(String tipo){
         this.contaView2.setTipoConta(tipo);
+    }
+
+   
+
+    public ContaInvestimento getContaInvestimento() {
+        try{
+            return contaView2.getContaInvestimento();
+        }catch(Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
     }
 }
 

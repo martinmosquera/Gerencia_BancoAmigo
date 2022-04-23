@@ -8,6 +8,7 @@ package View;
 import Controller.GerenciaController;
 import Model.cliente.Cliente;
 import Model.conta.ContaCorrente;
+import Model.conta.ContaInvestimento;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -138,6 +139,14 @@ public class JanelaContaView extends JPanel {
     
     public void setTipoConta(String tipo){
         this.TipoConta = tipo;
+    }
+
+    ContaInvestimento getContaInvestimento() {
+         try{
+            return formularioContaInvestimento1.getContaInvestimento();
+        }catch(Exception e){    
+            throw new RuntimeException(e.getMessage());
+        } 
     }
 }
 

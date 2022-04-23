@@ -9,6 +9,7 @@ import Model.cliente.Cliente;
 import Model.cliente.ValidaCpf;
 import Model.cliente.clienteDao.ClienteDao;
 import Model.conta.ContaCorrente;
+import Model.conta.ContaInvestimento;
 import Model.conta.contaDao.ContaDao;
 import View.BancoView;
 import View.JanelaClienteView;
@@ -112,23 +113,42 @@ public class GerenciaController {
             return;
         }
         
-        switch(tipo){
+        switch(tipo.toLowerCase()){
         
-            case "Conta Corrente":
+            case "conta corrente":
                 ContaCorrente cc = null;
                 try{
+                    System.out.println("entrou no try " + cliente);
                     cc = this.view.getContaCorrente();
-                    cc = this.contaDao.vincularConta(cliente,tipo,cc);
+                    System.out.println("Passou pelo get");
+                    cc = this.contaDao.vincularCC(cliente,tipo,cc);
                     this.view.showInfo("Conta # "+cc.getNum()+"\n Vinculada com Cliente "+cc.getCliente().getNome());
                 }catch(Exception e){
-                    if(cc == null) cc.setMsg("");
+                    //if(cc == null) cc.setMsg("");
                     this.view.showInfo("Não é possivel Vincular a Conta \n"+cc.getMsg());
             
                 }
                 break;
                 
-            case "Conta Investimento":
+            case "conta investimento":
+                ContaInvestimento ci = null;
+                try{
+                      
+                    System.out.println("entrou no try");
+                    ci = this.view.getContaInvestimento();
+                    ci= this.contaDao.vincularCI(cliente,tipo,ci);
+                    System.out.println("Passou pelo vincular");
+                    
+                    System.out.println("Passou pelo getcontaInvestimento");
+                   
+                    this.view.showInfo("Conta # "+ci.getNum()+"\n Vinculada com Cliente "+ci.getCliente().getNome());
+                }catch(Exception e){
+                    if(ci == null) ci.setMsg("");
+                    this.view.showInfo("Não é possivel Vincular a Conta \n"+ci.getMsg());
+            
+                }
                 break;
+               
             default:
                 this.view.showInfo("Escolha uma das opções");
                 break;
