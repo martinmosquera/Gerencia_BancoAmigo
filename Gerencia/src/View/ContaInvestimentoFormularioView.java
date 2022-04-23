@@ -110,4 +110,8 @@ public class ContaInvestimentoFormularioView extends javax.swing.JPanel {
     public void setNull(){
         txtDepositoInicial.setEnabled(false);
     }
+
+    void setVisible() {
+        txtDepositoInicial.setEnabled(true);
+    }
 }

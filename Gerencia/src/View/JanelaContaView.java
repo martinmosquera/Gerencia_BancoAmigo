@@ -107,14 +107,14 @@ public class JanelaContaView extends JPanel {
     
     public void setInvestimentoNull(){
         this.TipoConta = "Conta Corrente";
-//        formularioContaCorrienteView1.setVisible();
+        formularioContaCorrienteView1.setVisible();
         formularioContaInvestimento1.setNull();
     }
     
     public void setCorrenteNull(){
         this.TipoConta = "Conta Investimento";
-//        formularioContaInvestimento1.setVisible();
-//        formularioContaCorrienteView1.setNull();
+        formularioContaInvestimento1.setVisible();
+        formularioContaCorrienteView1.setNull();
     }
     public String getTipoConta(){
         return TipoConta;

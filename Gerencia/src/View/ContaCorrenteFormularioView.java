@@ -113,4 +113,14 @@ public class ContaCorrenteFormularioView extends javax.swing.JPanel {
         }
         
     }
+
+    void setVisible() {
+       txtDepositoInicial.setEnabled(true);
+       txtLimite.setEnabled(true);
+    }
+
+    void setNull() {
+        txtDepositoInicial.setEnabled(false);
+       txtLimite.setEnabled(false);
+    }
 }
