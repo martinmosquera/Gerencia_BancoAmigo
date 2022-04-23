@@ -128,5 +128,9 @@ public class GerenciaController {
     public void setJanelaCliente(JanelaClienteView janela){
         this.view.setJanela(janela);
     }
+    
+    public void setInvestimentoNull(){
+        this.view.setInvestimentoNull();
+    }
   
 }

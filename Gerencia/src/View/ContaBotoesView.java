@@ -34,6 +34,11 @@ public class ContaBotoesView extends javax.swing.JPanel {
         btnVincular = new javax.swing.JButton();
 
         cbxTipoConta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o tipo de conta", "Conta Corrente", "Conta Investimento" }));
+        cbxTipoConta.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxTipoContaItemStateChanged(evt);
+            }
+        });
         cbxTipoConta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cbxTipoContaMouseClicked(evt);
@@ -80,14 +85,24 @@ public class ContaBotoesView extends javax.swing.JPanel {
 
     private void btnVincularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVincularActionPerformed
         String tipoConta = cbxTipoConta.getSelectedItem().toString();
-        Cliente cliente = new Cliente();
-        this.btnVincular.addActionListener(e -> controller.vincularConta(tipoConta,cliente)); 
+//        Cliente cliente = controller.getClienteClicado();
+//        this.btnVincular.addActionListener(e -> controller.vincularConta(tipoConta,cliente)); 
         
     }//GEN-LAST:event_btnVincularActionPerformed
 
     private void cbxTipoContaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbxTipoContaMouseClicked
         
     }//GEN-LAST:event_cbxTipoContaMouseClicked
+
+    private void cbxTipoContaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxTipoContaItemStateChanged
+         String tipoConta = cbxTipoConta.getSelectedItem().toString();
+        
+        if(tipoConta.equalsIgnoreCase("Conta Corrente")){
+        controller.setInvestimentoNull();
+        }else if(tipoConta.equalsIgnoreCase("Conta Investimento")){
+            //faz o outro controller.setCorrenteNull();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxTipoContaItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -99,5 +99,15 @@ public class JanelaContaView extends JPanel {
         this.controller = controller;
         this.botonesConta1.setController(controller);
     }
+    
+    public void setInvestimentoNull(){
+//        formularioContaCorrienteView1.setVisible();
+        formularioContaInvestimento1.setNull();
+    }
+    
+    public void setCorrenteNull(){
+//        formularioContaInvestimento1.setVisible();
+//        formularioContaCorrienteView1.setNull();
+    }
 }
 

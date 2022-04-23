@@ -159,6 +159,8 @@ public void setCliente(Cliente cliente){
     public int NumeroJanela(){
         return jTabbedPane1.getSelectedIndex();
 }
-    
+    public void setInvestimentoNull(){
+        contaView2.setInvestimentoNull();
+    }
 }
 

@@ -5,6 +5,8 @@
  */
 package View;
 
+import java.awt.Color;
+
 /**
  *
  * @author dell
@@ -104,4 +106,8 @@ public class ContaInvestimentoFormularioView extends javax.swing.JPanel {
     private javax.swing.JLabel labelMontanteMinimo;
     private javax.swing.JTextField txtDepositoInicial;
     // End of variables declaration//GEN-END:variables
+
+    public void setNull(){
+        txtDepositoInicial.setEnabled(false);
+    }
 }
