@@ -14,6 +14,8 @@ import java.util.List;
  * 
  */
 public class Cliente implements Comparable{
+
+   
     private int id;
     private String nome;
     private String sobrenome;
@@ -91,14 +93,20 @@ public class Cliente implements Comparable{
     // funcao propia da interface comparable
     @Override
     public int compareTo(Object o) {
-        Cliente c2 = (Cliente)o;
-        return (this.getNome().compareToIgnoreCase(c2.getNome()));  
+        String c2 = (String)o;
+        return (this.getNome().compareToIgnoreCase(c2));  
     }
     
     public static List<Cliente> orderByName(List<Cliente> lista){
          Collections.sort(lista, (Cliente c1, Cliente c2) -> {
-                return c1.compareTo(c2);
+                return c1.getNome().compareToIgnoreCase(c2.getNome());
             });
          return lista;
+    }
+     public static List<Cliente> orderBySobrenome(List<Cliente> lista) {
+       Collections.sort(lista, (Cliente c1, Cliente c2) -> {
+                return c1.getSobrenome().compareToIgnoreCase(c2.getSobrenome());
+            });
+       return lista;
     }
 }

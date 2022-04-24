@@ -33,6 +33,7 @@ public class ClienteBotoesView extends javax.swing.JPanel {
         btnAtualizar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         btnListar = new javax.swing.JButton();
+        btnListarSobrenome = new javax.swing.JButton();
 
         btnIncluir.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         btnIncluir.setText("Incluir");
@@ -55,7 +56,15 @@ public class ClienteBotoesView extends javax.swing.JPanel {
         });
 
         btnListar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        btnListar.setText("Listar");
+        btnListar.setText("Listar por Nome");
+        btnListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarActionPerformed(evt);
+            }
+        });
+
+        btnListarSobrenome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnListarSobrenome.setText("Listar por Sobrenome");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -64,25 +73,32 @@ public class ClienteBotoesView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnIncluir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
                 .addComponent(btnAtualizar)
                 .addGap(47, 47, 47)
                 .addComponent(btnExcluir)
-                .addGap(46, 46, 46)
+                .addGap(39, 39, 39)
                 .addComponent(btnListar)
-                .addGap(25, 25, 25))
+                .addGap(40, 40, 40)
+                .addComponent(btnListarSobrenome)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnIncluir)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnListarSobrenome)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnExcluir)
+                        .addComponent(btnListar))
                     .addComponent(btnAtualizar)
-                    .addComponent(btnExcluir)
-                    .addComponent(btnListar))
+                    .addComponent(btnIncluir))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAtualizar, btnExcluir, btnIncluir, btnListar, btnListarSobrenome});
+
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -93,12 +109,17 @@ public class ClienteBotoesView extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnListarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnIncluir;
     private javax.swing.JButton btnListar;
+    private javax.swing.JButton btnListarSobrenome;
     // End of variables declaration//GEN-END:variables
 
   public void setController(GerenciaController controller) {
@@ -106,5 +127,6 @@ public class ClienteBotoesView extends javax.swing.JPanel {
         this.btnAtualizar.addActionListener(e -> controller.atualizarCliente());
         this.btnExcluir.addActionListener(e -> controller.excluirCliente());
         this.btnIncluir.addActionListener(e -> controller.incluirCliente());
+        this.btnListarSobrenome.addActionListener(e -> controller.listarClienteSobrenome());
     }
 }

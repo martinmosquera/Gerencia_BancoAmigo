@@ -278,4 +278,16 @@ public class GerenciaController {
             this.view.showInfo(e.getMessage());
         }
     }
+
+    public void listarClienteSobrenome() {
+         try{
+            List<Cliente> lista = this.clienteDao.getLista();
+            if(lista.size()==0) this.view.showInfo("Ainda nao tem Clientes");
+            lista = Cliente.orderBySobrenome(lista);
+            view.mostrarListaClientes(lista);
+            view.setClienteNull();
+        }catch(Exception ex){
+            this.view.showInfo("Erro ao listar clientes.\n"+ex.getMessage());
+        }
+    }
 }
