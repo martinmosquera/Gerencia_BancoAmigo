@@ -169,7 +169,7 @@ public class ContaDao {
                 stmtListarContas.close();
                 conn.close();
             }catch(SQLException e){
-                throw new RuntimeException(e);
+                throw new RuntimeException(e.getMessage());
             }
         
         }

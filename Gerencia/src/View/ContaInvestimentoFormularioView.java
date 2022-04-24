@@ -120,8 +120,12 @@ public class ContaInvestimentoFormularioView extends javax.swing.JPanel {
 
     ContaInvestimento getContaInvestimento() {
           ContaInvestimento ci = new ContaInvestimento();
+          System.out.println (ci.getDepositoMin());
         try{
+            System.out.println (ci.getDepositoMin() + "dentro do try");
             double dep_ini = Double.parseDouble(txtDepositoInicial.getText());
+            System.out.println (dep_ini + ci.getDepositoMin());
+            if (dep_ini < ci.getDepositoMin()) throw new RuntimeException ("Valor do deposito inicial tem que ser maior que R$ 100,00");
             ci.setDepositoInicial(dep_ini);
             return ci;
         }catch(NumberFormatException e){

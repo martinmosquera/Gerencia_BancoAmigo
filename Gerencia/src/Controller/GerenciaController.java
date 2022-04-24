@@ -140,21 +140,14 @@ public class GerenciaController {
             case "conta investimento":
                 ContaInvestimento ci = null;
                 try{
-                      
-                    System.out.println("entrou no try");
                     ci = this.view.getContaInvestimento();
                     ci= this.contaDao.vincularCI(cliente,tipo,ci);
-                    System.out.println("Passou pelo vincular");
-                    
-                    System.out.println("Passou pelo getcontaInvestimento");
-                   
                     this.view.showInfo("Conta # "+ci.getNum()+"\n Vinculada com Cliente "+ci.getCliente().getNome());
                     List<Conta> lista = contaDao.getListaContas();
                     this.view.setListaContas(lista);
                 }catch(Exception e){
                     if(ci == null) ci.setMsg("");
                     this.view.showInfo("Não é possivel Vincular a Conta \n"+ci.getMsg());
-            
                 }
                 break;
                
