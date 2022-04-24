@@ -8,6 +8,8 @@ package View;
 import Controller.GerenciaController;
 import Model.conta.Conta;
 import java.awt.Color;
+import java.math.BigDecimal;
+import static java.math.RoundingMode.HALF_UP;
 
 /**
  *
@@ -172,7 +174,9 @@ public class ManipulaBotoesView extends javax.swing.JPanel {
     }
     
     public void setConta(Conta c){
-        String s = String.valueOf(c.getSaldo());
+        double newSaldo = c.getSaldo();
+        BigDecimal bd = new BigDecimal(newSaldo).setScale(2,HALF_UP);
+        String s = String.valueOf(bd);
         if(c.getSaldo()<0) saldo.setForeground(Color.red);
         else
             saldo.setForeground(Color.GREEN.darker());
@@ -201,17 +205,4 @@ public class ManipulaBotoesView extends javax.swing.JPanel {
         }
     }
     
-    public void setContaManipula(Conta c){
-        if(c.getTipo().equalsIgnoreCase("Conta Corrente")){
-                BtnRemunera.setEnabled(false);
-                valorSaque.setEnabled(true);
-                BtnSacar.setEnabled(true);
-                labelSaque.setEnabled(true);
-        }else{
-            BtnRemunera.setEnabled(true);
-            valorSaque.setEnabled(false);
-            BtnSacar.setEnabled(false);
-            labelSaque.setEnabled(false);
-        }
-    }
 }

@@ -33,12 +33,6 @@ public class ContaDao {
     private final String stmtVincularCI= "INSERT INTO conta (tipo, montante_min, deposito_min, dep_inicial,cliente_id, saldo) VALUES (?, ?, ?, ?, ?, ?)";
     private final String stmtSelectAll = "SELECT * FROM conta";
     private final String stmtSelectClientebyId = "SELECT * FROM clientes WHERE cliente_id = ?"; 
-    private final String stmtBuscarConta = "SELECT * FROM conta WHERE num_conta = (?)";
-    private final String stmtBuscarCliente = "SELECT * FROM conta WHERE cliente_id = (?)";
-    private final String stmtBuscarCpf = "SELECT * FROM conta INNER JOIN clientes on conta.cliente_id = clientes.cliente_id WHERE clientes.cpf LIKE CONCAT('%',?,'%')";
-    private final String stmtAtualizarCC = "UPDATE conta SET saldo = (?), dep_inicial = (?), limite = (?), tipo = (?) WHERE conta_id = (?)";
-    private final String stmtAtualizarCI = "UPDATE conta SET saldo = (?), dep_inicial = (?), deposito_min = (?), montante_min = (?), tipo = (?) WHERE conta_id = (?)";
-    private final String stmtExcluir= "DELETE FROM conta WHERE conta_id = (?)";
     private final String stmtSacaValorConta = "UPDATE conta SET saldo = ? WHERE num_conta = ?";
 
     public ContaDao(ConnectionFactory connectionFactory) {

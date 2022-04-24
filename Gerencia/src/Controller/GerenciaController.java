@@ -204,6 +204,7 @@ public class GerenciaController {
     
     public void sacar(){ 
         ContaCorrente cc;
+        ContaInvestimento ci;
         try{
             double valorSaque = this.view.getValorSaque();
             if (valorSaque == 0.0) throw new RuntimeException("Inisira um valor para saque!");
@@ -213,10 +214,16 @@ public class GerenciaController {
                 cc = (ContaCorrente)conta;
                 cc.saca(valorSaque);
                 contaDao.setSaldo(conta);
-                this.view.showInfo("Saque aplicado com sucesso!\n Saldo Atual :"+conta.getSaldo());
+                this.view.showInfo("Saque aplicado com sucesso!");
                 this.view.showSaldo();
-            }else
-                this.view.showInfo("Não é possivel aplicar o saque na Conta Investimento");    
+            }else{
+                ci = (ContaInvestimento)conta;
+                ci.saca(valorSaque);
+                contaDao.setSaldo(conta);
+                this.view.showInfo("Saque aplicado com sucesso!");
+                this.view.showSaldo();
+            }
+                    
         }catch(Exception e){
             this.view.showInfo("Nao foi possivel Realizar o Saque \n"+e.getMessage());
         }
@@ -234,13 +241,13 @@ public class GerenciaController {
                 cc = (ContaCorrente)conta;
                 cc.deposita(valorDeposito);
                 contaDao.setSaldo(conta);
-                this.view.showInfo("Deposito Aplicado com sucesso!\n Saldo Atual :"+conta.getSaldo());
+                this.view.showInfo("Deposito Aplicado com sucesso!");
                 this.view.showSaldo();
             }else{
                 ci = (ContaInvestimento)conta;
                 ci.deposita(valorDeposito);
                 contaDao.setSaldo(conta);
-                this.view.showInfo("Saque aplicado com sucesso!\n Saldo Atual :"+conta.getSaldo());
+                this.view.showInfo("Saque aplicado com sucesso!");
                 this.view.showSaldo();
             }
         }catch(Exception e){
@@ -250,6 +257,7 @@ public class GerenciaController {
     
     public void remunerar(){
         ContaInvestimento ci;
+        ContaCorrente cc;
         try{
             Conta conta = this.view.getContaAtual();
             if (conta == null) throw new RuntimeException("Nenhuma conta selecionada!");
@@ -257,10 +265,14 @@ public class GerenciaController {
                 ci = (ContaInvestimento)conta;
                 ci.remunera();
                 contaDao.setSaldo(conta);
-                this.view.showInfo("Remuneração Aplicada com sucesso!\n Saldo Atual :"+conta.getSaldo());
+                this.view.showInfo("Remuneração Aplicada com sucesso!");
                 this.view.showSaldo();
             }else{
-                
+                cc = (ContaCorrente)conta;
+                cc.remunera();
+                contaDao.setSaldo(cc);
+                this.view.showInfo("Remuneração Aplicada com sucesso!");
+                this.view.showSaldo();
             }
         }catch(Exception e){
             this.view.showInfo(e.getMessage());

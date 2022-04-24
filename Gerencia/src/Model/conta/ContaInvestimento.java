@@ -39,7 +39,7 @@ public class ContaInvestimento extends Conta{
     
 @Override
     public boolean saca(double valor){
-        if(valor >= montanteMinimo){
+        if((this.getSaldo()-valor) >= montanteMinimo){
             try{
                 super.saca(valor);
                 return true;
@@ -47,7 +47,7 @@ public class ContaInvestimento extends Conta{
                 throw new RuntimeException(e);
             }
         }else{
-            throw new RuntimeException("O valor é menor que o permitido para o saque!!");
+            throw new RuntimeException("O valor do saque é maior que o permitido para manter a conta - (Montante Minimo)!!");
         }        
     }
     

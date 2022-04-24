@@ -91,7 +91,6 @@ public class JanelaManipulaView extends javax.swing.JPanel {
    public void setContaManipula(Conta c){
        this.conta = c;
        manipulaBuscaView1.setContaManipula(c);
-       manipulaBotoesView2.setContaManipula(c);
    }
    
    public void showSaldo(){
