@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author dell
+ * @author Martin, Janaina, Nicolle, Rafael
  */
 public class ContaCorrenteFormularioView extends javax.swing.JPanel {
 

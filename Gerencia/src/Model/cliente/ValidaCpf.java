@@ -9,7 +9,7 @@ import java.util.InputMismatchException;
 
 /**
  *
- * @author dell
+ * @author Martin, Janaina, Nicolle, Rafael
  */
 public class ValidaCpf {
 

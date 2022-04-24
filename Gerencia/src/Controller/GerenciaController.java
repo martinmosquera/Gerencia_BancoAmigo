@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author dell
+ * @author Martin, Janaina, Nicolle, Rafael
  */
 public class GerenciaController {
     private BancoView view;

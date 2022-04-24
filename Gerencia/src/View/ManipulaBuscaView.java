@@ -10,7 +10,7 @@ import Model.conta.Conta;
 
 /**
  *
- * @author nicol
+ * @author Martin, Janaina, Nicolle, Rafael
  */
 public class ManipulaBuscaView extends javax.swing.JPanel {
     

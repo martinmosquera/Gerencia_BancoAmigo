@@ -9,7 +9,7 @@ import Model.cliente.Cliente;
 
 /**
  *
- * @author dell
+ * @author Martin, Janaina, Nicolle, Rafael
  */
 public class ContaCorrente extends Conta{
     private double limite;

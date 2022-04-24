@@ -12,7 +12,7 @@ import java.awt.Color;
 
 /**
  *
- * @author dell
+ * @author Martin, Janaina, Nicolle, Rafael
  */
 public class ContaInvestimentoFormularioView extends javax.swing.JPanel {
 

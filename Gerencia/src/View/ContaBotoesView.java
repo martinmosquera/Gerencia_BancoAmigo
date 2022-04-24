@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 
 /**
  *
- * @author dell
+ * @author Martin, Janaina, Nicolle, Rafael
  */
 public class ContaBotoesView extends javax.swing.JPanel {
     private GerenciaController controller;

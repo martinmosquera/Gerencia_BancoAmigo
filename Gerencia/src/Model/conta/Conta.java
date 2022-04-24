@@ -10,7 +10,7 @@ import Model.cliente.Cliente;
 
 /**
  *
- * @author dell
+ * @author Martin, Janaina, Nicolle, Rafael
  */
 public abstract class Conta implements ContaI{
     

@@ -12,7 +12,7 @@ import View.BancoView;
 
 /**
  *
- * @author dell
+ * @author Martin, Janaina, Nicolle, Rafael
  */
 public class Main {
 

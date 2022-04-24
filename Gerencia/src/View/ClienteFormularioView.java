@@ -10,7 +10,7 @@ import Model.cliente.Cliente;
 
 /**
  *
- * @author janai
+ * @author Martin, Janaina, Nicolle, Rafael
  */
 public class ClienteFormularioView extends javax.swing.JPanel {
     

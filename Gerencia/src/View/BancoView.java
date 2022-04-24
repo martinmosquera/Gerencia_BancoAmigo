@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author dell
+ * @author Martin, Janaina, Nicolle, Rafael
  */
 public class BancoView extends javax.swing.JFrame {
     

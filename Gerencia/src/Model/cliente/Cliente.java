@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * 
+ * @author Martin, Janaina, Nicolle, Rafael
  */
 public class Cliente implements Comparable{
 

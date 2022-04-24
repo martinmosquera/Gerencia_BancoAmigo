@@ -10,7 +10,7 @@ import Model.conta.Conta;
 
 /**
  *
- * @author nicol
+ * @author Martin, Janaina, Nicolle, Rafael
  */
 public class JanelaManipulaView extends javax.swing.JPanel {
     

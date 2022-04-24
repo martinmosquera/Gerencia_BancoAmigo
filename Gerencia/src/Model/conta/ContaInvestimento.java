@@ -9,7 +9,7 @@ import Model.cliente.Cliente;
 
 /**
  *
- * @author dell
+ * @author Martin, Janaina, Nicolle, Rafael
  */
 public class ContaInvestimento extends Conta{
     

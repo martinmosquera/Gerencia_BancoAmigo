@@ -13,7 +13,7 @@ import static java.math.RoundingMode.HALF_UP;
 
 /**
  *
- * @author nicol
+ * @author Martin, Janaina, Nicolle, Rafael
  */
 public class ManipulaBotoesView extends javax.swing.JPanel {
     

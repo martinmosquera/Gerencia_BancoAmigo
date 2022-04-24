@@ -9,7 +9,7 @@ import Controller.GerenciaController;
 
 /**
  *
- * @author janai
+ * @author Martin, Janaina, Nicolle, Rafael
  */
 public class ClienteBotoesView extends javax.swing.JPanel {
     

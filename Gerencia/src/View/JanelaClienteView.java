@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author dell
+ * @author Martin, Janaina, Nicolle, Rafael
  */
 public class JanelaClienteView extends javax.swing.JPanel {
     

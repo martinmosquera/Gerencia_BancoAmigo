@@ -11,9 +11,9 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import Model.cliente.Cliente;
 
-
 /**
  *
+ * @author Martin, Janaina, Nicolle, Rafael
  */
 public class ClienteTableModel extends AbstractTableModel{
     private final String[] colunas=new String[]{"#ID","Nome", "Sobrenome", "RG","CPF", "Endereco"};

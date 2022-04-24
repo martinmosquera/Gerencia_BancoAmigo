@@ -19,7 +19,7 @@ import java.util.List;
 
 /**
  *
- * @author dell
+ * @author Martin, Janaina, Nicolle, Rafael
  */
 public class ClienteDao {
     

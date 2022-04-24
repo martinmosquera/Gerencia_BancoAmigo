@@ -12,7 +12,7 @@ import javax.swing.JTable;
 import Model.cliente.Cliente;
 /**
  *
- * 
+ * @author Martin, Janaina, Nicolle, Rafael
  */
 public class ClienteTabelaView extends javax.swing.JPanel {
     /**
