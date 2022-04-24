@@ -103,7 +103,10 @@ public abstract class Conta implements ContaI{
     public void setSaldo(double saldo){
         this.saldo = saldo;
     }
-
+    
+    public void setTipo(String tipo){
+        this.tipo = tipo;
+    }
     
    
 }

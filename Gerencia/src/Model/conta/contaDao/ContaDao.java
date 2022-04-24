@@ -134,12 +134,13 @@ public class ContaDao {
             stmtListarContas = conn.prepareStatement(stmtSelectAll);
             
             rs = stmtListarContas.executeQuery();
-            
             while(rs.next()){
                 tipo = rs.getString("tipo");
                 if(tipo.equalsIgnoreCase("Conta Corrente")){
+                    
                     cc = new ContaCorrente();
                     cc.setNum(rs.getInt("num_conta"));
+                    cc.setTipo(tipo);
                     cc.setDepositoInicial(rs.getDouble("dep_inicial"));
                     cc.setLimite(rs.getDouble("limite"));
                     cc.setSaldo(rs.getDouble("saldo"));
@@ -149,20 +150,21 @@ public class ContaDao {
                     lista.add(cc);
                 }else{
                     ci = new ContaInvestimento();
-                    cc.setNum(rs.getInt("num_conta"));
-                    cc.setDepositoInicial(rs.getDouble("dep_inicial"));
-                    cc.setSaldo(rs.getDouble("saldo"));
+                    ci.setNum(rs.getInt("num_conta"));
+                    ci.setTipo(tipo);
+                    ci.setDepositoInicial(rs.getDouble("dep_inicial"));
+                    ci.setSaldo(rs.getDouble("saldo"));
                     num = rs.getInt("cliente_id");
                     cliente = this.getClientedaConta(num);
-                    cc.setCliente(cliente);
-                    lista.add(cc);
+                    ci.setCliente(cliente);
+                    lista.add(ci);
                 }
              
             }
             return lista;
         
         }catch(SQLException e){
-            throw new RuntimeException(e);
+            throw new RuntimeException(e.getMessage());
         }finally{
             try{
                 rs.close();
@@ -210,19 +212,15 @@ public class ContaDao {
         }
     }
     
-    public Conta sacaValor (Conta conta, double valorSaque){
+    public void setSaldo(Conta conta){
         Connection conn = null;
         PreparedStatement stmtSacaValor= null;
-        
         try{
             conn = connectionFactory.getConnection();
             stmtSacaValor = conn.prepareStatement(stmtSacaValorConta);
-            double saldo = conta.getSaldo() - valorSaque;
-            stmtSacaValor.setDouble(1, saldo);
+            stmtSacaValor.setDouble(1, conta.getSaldo());
             stmtSacaValor.setInt(2, conta.getNum());
             stmtSacaValor.execute();
-            conta.setSaldo(saldo);
-            return conta;
         }catch(SQLException e){
             throw new RuntimeException(e.getMessage());
         }finally{

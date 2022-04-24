@@ -196,7 +196,7 @@ public class ManipulaBotoesView extends javax.swing.JPanel {
             saque = Double.parseDouble(valorSaque.getText());
             return saque;
         }catch(Exception e){
-            throw new RuntimeException (e.getMessage());
+            throw new RuntimeException ("Valor invalido!\n"+e.getMessage());
         }
     }
 }

@@ -198,17 +198,22 @@ public class GerenciaController {
     }
     
     public void sacar(){ 
+        ContaCorrente cc;
         try{
             double valorSaque = this.view.getValorSaque();
-            if (valorSaque == 0.0) throw new RuntimeException ("Inisira um valor para saque!");
+            if (valorSaque == 0.0) throw new RuntimeException("Inisira um valor para saque!");
             Conta conta = this.view.getContaAtual();
-           
-            conta = contaDao.sacaValor(conta, valorSaque);
-            this.view.showInfo(String.valueOf(conta.getSaldo()));
-        
-        
+            if (conta == null) throw new RuntimeException("Nenhuma conta selecionada!");
+            if(conta.getTipo().equalsIgnoreCase("Conta Corrente")){
+                cc = (ContaCorrente)conta;
+                cc.saca(valorSaque);
+                contaDao.setSaldo(conta);
+                this.view.showInfo("Saque aplicado com sucesso!\n Saldo Atual :"+conta.getSaldo());
+                this.view.showSaldo();
+            }else
+                this.view.showInfo("Não é possivel aplicar o saque na Conta Investimento");    
         }catch(Exception e){
-            this.view.showInfo(e.getMessage());
+            this.view.showInfo("Nao foi possivel Realizar o Saque \n"+e.getMessage());
         }
     }
 }
