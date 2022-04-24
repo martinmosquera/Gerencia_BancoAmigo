@@ -22,7 +22,7 @@ public class ContaInvestimento extends Conta{
     }
     
     public ContaInvestimento(){
-        depositoMinimo = 50.0;
+        depositoMinimo = 100.0;
         montanteMinimo = 100.0;
     }
     

@@ -53,7 +53,7 @@ public class ContaInvestimentoFormularioView extends javax.swing.JPanel {
 
         labelMontanteMinimo.setText("R$ 100.00");
 
-        labelDepositoMinimo.setText("R$ 50.00");
+        labelDepositoMinimo.setText("R$ 100.00");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -118,15 +118,18 @@ public class ContaInvestimentoFormularioView extends javax.swing.JPanel {
         txtDepositoInicial.setEnabled(true);
     }
 
-    ContaInvestimento getContaInvestimento() {
+    public ContaInvestimento getContaInvestimento() {
           ContaInvestimento ci = new ContaInvestimento();
-          System.out.println (ci.getDepositoMin());
+          
         try{
-            System.out.println (ci.getDepositoMin() + "dentro do try");
             double dep_ini = Double.parseDouble(txtDepositoInicial.getText());
-            System.out.println (dep_ini + ci.getDepositoMin());
-            if (dep_ini < ci.getDepositoMin()) throw new RuntimeException ("Valor do deposito inicial tem que ser maior que R$ 100,00");
+            if (dep_ini < ci.getDepositoMin()){
+                ci.setMsg("Valor do deposito inicial tem que ser maior que R$ 100,00");
+                ci.setDepositoInicial(0.0);
+                return ci;
+            }
             ci.setDepositoInicial(dep_ini);
+            ci.setSaldo(dep_ini);
             return ci;
         }catch(NumberFormatException e){
             throw new RuntimeException("Preencha as informações! "+e.getMessage());

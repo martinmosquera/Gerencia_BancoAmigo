@@ -5,12 +5,18 @@
  */
 package View;
 
+import Controller.GerenciaController;
+import Model.conta.Conta;
+
 /**
  *
  * @author nicol
  */
 public class JanelaManipulaView extends javax.swing.JPanel {
-
+    
+    
+    Conta conta;
+    GerenciaController controller;
     /**
      * Creates new form ManipulaView
      */
@@ -69,4 +75,25 @@ public class JanelaManipulaView extends javax.swing.JPanel {
     private View.ManipulaBotoesView manipulaBotoesView2;
     private View.ManipulaBuscaView manipulaBuscaView1;
     // End of variables declaration//GEN-END:variables
+
+   public void setController(GerenciaController controller){
+       this.controller = controller;
+       manipulaBuscaView1.setController(controller);
+       manipulaBotoesView2.setController(controller);
+   }
+   
+   public long getClienteByCpf(){
+       return manipulaBuscaView1.getCpf();
+   }
+   
+   public void setContaManipula(Conta c){
+       this.conta = c;
+       manipulaBuscaView1.setContaManipula(c);
+   }
+   
+   public void showSaldo(){
+       if(conta != null){
+          manipulaBotoesView2.setConta(this.conta);
+       }
+   }
 }

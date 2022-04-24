@@ -102,6 +102,7 @@ public class BancoView extends javax.swing.JFrame {
  public void setController(GerenciaController controller) {
         cienteView1.setController(controller);
         contaView2.setController(controller);
+        janelaManipulaView1.setController(controller);
         
     }
  
@@ -160,7 +161,6 @@ public void setClienteClicado(Cliente cliente){
         if(cliente.getCpf() == c.getCliente().getCpf()){
             this.contaView2.setClienteClicado(c);
         }
-        System.out.println(c.getNum()+c.getCliente().getNome());
     }
 }
 
@@ -207,6 +207,22 @@ public void setClienteClicado(Cliente cliente){
     
     public void setListaContas(List<Conta> contas){
         this.lista = contas;
+    }
+    
+    public long getClientebyCpf(){
+        return janelaManipulaView1.getClienteByCpf();
+    }
+    
+    public List<Conta> getListaContas(){
+        return this.lista;
+    }
+    
+    public void setContaManipula(Conta c){
+        janelaManipulaView1.setContaManipula(c);
+    }
+    
+    public void showSaldo(){
+        janelaManipulaView1.showSaldo();
     }
 }
 

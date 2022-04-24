@@ -92,7 +92,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="labelDepositoMinimo">
       <Properties>
-        <Property name="text" type="java.lang.String" value="R$ 50.00"/>
+        <Property name="text" type="java.lang.String" value="R$ 100.00"/>
       </Properties>
     </Component>
   </SubComponents>

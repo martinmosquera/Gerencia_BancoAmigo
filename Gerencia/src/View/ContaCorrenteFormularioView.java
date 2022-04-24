@@ -98,6 +98,7 @@ public class ContaCorrenteFormularioView extends javax.swing.JPanel {
                 double limite = Double.parseDouble(txtLimite.getText());
                 cc.setDepositoInicial(dep_ini);
                 cc.setLimite(limite);
+                cc.setSaldo(dep_ini);
                 return cc;
              }catch(Exception e){
                 JOptionPane.showMessageDialog(null,e.getMessage(),"Atenção" ,JOptionPane.ERROR_MESSAGE);

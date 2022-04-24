@@ -141,7 +141,8 @@ public class GerenciaController {
                 ContaInvestimento ci = null;
                 try{
                     ci = this.view.getContaInvestimento();
-                    ci= this.contaDao.vincularCI(cliente,tipo,ci);
+                    if(ci.getDepositoInicial() == 0.0) throw new RuntimeException("-");
+                    ci = this.contaDao.vincularCI(cliente,tipo,ci);
                     this.view.showInfo("Conta # "+ci.getNum()+"\n Vinculada com Cliente "+ci.getCliente().getNome());
                     List<Conta> lista = contaDao.getListaContas();
                     this.view.setListaContas(lista);
@@ -173,5 +174,26 @@ public class GerenciaController {
     public void resetTipoContaSelector(){
         this.view.setTipoConta("");
     }
-  
+    
+    public void setClientebyCpf(){
+        // primeiro pega no formulario
+        try{
+            long cpf = this.view.getClientebyCpf();
+            List<Conta> lista = this.view.getListaContas();
+            for(Conta c : lista){
+                if(c.getCliente().getCpf() == cpf){
+                    this.view.setContaManipula(c);
+                }
+            }
+            
+        }catch(Exception e){
+            this.view.showInfo(e.getMessage());
+        }
+        
+       
+    }
+    
+    public void showSaldo(){
+     this.view.showSaldo();
+    }
 }
