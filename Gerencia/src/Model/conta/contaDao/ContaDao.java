@@ -191,7 +191,7 @@ public class ContaDao {
             rs = stmtSelectCliente.executeQuery();
             rs.next();
             cliente = new Cliente();
-            cliente.setName(rs.getString("nome"));
+            cliente.setNome(rs.getString("nome"));
             cliente.setId(num);
             cliente.setSobrenome(rs.getString("sobrenome"));
             cliente.setRg(rs.getString("rg"));

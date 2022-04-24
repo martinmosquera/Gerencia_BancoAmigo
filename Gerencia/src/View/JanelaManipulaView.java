@@ -44,8 +44,10 @@ public class JanelaManipulaView extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(manipulaBuscaView1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(manipulaBotoesView2, javax.swing.GroupLayout.PREFERRED_SIZE, 379, Short.MAX_VALUE))
+                    .addComponent(manipulaBotoesView2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(manipulaBuscaView1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -89,6 +91,7 @@ public class JanelaManipulaView extends javax.swing.JPanel {
    public void setContaManipula(Conta c){
        this.conta = c;
        manipulaBuscaView1.setContaManipula(c);
+       manipulaBotoesView2.setContaManipula(c);
    }
    
    public void showSaldo(){
@@ -99,6 +102,10 @@ public class JanelaManipulaView extends javax.swing.JPanel {
    
    public double getValorSaque(){
        return manipulaBotoesView2.getValorSaque();
+   }
+   
+   public double getValorDeposito(){
+       return manipulaBotoesView2.getValorDeposito();
    }
    
    public Conta getContaAtual (){

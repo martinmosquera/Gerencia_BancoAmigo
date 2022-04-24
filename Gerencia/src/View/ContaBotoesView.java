@@ -37,6 +37,7 @@ public class ContaBotoesView extends javax.swing.JPanel {
         labelClienteName = new javax.swing.JLabel();
         labelContaNum = new javax.swing.JLabel();
 
+        cbxTipoConta.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         cbxTipoConta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o tipo de conta", "Conta Corrente", "Conta Investimento" }));
         cbxTipoConta.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -54,6 +55,7 @@ public class ContaBotoesView extends javax.swing.JPanel {
             }
         });
 
+        btnVincular.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         btnVincular.setText("Vincular");
         btnVincular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,8 +63,10 @@ public class ContaBotoesView extends javax.swing.JPanel {
             }
         });
 
+        labelClienteName.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         labelClienteName.setText("Cliente:");
 
+        labelContaNum.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         labelContaNum.setText("Numero de Conta: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -74,26 +78,24 @@ public class ContaBotoesView extends javax.swing.JPanel {
                 .addComponent(cbxTipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelClienteName)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(labelContaNum, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                    .addComponent(labelContaNum, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                    .addComponent(labelClienteName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(btnVincular)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnVincular)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(cbxTipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnVincular))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelClienteName)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelContaNum)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(labelClienteName)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(labelContaNum))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -146,6 +148,11 @@ public class ContaBotoesView extends javax.swing.JPanel {
             labelContaNum.setText("Numero de Conta: "+c.getNum());
         }
         
+    }
+    
+    public void setClienteClicado(Cliente c){
+        labelClienteName.setText("Cliente: "+c.getNome());
+        labelContaNum.setText("Numero de Conta: sem Conta");
     }
     
     public void setContaNum(int num){

@@ -61,7 +61,9 @@ public abstract class Conta implements ContaI{
     
     @Override
     public boolean deposita(double valor) {
-        if(valor < 0) return false;
+        if(valor < 0) {
+            throw new RuntimeException("Não pode depositar valores negativos!!");
+        }
         saldo += valor;
         return true;
         

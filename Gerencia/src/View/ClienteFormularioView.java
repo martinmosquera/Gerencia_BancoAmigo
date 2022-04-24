@@ -44,14 +44,19 @@ public class ClienteFormularioView extends javax.swing.JPanel {
         txtCpf = new javax.swing.JTextField();
         txtEndereco = new javax.swing.JTextField();
 
+        jLabel1.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel1.setText("Nome");
 
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel2.setText("Sobrenome");
 
+        jLabel3.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel3.setText("RG");
 
+        jLabel4.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel4.setText("CPF");
 
+        jLabel5.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel5.setText("Endereço");
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +89,7 @@ public class ClienteFormularioView extends javax.swing.JPanel {
                     .addComponent(txtCpf, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtRg, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtSobrenome, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE))
+                    .addComponent(txtNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE))
                 .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(

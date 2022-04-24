@@ -6,6 +6,8 @@
 package Model.cliente;
 
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.List;
 
 /**
  *
@@ -86,14 +88,17 @@ public class Cliente implements Comparable{
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-    // esta funcao permite comparar valores e temos que implementar para retornar a lista ordenada segundo os parametros que a gente estabeleça 
+    // funcao propia da interface comparable
     @Override
     public int compareTo(Object o) {
-     return 0;   
-    }
-
-    public void setName(String name) {
-        this.nome = name;
+        Cliente c2 = (Cliente)o;
+        return (this.getNome().compareToIgnoreCase(c2.getNome()));  
     }
     
+    public static List<Cliente> orderByName(List<Cliente> lista){
+         Collections.sort(lista, (Cliente c1, Cliente c2) -> {
+                return c1.compareTo(c2);
+            });
+         return lista;
+    }
 }

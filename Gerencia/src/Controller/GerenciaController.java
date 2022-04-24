@@ -13,10 +13,8 @@ import Model.conta.ContaCorrente;
 import Model.conta.ContaInvestimento;
 import Model.conta.contaDao.ContaDao;
 import View.BancoView;
-import View.JanelaClienteView;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 
 /**
@@ -46,6 +44,8 @@ public class GerenciaController {
     public void listarCliente() {
         try{
             List<Cliente> lista = this.clienteDao.getLista();
+            if(lista.size()==0) this.view.showInfo("Ainda nao tem Clientes");
+            lista = Cliente.orderByName(lista);
             view.mostrarListaClientes(lista);
             view.setClienteNull();
         }catch(Exception ex){
@@ -69,6 +69,8 @@ public class GerenciaController {
     public void incluirCliente(){
         try{
             Cliente cliente = this.view.getClienteParaIncluir();
+            if(cliente.getNome().equalsIgnoreCase("") || cliente.getEndereco().equalsIgnoreCase("") || cliente.getSobrenome().equalsIgnoreCase("") || cliente.getRg().equalsIgnoreCase("") || cliente.getCpf() == 0)
+                throw new RuntimeException("Preencha todas as informações");
             this.clienteDao.inserir(cliente);
             listarCliente();
         }
@@ -177,15 +179,18 @@ public class GerenciaController {
     
     public void setClientebyCpf(){
         // primeiro pega no formulario
+        boolean comConta = false;
         try{
             long cpf = this.view.getClientebyCpf();
             List<Conta> lista = this.view.getListaContas();
             for(Conta c : lista){
                 if(c.getCliente().getCpf() == cpf){
                     this.view.setContaManipula(c);
+                    comConta = true;
+                    showSaldo();
                 }
             }
-            
+            if(!comConta) throw new RuntimeException("Não tem contas com esse Cpf");
         }catch(Exception e){
             this.view.showInfo(e.getMessage());
         }
@@ -214,6 +219,51 @@ public class GerenciaController {
                 this.view.showInfo("Não é possivel aplicar o saque na Conta Investimento");    
         }catch(Exception e){
             this.view.showInfo("Nao foi possivel Realizar o Saque \n"+e.getMessage());
+        }
+    }
+    
+    public void depositar(){
+        ContaCorrente cc;
+        ContaInvestimento ci;
+        try{
+            double valorDeposito = this.view.getValorDeposito();
+            if (valorDeposito == 0.0) throw new RuntimeException("Inisira um valor para Depositar!");
+            Conta conta = this.view.getContaAtual();
+            if (conta == null) throw new RuntimeException("Nenhuma conta selecionada!");
+            if(conta.getTipo().equalsIgnoreCase("Conta Corrente")){
+                cc = (ContaCorrente)conta;
+                cc.deposita(valorDeposito);
+                contaDao.setSaldo(conta);
+                this.view.showInfo("Saque aplicado com sucesso!\n Saldo Atual :"+conta.getSaldo());
+                this.view.showSaldo();
+            }else{
+                ci = (ContaInvestimento)conta;
+                ci.deposita(valorDeposito);
+                contaDao.setSaldo(conta);
+                this.view.showInfo("Saque aplicado com sucesso!\n Saldo Atual :"+conta.getSaldo());
+                this.view.showSaldo();
+            }
+        }catch(Exception e){
+            this.view.showInfo(e.getMessage());
+        }
+    }
+    
+    public void remunerar(){
+        ContaInvestimento ci;
+        try{
+            Conta conta = this.view.getContaAtual();
+            if (conta == null) throw new RuntimeException("Nenhuma conta selecionada!");
+            if(conta.getTipo().equalsIgnoreCase("Conta Investimento")){
+                ci = (ContaInvestimento)conta;
+                ci.remunera();
+                contaDao.setSaldo(conta);
+                this.view.showInfo("Remuneração Aplicada com sucesso!\n Saldo Atual :"+conta.getSaldo());
+                this.view.showSaldo();
+            }else{
+                
+            }
+        }catch(Exception e){
+            this.view.showInfo(e.getMessage());
         }
     }
 }

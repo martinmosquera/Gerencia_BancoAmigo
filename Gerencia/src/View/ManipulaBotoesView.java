@@ -7,6 +7,7 @@ package View;
 
 import Controller.GerenciaController;
 import Model.conta.Conta;
+import java.awt.Color;
 
 /**
  *
@@ -34,42 +35,47 @@ public class ManipulaBotoesView extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         BtnVerSaldo = new javax.swing.JButton();
         BtnRemunera = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        labelSaldo = new javax.swing.JLabel();
         saldo = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        labelSaque = new javax.swing.JLabel();
         valorSaque = new javax.swing.JTextField();
         BtnSacar = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        labelDeposito = new javax.swing.JLabel();
+        valorDeposito = new javax.swing.JTextField();
         BtnDepositar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        mensagemRemunera = new javax.swing.JLabel();
 
+        BtnVerSaldo.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         BtnVerSaldo.setText("Ver Saldo");
 
+        BtnRemunera.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         BtnRemunera.setText("Remunera");
 
-        jLabel1.setText("Saldo:");
+        labelSaldo.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        labelSaldo.setText("Saldo:");
 
+        saldo.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         saldo.setText("####");
 
-        jLabel2.setText("Valor do Saque :");
+        labelSaque.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        labelSaque.setText("Valor do Saque :");
 
+        valorSaque.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         valorSaque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 valorSaqueActionPerformed(evt);
             }
         });
 
+        BtnSacar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         BtnSacar.setText("Sacar");
 
-        jLabel3.setText("Valor Deposito :");
+        labelDeposito.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        labelDeposito.setText("Valor Deposito :");
 
+        valorDeposito.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+
+        BtnDepositar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         BtnDepositar.setText("Depositar");
-
-        jLabel4.setText("Remunera :");
-
-        mensagemRemunera.setText("####");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -79,35 +85,26 @@ public class ManipulaBotoesView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(mensagemRemunera, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
-                                .addGap(108, 108, 108))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(valorSaque, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
-                                    .addComponent(jTextField1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(BtnSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(BtnDepositar))
-                            .addComponent(BtnRemunera))
-                        .addGap(0, 126, Short.MAX_VALUE))
+                        .addComponent(labelSaldo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(saldo))
+                    .addComponent(BtnVerSaldo)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(labelDeposito, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelSaque, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BtnRemunera)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(valorSaque, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+                                    .addComponent(valorDeposito))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(saldo))
-                            .addComponent(BtnVerSaldo))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(BtnSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(BtnDepositar))))))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,41 +113,30 @@ public class ManipulaBotoesView extends javax.swing.JPanel {
                 .addComponent(BtnVerSaldo)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(labelSaldo)
                     .addComponent(saldo))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelSaque)
+                    .addComponent(valorSaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnSacar))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(valorSaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(mensagemRemunera)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(BtnSacar)
-                                .addGap(18, 18, 18)
-                                .addComponent(BtnDepositar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(BtnRemunera)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelDeposito)
+                    .addComponent(valorDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnDepositar))
+                .addGap(18, 18, 18)
+                .addComponent(BtnRemunera)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,14 +154,12 @@ public class ManipulaBotoesView extends javax.swing.JPanel {
     private javax.swing.JButton BtnRemunera;
     private javax.swing.JButton BtnSacar;
     private javax.swing.JButton BtnVerSaldo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel mensagemRemunera;
+    private javax.swing.JLabel labelDeposito;
+    private javax.swing.JLabel labelSaldo;
+    private javax.swing.JLabel labelSaque;
     private javax.swing.JLabel saldo;
+    private javax.swing.JTextField valorDeposito;
     private javax.swing.JTextField valorSaque;
     // End of variables declaration//GEN-END:variables
 
@@ -183,10 +167,15 @@ public class ManipulaBotoesView extends javax.swing.JPanel {
         this.controller = controller;
         BtnVerSaldo.addActionListener(e -> controller.showSaldo());
         BtnSacar.addActionListener(e -> controller.sacar());
+        BtnDepositar.addActionListener(e -> controller.depositar());
+        BtnRemunera.addActionListener(e-> controller.remunerar());
     }
     
     public void setConta(Conta c){
         String s = String.valueOf(c.getSaldo());
+        if(c.getSaldo()<0) saldo.setForeground(Color.red);
+        else
+            saldo.setForeground(Color.GREEN.darker());
         saldo.setText(s);
     }
     
@@ -197,6 +186,30 @@ public class ManipulaBotoesView extends javax.swing.JPanel {
             return saque;
         }catch(Exception e){
             throw new RuntimeException ("Valor invalido!\n"+e.getMessage());
+        }
+    }
+    
+    public double getValorDeposito(){
+        double deposito = 0.0;
+        try{ 
+            deposito = Double.parseDouble(valorDeposito.getText());
+            return deposito;
+        }catch(Exception e){
+            throw new RuntimeException ("Valor invalido!\n"+e.getMessage());
+        }
+    }
+    
+    public void setContaManipula(Conta c){
+        if(c.getTipo().equalsIgnoreCase("Conta Corrente")){
+                BtnRemunera.setEnabled(false);
+                valorSaque.setEnabled(true);
+                BtnSacar.setEnabled(true);
+                labelSaque.setEnabled(true);
+        }else{
+            BtnRemunera.setEnabled(true);
+            valorSaque.setEnabled(false);
+            BtnSacar.setEnabled(false);
+            labelSaque.setEnabled(false);
         }
     }
 }

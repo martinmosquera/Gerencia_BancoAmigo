@@ -6,14 +6,10 @@
 package View;
 
 import Controller.GerenciaController;
-import java.awt.event.MouseAdapter;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTable;
 //import org.ufpr.contato.controller.ContatoController;
 import Model.cliente.Cliente;
-import javax.swing.JPanel;
-import View.JanelaClienteView;
 /**
  *
  * 
@@ -64,15 +60,12 @@ public class ClienteTabelaView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tabelaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaClienteMouseClicked
-//     mudei esta linha para pasar a referencia da janela para a tabela antes e nao aqui >>
-//janela = controller.getJanela();
         //Pega a linha clicada
         linhaClicadaParaAtualizacao = this.tabelaCliente.rowAtPoint(evt.getPoint());
         //Pega o contato da linha clicada
         Cliente cliente = modeloTabelaCliente.getCliente(linhaClicadaParaAtualizacao);
-        controller.setClienteClicado(cliente);
         // envia o cliente da tabela clicada para o controller
-
+        controller.setClienteClicado(cliente);
     }//GEN-LAST:event_tabelaClienteMouseClicked
     
     public JTable getTabelaCliente(){
@@ -122,7 +115,6 @@ public class ClienteTabelaView extends javax.swing.JPanel {
   public void setLinhaNull(){
       this.linhaClicadaParaAtualizacao = -1;
   }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelaCliente;

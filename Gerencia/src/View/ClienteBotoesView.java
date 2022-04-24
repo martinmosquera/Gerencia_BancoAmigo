@@ -34,8 +34,10 @@ public class ClienteBotoesView extends javax.swing.JPanel {
         btnExcluir = new javax.swing.JButton();
         btnListar = new javax.swing.JButton();
 
+        btnIncluir.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         btnIncluir.setText("Incluir");
 
+        btnAtualizar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         btnAtualizar.setText("Atualizar");
         btnAtualizar.setActionCommand("");
         btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -44,6 +46,7 @@ public class ClienteBotoesView extends javax.swing.JPanel {
             }
         });
 
+        btnExcluir.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         btnExcluir.setText("Excluir");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,6 +54,7 @@ public class ClienteBotoesView extends javax.swing.JPanel {
             }
         });
 
+        btnListar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         btnListar.setText("Listar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -60,11 +64,11 @@ public class ClienteBotoesView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnIncluir)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(btnAtualizar)
-                .addGap(27, 27, 27)
+                .addGap(47, 47, 47)
                 .addComponent(btnExcluir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGap(46, 46, 46)
                 .addComponent(btnListar)
                 .addGap(25, 25, 25))
         );
@@ -79,8 +83,6 @@ public class ClienteBotoesView extends javax.swing.JPanel {
                     .addComponent(btnListar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        btnAtualizar.getAccessibleContext().setAccessibleName("Atualizar");
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed

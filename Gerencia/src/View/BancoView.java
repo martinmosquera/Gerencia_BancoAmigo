@@ -10,6 +10,8 @@ import Model.cliente.Cliente;
 import Model.conta.Conta;
 import Model.conta.ContaCorrente;
 import Model.conta.ContaInvestimento;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -44,14 +46,19 @@ public class BancoView extends javax.swing.JFrame {
         cienteView1 = new View.JanelaClienteView();
         contaView2 = new View.JanelaContaView();
         janelaManipulaView1 = new View.JanelaManipulaView();
+        labelTotalCo = new javax.swing.JLabel();
+        labelTotalCli = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
+        setName("Banco Amigo"); // NOI18N
         setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto Slab Black", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(66, 156, 125));
         jLabel1.setText("BANCO BOM AMIGO");
 
+        jTabbedPane1.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTabbedPane1MouseClicked(evt);
@@ -61,26 +68,46 @@ public class BancoView extends javax.swing.JFrame {
         jTabbedPane1.addTab("Conta", contaView2);
         jTabbedPane1.addTab("Manipula", janelaManipulaView1);
 
+        labelTotalCo.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        labelTotalCo.setForeground(new java.awt.Color(0, 102, 102));
+        labelTotalCo.setText("Contas: ");
+
+        labelTotalCli.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        labelTotalCli.setForeground(new java.awt.Color(0, 102, 102));
+        labelTotalCli.setText("Clientes:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(jLabel1)
-                .addContainerGap(274, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addComponent(jLabel1)
+                        .addGap(152, 152, 152)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelTotalCo)
+                            .addComponent(labelTotalCli))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane1))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelTotalCo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelTotalCli)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE))
         );
 
         jTabbedPane1.getAccessibleContext().setAccessibleName("Clientes");
@@ -115,6 +142,7 @@ public class BancoView extends javax.swing.JFrame {
         cienteView1.setListaClientes(lista);
         contaView2.setListaClientes(lista);
         cienteView1.setClienteNull();
+        labelTotalCli.setText("Clientes: "+lista.size());
     } 
 
 
@@ -139,6 +167,8 @@ public Cliente getClienteParaExcluir(){
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private View.JanelaManipulaView janelaManipulaView1;
+    private javax.swing.JLabel labelTotalCli;
+    private javax.swing.JLabel labelTotalCo;
     // End of variables declaration//GEN-END:variables
 
     public int opcaoDelete(String info) {
@@ -157,10 +187,15 @@ public Cliente getClienteParaIncluir(){
 public void setClienteClicado(Cliente cliente){
     this.clienteClicado = cliente;
     this.cienteView1.setClienteClicado(cliente);
+    boolean comConta = false;
     for(Conta c : lista){
         if(cliente.getCpf() == c.getCliente().getCpf()){
             this.contaView2.setClienteClicado(c);
+            comConta = true;
         }
+    }
+    if(!comConta){
+        this.contaView2.setClienteClicado(cliente);
     }
 }
 
@@ -207,6 +242,7 @@ public void setClienteClicado(Cliente cliente){
     
     public void setListaContas(List<Conta> contas){
         this.lista = contas;
+        labelTotalCo.setText("Contas: "+contas.size());
     }
     
     public long getClientebyCpf(){
@@ -228,9 +264,20 @@ public void setClienteClicado(Cliente cliente){
     public double getValorSaque(){
         return janelaManipulaView1.getValorSaque();
     }
+    public double getValorDeposito(){
+        return janelaManipulaView1.getValorDeposito();
+    }
     
     public Conta getContaAtual(){
         return janelaManipulaView1.getContaAtual();
     }
+    
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().
+        getImage(ClassLoader.getSystemResource("View/img/icono.png"));
+        
+   return retValue;
+}
 }
 
