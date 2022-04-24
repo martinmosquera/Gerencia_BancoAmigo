@@ -224,5 +224,13 @@ public void setClienteClicado(Cliente cliente){
     public void showSaldo(){
         janelaManipulaView1.showSaldo();
     }
+    
+    public double getValorSaque(){
+        return janelaManipulaView1.getValorSaque();
+    }
+    
+    public Conta getContaAtual(){
+        return janelaManipulaView1.getContaAtual();
+    }
 }
 

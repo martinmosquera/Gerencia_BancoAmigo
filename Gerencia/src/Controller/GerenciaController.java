@@ -196,4 +196,19 @@ public class GerenciaController {
     public void showSaldo(){
      this.view.showSaldo();
     }
+    
+    public void sacar(){ 
+        try{
+            double valorSaque = this.view.getValorSaque();
+            if (valorSaque == 0.0) throw new RuntimeException ("Inisira um valor para saque!");
+            Conta conta = this.view.getContaAtual();
+           
+            conta = contaDao.sacaValor(conta, valorSaque);
+            this.view.showInfo(String.valueOf(conta.getSaldo()));
+        
+        
+        }catch(Exception e){
+            this.view.showInfo(e.getMessage());
+        }
+    }
 }

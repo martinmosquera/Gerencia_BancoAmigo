@@ -39,7 +39,7 @@ public class ContaDao {
     private final String stmtAtualizarCC = "UPDATE conta SET saldo = (?), dep_inicial = (?), limite = (?), tipo = (?) WHERE conta_id = (?)";
     private final String stmtAtualizarCI = "UPDATE conta SET saldo = (?), dep_inicial = (?), deposito_min = (?), montante_min = (?), tipo = (?) WHERE conta_id = (?)";
     private final String stmtExcluir= "DELETE FROM conta WHERE conta_id = (?)";
-   
+    private final String stmtSacaValorConta = "UPDATE conta SET saldo = ? WHERE num_conta = ?";
 
     public ContaDao(ConnectionFactory connectionFactory) {
         this.connectionFactory = connectionFactory;
@@ -203,6 +203,32 @@ public class ContaDao {
             try{
                 rs.close();
                 stmtSelectCliente.close();
+                conn.close();
+            }catch(SQLException e){
+                throw new RuntimeException(e);
+            }
+        }
+    }
+    
+    public Conta sacaValor (Conta conta, double valorSaque){
+        Connection conn = null;
+        PreparedStatement stmtSacaValor= null;
+        
+        try{
+            conn = connectionFactory.getConnection();
+            stmtSacaValor = conn.prepareStatement(stmtSacaValorConta);
+            double saldo = conta.getSaldo() - valorSaque;
+            stmtSacaValor.setDouble(1, saldo);
+            stmtSacaValor.setInt(2, conta.getNum());
+            stmtSacaValor.execute();
+            conta.setSaldo(saldo);
+            return conta;
+        }catch(SQLException e){
+            throw new RuntimeException(e.getMessage());
+        }finally{
+            try{
+               
+                stmtSacaValor.close();
                 conn.close();
             }catch(SQLException e){
                 throw new RuntimeException(e);

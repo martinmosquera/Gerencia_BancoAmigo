@@ -15,8 +15,8 @@ import Model.conta.Conta;
 public class JanelaManipulaView extends javax.swing.JPanel {
     
     
-    Conta conta;
-    GerenciaController controller;
+    private Conta conta;
+    private GerenciaController controller;
     /**
      * Creates new form ManipulaView
      */
@@ -95,5 +95,13 @@ public class JanelaManipulaView extends javax.swing.JPanel {
        if(conta != null){
           manipulaBotoesView2.setConta(this.conta);
        }
+   }
+   
+   public double getValorSaque(){
+       return manipulaBotoesView2.getValorSaque();
+   }
+   
+   public Conta getContaAtual (){
+       return this.conta;
    }
 }

@@ -182,11 +182,21 @@ public class ManipulaBotoesView extends javax.swing.JPanel {
     public void setController(GerenciaController controller){
         this.controller = controller;
         BtnVerSaldo.addActionListener(e -> controller.showSaldo());
-        
+        BtnSacar.addActionListener(e -> controller.sacar());
     }
     
     public void setConta(Conta c){
         String s = String.valueOf(c.getSaldo());
         saldo.setText(s);
+    }
+    
+    public double getValorSaque(){
+        double saque = 0.0;
+        try{ 
+            saque = Double.parseDouble(valorSaque.getText());
+            return saque;
+        }catch(Exception e){
+            throw new RuntimeException (e.getMessage());
+        }
     }
 }
