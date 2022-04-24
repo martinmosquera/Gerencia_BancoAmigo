@@ -7,10 +7,10 @@ package View;
 
 import Controller.GerenciaController;
 import Model.cliente.Cliente;
+import Model.conta.Conta;
 import Model.conta.ContaCorrente;
 import Model.conta.ContaInvestimento;
 import java.util.List;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -91,9 +91,9 @@ public class JanelaContaView extends JPanel {
         
     }
 
-    public void setClienteClicado(Cliente cliente){
-        clienteClicado = cliente;
-        botonesConta1.setClienteClicado(cliente);
+    public void setClienteClicado(Conta c){
+        clienteClicado = c.getCliente();
+        botonesConta1.setClienteClicado(c);
     }
     
     public Cliente getClienteClicado(){
@@ -133,7 +133,8 @@ public class JanelaContaView extends JPanel {
         tabelaClienteView1.getTabelaCliente().getSelectionModel().removeSelectionInterval(0,10);
         tabelaClienteView1.setLinhaNull();
         Cliente cliente = null;
-        this.botonesConta1.setClienteClicado(cliente);
+        Conta c = null;
+        this.botonesConta1.setClienteClicado(c);
         this.clienteClicado = null;
     }
     
@@ -152,5 +153,6 @@ public class JanelaContaView extends JPanel {
     public void setContaNum(int num){
         botonesConta1.setContaNum(num);
     }
+    
 }
 

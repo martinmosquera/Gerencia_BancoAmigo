@@ -8,6 +8,7 @@ package Controller;
 import Model.cliente.Cliente;
 import Model.cliente.ValidaCpf;
 import Model.cliente.clienteDao.ClienteDao;
+import Model.conta.Conta;
 import Model.conta.ContaCorrente;
 import Model.conta.ContaInvestimento;
 import Model.conta.contaDao.ContaDao;
@@ -37,6 +38,8 @@ public class GerenciaController {
     private void initController(){
         this.view.setController(this);
         listarCliente();
+        List<Conta> lista = contaDao.getListaContas();
+        this.view.setListaContas(lista);
         this.view.initView();
     }
 
@@ -82,7 +85,8 @@ public class GerenciaController {
             if(resultado==JOptionPane.YES_OPTION){
                 
                 this.clienteDao.excluir(cliente);
-                
+                List<Conta> lista = contaDao.getListaContas();
+                this.view.setListaContas(lista);
                 listarCliente();
             };}
         }catch (Exception ex) {
@@ -123,6 +127,8 @@ public class GerenciaController {
                         cc = this.contaDao.vincularCC(cliente,tipo,cc);
                         this.view.setContaNum(cc.getNum());
                         this.view.showInfo("Conta # "+cc.getNum()+"\n Vinculada com Cliente "+cc.getCliente().getNome());
+                        List<Conta> lista = contaDao.getListaContas();
+                        this.view.setListaContas(lista);
                     }
                 }catch(Exception e){
                     if(cc == null) cc.setMsg("");
@@ -143,6 +149,8 @@ public class GerenciaController {
                     System.out.println("Passou pelo getcontaInvestimento");
                    
                     this.view.showInfo("Conta # "+ci.getNum()+"\n Vinculada com Cliente "+ci.getCliente().getNome());
+                    List<Conta> lista = contaDao.getListaContas();
+                    this.view.setListaContas(lista);
                 }catch(Exception e){
                     if(ci == null) ci.setMsg("");
                     this.view.showInfo("Não é possivel Vincular a Conta \n"+ci.getMsg());

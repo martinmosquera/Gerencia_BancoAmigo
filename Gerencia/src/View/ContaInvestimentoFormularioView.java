@@ -5,6 +5,7 @@
  */
 package View;
 
+import Model.conta.Conta;
 import Model.conta.ContaCorrente;
 import Model.conta.ContaInvestimento;
 import java.awt.Color;
@@ -50,9 +51,9 @@ public class ContaInvestimentoFormularioView extends javax.swing.JPanel {
             }
         });
 
-        labelMontanteMinimo.setText("#######");
+        labelMontanteMinimo.setText("R$ 100.00");
 
-        labelDepositoMinimo.setText("#######");
+        labelDepositoMinimo.setText("R$ 50.00");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

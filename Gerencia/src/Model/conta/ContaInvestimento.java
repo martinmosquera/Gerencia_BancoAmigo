@@ -17,13 +17,13 @@ public class ContaInvestimento extends Conta{
     private double montanteMinimo;
     private String msg;
     
-    public ContaInvestimento(Cliente cliente,int num, double saldo, double depositoini,double depositoMin, double montanteMin) {
+    public ContaInvestimento(Cliente cliente,int num, double saldo, double depositoini) {
         super(cliente, num, saldo, depositoini);
-        this.depositoMinimo = depositoMin;
-        this.montanteMinimo = montanteMin;
     }
     
     public ContaInvestimento(){
+        depositoMinimo = 50.0;
+        montanteMinimo = 100.0;
     }
     
 @Override
@@ -57,11 +57,12 @@ public class ContaInvestimento extends Conta{
     }
 
     public double getMontanteMin() {
-        return 100.00;
+        return montanteMinimo;
     }
-
+    
+   
     public double getDepositoMin() {
-         return 50.00;
+         return depositoMinimo;
     }
 
     public void setMsg(String msg) {

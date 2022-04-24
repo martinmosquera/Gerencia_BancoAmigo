@@ -15,6 +15,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -27,14 +29,16 @@ public class ContaDao {
     }
     
     private ConnectionFactory connectionFactory = new ConnectionFactory();
-    private static String stmtVincularCC = "INSERT INTO conta (tipo,dep_inicial,limite,cliente_id,saldo) VALUES (?,?,?,?,?)";
-    private static String stmtVincularCI= "INSERT INTO conta (tipo, montante_min, deposito_min, dep_inicial,cliente_id, saldo) VALUES (?, ?, ?, ?, ?, ?)";
-    private String stmtBuscarConta = "SELECT * FROM conta WHERE num_conta = (?)";
-    private String stmtBuscarCliente = "SELECT * FROM conta WHERE cliente_id = (?)";
-    private String stmtBuscarCpf = "SELECT * FROM conta INNER JOIN clientes on conta.cliente_id = clientes.cliente_id WHERE clientes.cpf LIKE CONCAT('%',?,'%')";
-    private String stmtAtualizarCC = "UPDATE conta SET saldo = (?), dep_inicial = (?), limite = (?), tipo = (?) WHERE conta_id = (?)";
-    private String stmtAtualizarCI = "UPDATE conta SET saldo = (?), dep_inicial = (?), deposito_min = (?), montante_min = (?), tipo = (?) WHERE conta_id = (?)";
-    private String stmtExcluir= "DELETE FROM conta WHERE conta_id = (?)";
+    private final String stmtVincularCC = "INSERT INTO conta (tipo,dep_inicial,limite,cliente_id,saldo) VALUES (?,?,?,?,?)";
+    private final String stmtVincularCI= "INSERT INTO conta (tipo, montante_min, deposito_min, dep_inicial,cliente_id, saldo) VALUES (?, ?, ?, ?, ?, ?)";
+    private final String stmtSelectAll = "SELECT * FROM conta";
+    private final String stmtSelectClientebyId = "SELECT * FROM clientes WHERE cliente_id = ?"; 
+    private final String stmtBuscarConta = "SELECT * FROM conta WHERE num_conta = (?)";
+    private final String stmtBuscarCliente = "SELECT * FROM conta WHERE cliente_id = (?)";
+    private final String stmtBuscarCpf = "SELECT * FROM conta INNER JOIN clientes on conta.cliente_id = clientes.cliente_id WHERE clientes.cpf LIKE CONCAT('%',?,'%')";
+    private final String stmtAtualizarCC = "UPDATE conta SET saldo = (?), dep_inicial = (?), limite = (?), tipo = (?) WHERE conta_id = (?)";
+    private final String stmtAtualizarCI = "UPDATE conta SET saldo = (?), dep_inicial = (?), deposito_min = (?), montante_min = (?), tipo = (?) WHERE conta_id = (?)";
+    private final String stmtExcluir= "DELETE FROM conta WHERE conta_id = (?)";
    
 
     public ContaDao(ConnectionFactory connectionFactory) {
@@ -114,4 +118,95 @@ public class ContaDao {
 
     }
     
+    public List<Conta> getListaContas(){
+        
+        Connection conn = null;
+        PreparedStatement stmtListarContas = null;
+        ResultSet rs = null;
+        List<Conta> lista = new ArrayList<>();
+        String tipo;
+        ContaCorrente cc = null;
+        ContaInvestimento ci = null;
+        int num;
+        Cliente cliente = null;
+        try{
+            conn = connectionFactory.getConnection();
+            stmtListarContas = conn.prepareStatement(stmtSelectAll);
+            
+            rs = stmtListarContas.executeQuery();
+            
+            while(rs.next()){
+                tipo = rs.getString("tipo");
+                if(tipo.equalsIgnoreCase("Conta Corrente")){
+                    cc = new ContaCorrente();
+                    cc.setNum(rs.getInt("num_conta"));
+                    cc.setDepositoInicial(rs.getDouble("dep_inicial"));
+                    cc.setLimite(rs.getDouble("limite"));
+                    cc.setSaldo(rs.getDouble("saldo"));
+                    num = rs.getInt("cliente_id");
+                    cliente = this.getClientedaConta(num);
+                    cc.setCliente(cliente);
+                    lista.add(cc);
+                }else{
+                    ci = new ContaInvestimento();
+                    cc.setNum(rs.getInt("num_conta"));
+                    cc.setDepositoInicial(rs.getDouble("dep_inicial"));
+                    cc.setSaldo(rs.getDouble("saldo"));
+                    num = rs.getInt("cliente_id");
+                    cliente = this.getClientedaConta(num);
+                    cc.setCliente(cliente);
+                    lista.add(cc);
+                }
+             
+            }
+            return lista;
+        
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }finally{
+            try{
+                rs.close();
+                stmtListarContas.close();
+                conn.close();
+            }catch(SQLException e){
+                throw new RuntimeException(e);
+            }
+        
+        }
+        
+    }
+    
+    public Cliente getClientedaConta(int num){
+        
+        Connection conn = null;
+        PreparedStatement stmtSelectCliente = null;
+        ResultSet rs = null;
+        Cliente cliente = null;
+        try{
+            conn = connectionFactory.getConnection();
+            stmtSelectCliente = conn.prepareStatement(stmtSelectClientebyId);
+            stmtSelectCliente.setInt(1,num);
+            rs = stmtSelectCliente.executeQuery();
+            rs.next();
+            cliente = new Cliente();
+            cliente.setName(rs.getString("nome"));
+            cliente.setId(num);
+            cliente.setSobrenome(rs.getString("sobrenome"));
+            cliente.setRg(rs.getString("rg"));
+            cliente.setCpf(rs.getLong("cpf"));
+            cliente.setEndereco(rs.getString("endereco"));
+            return cliente;
+        
+        }catch(SQLException e){
+            throw new RuntimeException(e.getMessage());
+        }finally{
+            try{
+                rs.close();
+                stmtSelectCliente.close();
+                conn.close();
+            }catch(SQLException e){
+                throw new RuntimeException(e);
+            }
+        }
+    }
 }

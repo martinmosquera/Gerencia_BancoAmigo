@@ -7,6 +7,7 @@ package View;
 
 import Controller.GerenciaController;
 import Model.cliente.Cliente;
+import Model.conta.Conta;
 import javax.swing.JLabel;
 
 /**
@@ -136,15 +137,19 @@ public class ContaBotoesView extends javax.swing.JPanel {
         this.btnVincular.addActionListener(e -> controller.VincularConta());
     }
     
-    public void setClienteClicado(Cliente cliente){
-        if(cliente == null){
-            cliente = new Cliente();
-            cliente.setName("");
+    public void setClienteClicado(Conta c){
+        if(c == null){
+            labelClienteName.setText("Cliente: ");
+            labelContaNum.setText("Numero de Conta: ");
+        }else{
+            labelClienteName.setText("Cliente: "+c.getCliente().getNome());
+            labelContaNum.setText("Numero de Conta: "+c.getNum());
         }
-        labelClienteName.setText("Cliente: "+cliente.getNome());
+        
     }
     
     public void setContaNum(int num){
         labelContaNum.setText("Numero de Conta: "+num);
     }
+
 }

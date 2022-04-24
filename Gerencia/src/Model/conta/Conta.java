@@ -99,6 +99,10 @@ public abstract class Conta implements ContaI{
     public String getTipo() {
         return this.tipo;
     }
+    
+    public void setSaldo(double saldo){
+        this.saldo = saldo;
+    }
 
     
    

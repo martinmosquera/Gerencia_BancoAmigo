@@ -7,6 +7,7 @@ package View;
 
 import Controller.GerenciaController;
 import Model.cliente.Cliente;
+import Model.conta.Conta;
 import Model.conta.ContaCorrente;
 import Model.conta.ContaInvestimento;
 import java.util.List;
@@ -21,6 +22,7 @@ public class BancoView extends javax.swing.JFrame {
     
     GerenciaController controller;
     Cliente clienteClicado = null;
+    List<Conta> lista;
     /**
      * Creates new form GerenciaView
      */
@@ -154,7 +156,12 @@ public Cliente getClienteParaIncluir(){
 public void setClienteClicado(Cliente cliente){
     this.clienteClicado = cliente;
     this.cienteView1.setClienteClicado(cliente);
-    this.contaView2.setClienteClicado(cliente);
+    for(Conta c : lista){
+        if(cliente.getCpf() == c.getCliente().getCpf()){
+            this.contaView2.setClienteClicado(c);
+        }
+        System.out.println(c.getNum()+c.getCliente().getNome());
+    }
 }
 
     public void setInvestimentoNull(){
@@ -196,6 +203,10 @@ public void setClienteClicado(Cliente cliente){
     
     public void setContaNum(int num){
         this.contaView2.setContaNum(num);
+    }
+    
+    public void setListaContas(List<Conta> contas){
+        this.lista = contas;
     }
 }
 
