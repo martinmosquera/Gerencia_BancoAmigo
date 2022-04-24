@@ -24,10 +24,10 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="txtDepositoInicial" pref="209" max="32767" attributes="0"/>
+                  <Component id="txtDepositoInicial" pref="348" max="32767" attributes="0"/>
                   <Component id="txtLimite" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="179" max="32767" attributes="0"/>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

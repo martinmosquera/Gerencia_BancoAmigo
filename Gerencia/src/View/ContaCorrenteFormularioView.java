@@ -60,9 +60,9 @@ public class ContaCorrenteFormularioView extends javax.swing.JPanel {
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtDepositoInicial, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                    .addComponent(txtDepositoInicial, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
                     .addComponent(txtLimite))
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,6 +96,8 @@ public class ContaCorrenteFormularioView extends javax.swing.JPanel {
 
         // fazer un loop em quanto nao digite correto, mostra uma mesagem de erro
              try{
+                if(txtDepositoInicial.getText().equalsIgnoreCase("")) throw new RuntimeException("Preencha o campo do valor do Deposito");
+                if(txtLimite.getText().equalsIgnoreCase("")) throw new RuntimeException("Preencha o campo do valor do Limite");
                 double dep_ini = Double.parseDouble(txtDepositoInicial.getText());
                 double limite = Double.parseDouble(txtLimite.getText());
                 cc.setDepositoInicial(dep_ini);

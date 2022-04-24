@@ -192,7 +192,7 @@ public class GerenciaController {
             }
             if(!comConta) throw new RuntimeException("Não tem contas com esse Cpf");
         }catch(Exception e){
-            this.view.showInfo(e.getMessage());
+            this.view.showInfo("Erro na pesquisa!\n"+e.getMessage());
         }
         
        
@@ -234,7 +234,7 @@ public class GerenciaController {
                 cc = (ContaCorrente)conta;
                 cc.deposita(valorDeposito);
                 contaDao.setSaldo(conta);
-                this.view.showInfo("Saque aplicado com sucesso!\n Saldo Atual :"+conta.getSaldo());
+                this.view.showInfo("Deposito Aplicado com sucesso!\n Saldo Atual :"+conta.getSaldo());
                 this.view.showSaldo();
             }else{
                 ci = (ContaInvestimento)conta;

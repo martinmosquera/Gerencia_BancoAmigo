@@ -129,6 +129,7 @@ public class ManipulaBuscaView extends javax.swing.JPanel {
     public long getCpf(){
         long cpf = 0;
         try{
+            if(CpfBusca.getText().equalsIgnoreCase("")) throw new RuntimeException("Preencha o campo do Cpf");
             cpf = Long.parseLong(CpfBusca.getText());
             return cpf;
         }catch(Exception e){

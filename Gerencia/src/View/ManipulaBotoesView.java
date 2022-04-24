@@ -181,7 +181,8 @@ public class ManipulaBotoesView extends javax.swing.JPanel {
     
     public double getValorSaque(){
         double saque = 0.0;
-        try{ 
+        try{
+            if(valorSaque.getText().equalsIgnoreCase(""))throw new RuntimeException("Preencha o campo do Valor do Saque");
             saque = Double.parseDouble(valorSaque.getText());
             return saque;
         }catch(Exception e){
@@ -191,7 +192,8 @@ public class ManipulaBotoesView extends javax.swing.JPanel {
     
     public double getValorDeposito(){
         double deposito = 0.0;
-        try{ 
+        try{
+            if(valorDeposito.getText().equalsIgnoreCase(""))throw new RuntimeException("Preencha o campo do Valor do Deposito");
             deposito = Double.parseDouble(valorDeposito.getText());
             return deposito;
         }catch(Exception e){
