@@ -11,7 +11,7 @@ import java.text.DecimalFormat;
 
 /**
  *
- * @author dell
+ * @author Martin, Janaina, Nicolle, Rafael
  */
 public class Moeda {
     
@@ -29,7 +29,7 @@ public class Moeda {
     // Construtor para quando é lida uma String
     public Moeda(String v){
         try{
-            this.valor = new BigDecimal(v).setScale(2,RoundingMode.HALF_EVEN);
+            this.valor = new BigDecimal(v).setScale(4,RoundingMode.HALF_EVEN);
         }catch(Exception e){
             throw new RuntimeException(e.getMessage());
         }
@@ -39,7 +39,7 @@ public class Moeda {
     // Construtor para quando é lido um double
     public Moeda(double v){
         try{
-            this.valor = new BigDecimal(v).setScale(2,RoundingMode.HALF_EVEN);
+            this.valor = new BigDecimal(v).setScale(4,RoundingMode.HALF_EVEN);
         }catch(Exception e){
             throw new RuntimeException(e.getMessage());
         }
