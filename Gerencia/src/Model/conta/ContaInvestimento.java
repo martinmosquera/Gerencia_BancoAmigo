@@ -13,37 +13,34 @@ import Model.cliente.Cliente;
  */
 public class ContaInvestimento extends Conta{
     
-    private double depositoMinimo;
-    private double montanteMinimo;
+    private Moeda depositoMinimo = new Moeda("100.00");
+    private Moeda montanteMinimo = new Moeda("100.00");
     
-    public ContaInvestimento(Cliente cliente,int num, double saldo, double depositoini) {
+    public ContaInvestimento(Cliente cliente,int num, Moeda saldo, Moeda depositoini) {
         super(cliente, num, saldo, depositoini);
     }
     
     public ContaInvestimento(){
-        depositoMinimo = 100.0;
-        montanteMinimo = 100.0;
     }
     
 @Override
-    public boolean deposita(double valor){
-        if(valor >= depositoMinimo){
+    public boolean deposita(Moeda valor){
+        if((valor.getValor().compareTo(this.depositoMinimo.getValor())) == -1){
+            throw new RuntimeException("O valor é menor que o permitido!!");
+        }else{
             super.deposita(valor);
             return true;
-        }else{
-            throw new RuntimeException("O valor é menor que o permitido!!");
         }
-        
     }
     
 @Override
-    public boolean saca(double valor){
-        if((this.getSaldo()-valor) >= montanteMinimo){
+    public boolean saca(Moeda valor){
+        if((this.getSaldo().getValor().doubleValue() - valor.getValor().doubleValue()) >= montanteMinimo.getValor().doubleValue()){
             try{
                 super.saca(valor);
                 return true;
             }catch(Exception e){
-                throw new RuntimeException(e);
+                throw new RuntimeException(e.getMessage());
             }
         }else{
             throw new RuntimeException("O valor do saque é maior que o permitido para manter a conta - (Montante Minimo)!!");
@@ -52,15 +49,15 @@ public class ContaInvestimento extends Conta{
     
 @Override
     public void remunera(){
-        super.deposita(this.getSaldo()*0.02);
+        super.deposita(this.getSaldo().multiplica(new Moeda(0.02)));
     }
 
-    public double getMontanteMin() {
+    public Moeda getMontanteMin() {
         return montanteMinimo;
     }
     
    
-    public double getDepositoMin() {
+    public Moeda getDepositoMin() {
          return depositoMinimo;
     }
 }

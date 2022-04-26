@@ -16,17 +16,17 @@ public abstract class Conta implements ContaI{
     
     private Cliente cliente;
     private int num;
-    private double saldo;
-    private double depositoInicial;
+    private Moeda saldo;
+    private Moeda depositoInicial;
     private String tipo;
     
-    public Conta(Cliente cliente,int num,double saldo,double depini){
+    public Conta(Cliente cliente,int num,Moeda saldo,Moeda depini){
         this.cliente = cliente;
         this.num = num;
         this.saldo = saldo;
         this.depositoInicial = depini;
     }
-    public Conta(double valor){
+    public Conta(Moeda valor){
         this.num = (int)(Math.random()*1000+1);
         saldo = valor;
         depositoInicial = valor;
@@ -51,33 +51,33 @@ public abstract class Conta implements ContaI{
         this.num = num;
     }
 
-    public double getDepositoInicial() {
+    public Moeda getDepositoInicial() {
         return depositoInicial;
     }
 
-    public void setDepositoInicial(double depositoInicial) {
-        if(depositoInicial <= 0) {
-            throw new RuntimeException("Não pode depositar valores negativos ou 0!!");
+    public void setDepositoInicial(Moeda deposito) {
+        if(deposito.isNegative()) {
+            throw new RuntimeException("O deposito Inicial não pode ser negativo!!");
         }
-        this.depositoInicial = depositoInicial;
+        this.depositoInicial = deposito;
     }
     
     @Override
-    public boolean deposita(double valor) {
-        if(valor < 0) {
+    public boolean deposita(Moeda valor) {
+        if(valor.isNegative()){
             throw new RuntimeException("Não pode depositar valores negativos!!");
         }
-        saldo += valor;
+        saldo = saldo.soma(valor);
         return true;
         
     }
 
     @Override
-    public boolean saca(double valor) {
-        if(valor < 0 ){
+    public boolean saca(Moeda valor) {
+        if(valor.isNegative()){
             throw new RuntimeException("Não pode sacar valores negativos!!");
         }
-        saldo -= valor;
+        saldo = saldo.resta(valor);
         return true;
     }
 
@@ -92,7 +92,7 @@ public abstract class Conta implements ContaI{
     }
 
     @Override
-    public double getSaldo() {
+    public Moeda getSaldo() {
         return this.saldo;
     }
 
@@ -105,8 +105,8 @@ public abstract class Conta implements ContaI{
         return this.tipo;
     }
     
-    public void setSaldo(double saldo){
-        this.saldo = saldo;
+    public void setSaldo(Moeda saldo){
+        this.saldo  = saldo;
     }
     
     public void setTipo(String tipo){

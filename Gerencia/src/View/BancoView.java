@@ -10,6 +10,7 @@ import Model.cliente.Cliente;
 import Model.conta.Conta;
 import Model.conta.ContaCorrente;
 import Model.conta.ContaInvestimento;
+import Model.conta.Moeda;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.List;
@@ -51,6 +52,7 @@ public class BancoView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
+        setLocation(new java.awt.Point(200, 100));
         setName("Banco Amigo"); // NOI18N
         setResizable(false);
 
@@ -83,7 +85,7 @@ public class BancoView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 733, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 755, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(93, 93, 93)
                         .addComponent(jLabel1)
@@ -226,14 +228,8 @@ public void setClienteClicado(Cliente cliente){
         this.contaView.setTipoConta(tipo);
     }
 
-   
-
     public ContaInvestimento getContaInvestimento() {
-        try{
-            return contaView.getContaInvestimento();
-        }catch(Exception e){
-            throw new RuntimeException(e.getMessage());
-        }
+        return contaView.getContaInvestimento();
     }
     
     public void setContaNum(int num){
@@ -261,10 +257,11 @@ public void setClienteClicado(Cliente cliente){
         janelaManipulaView.showSaldo();
     }
     
-    public double getValorSaque(){
+    public Moeda getValorSaque(){
         return janelaManipulaView.getValorSaque();
     }
-    public double getValorDeposito(){
+    
+    public Moeda getValorDeposito(){
         return janelaManipulaView.getValorDeposito();
     }
     

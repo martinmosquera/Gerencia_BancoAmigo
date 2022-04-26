@@ -12,13 +12,13 @@ import Model.cliente.Cliente;
  * @author Martin, Janaina, Nicolle, Rafael
  */
 public class ContaCorrente extends Conta{
-    private double limite;
+    private Moeda limite;
     
-    public ContaCorrente(Cliente cliente,int num,double saldo,double depositoinicial,double limite){
+    public ContaCorrente(Cliente cliente,int num,Moeda saldo,Moeda depositoinicial,Moeda limite){
         super(cliente,num,saldo,depositoinicial);
         this.limite = limite;
     }
-    public ContaCorrente(double valor){
+    public ContaCorrente(Moeda valor){
         super(valor);     
         
     }
@@ -27,25 +27,26 @@ public class ContaCorrente extends Conta{
     }
     
     @Override
-    public boolean saca(double valor) {
-        if(valor > (this.getSaldo()+this.limite)){
+    public boolean saca(Moeda valor) {
+        if(valor.getValor().doubleValue() > (this.getSaldo().getValor().doubleValue() + (this.limite.getValor().doubleValue()))){
             throw new RuntimeException("Sua conta não tem saldo Suficiente!!");
         };
         super.saca(valor);
         return true;
     }
 
-    public void setLimite(double d) {
-        if(d<0) throw new RuntimeException("Não pode Adicionar valores negativos no Limite!!");
+    public void setLimite(Moeda d) {
+        if(d.isNegative()) throw new RuntimeException("Não pode Adicionar valores negativos no Limite!!");
         this.limite = d;
     }
 
-    public double getLimite() {
+    public Moeda getLimite() {
         return this.limite;
     }
     
     @Override
     public void remunera(){
-        this.deposita(this.getSaldo()*0.01);
+        Moeda m = this.getSaldo().multiplica(new Moeda(0.01));
+        super.deposita(m);
     }
 }

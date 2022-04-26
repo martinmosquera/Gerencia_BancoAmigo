@@ -8,6 +8,7 @@ package View;
 import Model.cliente.Cliente;
 import Model.conta.Conta;
 import Model.conta.ContaCorrente;
+import Model.conta.Moeda;
 import javax.swing.JOptionPane;
 
 /**
@@ -93,13 +94,9 @@ public class ContaCorrenteFormularioView extends javax.swing.JPanel {
 
     public ContaCorrente getContaCorrente(){
         ContaCorrente cc = new ContaCorrente();
-
-        // fazer un loop em quanto nao digite correto, mostra uma mesagem de erro
              try{
-                if(txtDepositoInicial.getText().equalsIgnoreCase("")) throw new RuntimeException("Preencha o campo do valor do Deposito");
-                if(txtLimite.getText().equalsIgnoreCase("")) throw new RuntimeException("Preencha o campo do valor do Limite");
-                double dep_ini = Double.parseDouble(txtDepositoInicial.getText());
-                double limite = Double.parseDouble(txtLimite.getText());
+                Moeda dep_ini = new Moeda(txtDepositoInicial.getText());
+                Moeda limite = new Moeda(txtLimite.getText());
                 cc.setDepositoInicial(dep_ini);
                 cc.setLimite(limite);
                 cc.setSaldo(dep_ini);
@@ -118,18 +115,5 @@ public class ContaCorrenteFormularioView extends javax.swing.JPanel {
         txtDepositoInicial.setEnabled(false);
        txtLimite.setEnabled(false);
     }
-    
-   /* public void setNumConta(Conta conta){
-        if(cliente == null){
-            cliente = new Cliente();
-            cliente.setName("");
-}
-        
-        labelConta.setText(conta.getNum());
-    } 
-    
-    
-    }
-*/    
     
 }

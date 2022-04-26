@@ -10,6 +10,7 @@ import Model.cliente.Cliente;
 import Model.conta.Conta;
 import Model.conta.ContaCorrente;
 import Model.conta.ContaInvestimento;
+import Model.conta.Moeda;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -45,10 +46,10 @@ public class ContaDao {
             conn = connectionFactory.getConnection();
             stmtVincular = conn.prepareStatement(stmtVincularCC,Statement.RETURN_GENERATED_KEYS);
             stmtVincular.setString(1, tipo);
-            stmtVincular.setDouble(2, cc.getDepositoInicial());
-            stmtVincular.setDouble(3, cc.getLimite());
+            stmtVincular.setDouble(2, cc.getDepositoInicial().getValor().doubleValue());
+            stmtVincular.setDouble(3, cc.getLimite().getValor().doubleValue());
             stmtVincular.setInt(4, cliente.getId());
-            stmtVincular.setDouble(5,cc.getDepositoInicial());
+            stmtVincular.setDouble(5,cc.getDepositoInicial().getValor().doubleValue());
             stmtVincular.execute();
             rs = stmtVincular.getGeneratedKeys();
             rs.next();
@@ -78,11 +79,11 @@ public class ContaDao {
             conn = connectionFactory.getConnection();
             stmtVincular = conn.prepareStatement(stmtVincularCI,Statement.RETURN_GENERATED_KEYS);
             stmtVincular.setString(1, tipo);
-            stmtVincular.setDouble(2, ci.getDepositoInicial());
-            stmtVincular.setDouble(3, ci.getMontanteMin());
-            stmtVincular.setDouble(4, ci.getDepositoMin());
+            stmtVincular.setDouble(2, ci.getDepositoInicial().getValor().doubleValue());
+            stmtVincular.setDouble(3, ci.getMontanteMin().getValor().doubleValue());
+            stmtVincular.setDouble(4, ci.getDepositoMin().getValor().doubleValue());
             stmtVincular.setInt(5, cliente.getId());
-            stmtVincular.setDouble(6,ci.getDepositoInicial());
+            stmtVincular.setDouble(6,ci.getSaldo().getValor().doubleValue());
             stmtVincular.execute();
             rs = stmtVincular.getGeneratedKeys();
             rs.next();
@@ -126,9 +127,9 @@ public class ContaDao {
                     cc = new ContaCorrente();
                     cc.setNum(rs.getInt("num_conta"));
                     cc.setTipo(tipo);
-                    cc.setDepositoInicial(rs.getDouble("dep_inicial"));
-                    cc.setLimite(rs.getDouble("limite"));
-                    cc.setSaldo(rs.getDouble("saldo"));
+                    cc.setDepositoInicial(new Moeda(rs.getDouble("dep_inicial")));
+                    cc.setLimite(new Moeda(rs.getDouble("limite")));
+                    cc.setSaldo(new Moeda(rs.getDouble("saldo")));
                     num = rs.getInt("cliente_id");
                     cliente = this.getClientedaConta(num);
                     cc.setCliente(cliente);
@@ -137,8 +138,8 @@ public class ContaDao {
                     ci = new ContaInvestimento();
                     ci.setNum(rs.getInt("num_conta"));
                     ci.setTipo(tipo);
-                    ci.setDepositoInicial(rs.getDouble("dep_inicial"));
-                    ci.setSaldo(rs.getDouble("saldo"));
+                    ci.setDepositoInicial(new Moeda(rs.getDouble("dep_inicial")));
+                    ci.setSaldo(new Moeda(rs.getDouble("saldo")));
                     num = rs.getInt("cliente_id");
                     cliente = this.getClientedaConta(num);
                     ci.setCliente(cliente);
@@ -203,7 +204,7 @@ public class ContaDao {
         try{
             conn = connectionFactory.getConnection();
             stmtSacaValor = conn.prepareStatement(stmtSacaValorConta);
-            stmtSacaValor.setDouble(1, conta.getSaldo());
+            stmtSacaValor.setDouble(1, conta.getSaldo().getValor().doubleValue());
             stmtSacaValor.setInt(2, conta.getNum());
             stmtSacaValor.execute();
         }catch(SQLException e){

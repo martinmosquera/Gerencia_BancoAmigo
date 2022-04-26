@@ -145,11 +145,7 @@ public class JanelaContaView extends JPanel {
     }
 
     public ContaInvestimento getContaInvestimento() {
-         try{
-            return formularioContaInvestimento1.getContaInvestimento();
-        }catch(Exception e){    
-            throw new RuntimeException(e.getMessage());
-        } 
+        return formularioContaInvestimento1.getContaInvestimento();
     }
     
     public void setContaNum(int num){

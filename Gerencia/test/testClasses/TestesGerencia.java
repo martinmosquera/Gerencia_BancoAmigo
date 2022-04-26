@@ -6,8 +6,8 @@
 package testClasses;
 
 import Model.cliente.Cliente;
-import Model.conta.Conta;
 import Model.conta.ContaCorrente;
+import Model.conta.Moeda;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -74,18 +74,18 @@ public class TestesGerencia {
     }
     @Test
         public void testeContaCSaldo(){
-        ContaCorrente cc = new ContaCorrente(1000.00);
-        double limite;
+        ContaCorrente cc = new ContaCorrente(new Moeda(1000.00));
+        Moeda limite;
         limite = cc.getSaldo();
-        assertEquals(1000.00,limite,0.0);
+        assertEquals(1000.00,limite.getValor().doubleValue(),0.0);
         }
         
     @Test
         public void testeContaC2LimteNegativo(){
-        ContaCorrente cc = new ContaCorrente(5000);
+        ContaCorrente cc = new ContaCorrente(new Moeda(5000.0));
         String message = "";
         try{
-            cc.setLimite(-13.6);
+            cc.setLimite(new Moeda("-13.6"));
         }catch(Exception e){
             message = e.getMessage();
         }
@@ -94,35 +94,35 @@ public class TestesGerencia {
         
     @Test
         public void testeContaC3Remunera(){
-            ContaCorrente cc = new ContaCorrente(100.00);
+            ContaCorrente cc = new ContaCorrente(new Moeda(100.00));
             cc.remunera();
-            double num = cc.getSaldo();
-            assertEquals(101.00,num,0.0);
+            Moeda num = cc.getSaldo();
+            assertEquals(101.00,num.getValor().doubleValue(),0.0);
         }
         
     @Test
         public void testeContaC4Saca(){
-            ContaCorrente cc = new ContaCorrente(100.00);
-            cc.saca(10.00);
-            double num = cc.getSaldo();
-            assertEquals(90.00,num,0.0);
+            ContaCorrente cc = new ContaCorrente(new Moeda(100.00));
+            cc.saca(new Moeda(10.00));
+            Moeda num = cc.getSaldo();
+            assertEquals(90.00,num.getValor().doubleValue(),0.0);
         }
      
     @Test
         public void testeContaC4Saca21(){
-            ContaCorrente cc = new ContaCorrente(100.00);
-            cc.saca(10.00);
-            double num = cc.getSaldo();
-            assertEquals(90.00,num,0.0);
+            ContaCorrente cc = new ContaCorrente(new Moeda(100.00));
+            cc.saca(new Moeda(10.00));
+            Moeda num = cc.getSaldo();
+            assertEquals(90.00,num.getValor().doubleValue(),0.0);
         }
         
         
      @Test
         public void testeContaC4Saca2(){
-            ContaCorrente cc = new ContaCorrente(100.00);
+            ContaCorrente cc = new ContaCorrente(new Moeda(100.00));
             String message = "";
             try{
-                cc.saca(-10.00);
+                cc.saca(new Moeda(-10.00));
             }catch(Exception e){
                 message = e.getMessage();
                 System.out.println(message);
@@ -133,10 +133,10 @@ public class TestesGerencia {
         
     @Test
         public void testeContaC4Saca3(){
-            ContaCorrente cc = new ContaCorrente(100.00);
+            ContaCorrente cc = new ContaCorrente(new Moeda(100.00));
             String message = "";
             try{
-                cc.saca(200.00);
+                cc.saca(new Moeda(200.00));
             }catch(Exception e){
                 message = e.getMessage();
             }

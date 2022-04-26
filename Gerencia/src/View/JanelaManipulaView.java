@@ -7,6 +7,7 @@ package View;
 
 import Controller.GerenciaController;
 import Model.conta.Conta;
+import Model.conta.Moeda;
 
 /**
  *
@@ -97,11 +98,11 @@ public class JanelaManipulaView extends javax.swing.JPanel {
        }
    }
    
-   public double getValorSaque(){
+   public Moeda getValorSaque(){
        return manipulaBotoesView2.getValorSaque();
    }
    
-   public double getValorDeposito(){
+   public Moeda getValorDeposito(){
        return manipulaBotoesView2.getValorDeposito();
    }
    

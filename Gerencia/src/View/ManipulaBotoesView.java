@@ -7,6 +7,7 @@ package View;
 
 import Controller.GerenciaController;
 import Model.conta.Conta;
+import Model.conta.Moeda;
 import java.awt.Color;
 import java.math.BigDecimal;
 import static java.math.RoundingMode.HALF_UP;
@@ -49,7 +50,7 @@ public class ManipulaBotoesView extends javax.swing.JPanel {
         BtnRemunera.setText("Remunera");
 
         labelSaldo.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        labelSaldo.setText("Saldo R$");
+        labelSaldo.setText("Saldo:");
 
         saldo.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         saldo.setText("####");
@@ -166,33 +167,28 @@ public class ManipulaBotoesView extends javax.swing.JPanel {
     }
     
     public void setConta(Conta c){
-        double newSaldo = c.getSaldo();
-        BigDecimal bd = new BigDecimal(newSaldo).setScale(2,HALF_UP);
-        String s = String.valueOf(bd);
-        if(c.getSaldo()<0) saldo.setForeground(Color.red);
+        if(c.getSaldo().isNegative()) saldo.setForeground(Color.red);
         else
             saldo.setForeground(Color.GREEN.darker());
-        saldo.setText(s);
+        saldo.setText(c.getSaldo().toString());
     }
     
-    public double getValorSaque(){
-        double saque = 0.0;
+    public Moeda getValorSaque(){
         try{
             if(valorSaque.getText().equalsIgnoreCase(""))throw new RuntimeException("Preencha o campo do Valor do Saque");
-            saque = Double.parseDouble(valorSaque.getText());
+            Moeda saque = new Moeda(valorSaque.getText());
             return saque;
-        }catch(Exception e){
+        }catch(RuntimeException e){
             throw new RuntimeException ("Valor invalido!\n"+e.getMessage());
         }
     }
     
-    public double getValorDeposito(){
-        double deposito = 0.0;
+    public Moeda getValorDeposito(){
         try{
             if(valorDeposito.getText().equalsIgnoreCase(""))throw new RuntimeException("Preencha o campo do Valor do Deposito");
-            deposito = Double.parseDouble(valorDeposito.getText());
+            Moeda deposito = new Moeda(valorDeposito.getText());
             return deposito;
-        }catch(Exception e){
+        }catch(RuntimeException e){
             throw new RuntimeException ("Valor invalido!\n"+e.getMessage());
         }
     }

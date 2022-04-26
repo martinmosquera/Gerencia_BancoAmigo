@@ -11,6 +11,7 @@ import Model.cliente.clienteDao.ClienteDao;
 import Model.conta.Conta;
 import Model.conta.ContaCorrente;
 import Model.conta.ContaInvestimento;
+import Model.conta.Moeda;
 import Model.conta.contaDao.ContaDao;
 import View.BancoView;
 import java.util.Collections;
@@ -191,8 +192,7 @@ public class GerenciaController {
         ContaCorrente cc;
         ContaInvestimento ci;
         try{
-            double valorSaque = this.view.getValorSaque();
-            if (valorSaque == 0.0) throw new RuntimeException("Inisira um valor para saque!");
+            Moeda valorSaque = this.view.getValorSaque();
             Conta conta = this.view.getContaAtual();
             if (conta == null) throw new RuntimeException("Nenhuma conta selecionada!");
             if(conta.getTipo().equalsIgnoreCase("Conta Corrente")){
@@ -218,21 +218,20 @@ public class GerenciaController {
         ContaCorrente cc;
         ContaInvestimento ci;
         try{
-            double valorDeposito = this.view.getValorDeposito();
-            if (valorDeposito == 0.0) throw new RuntimeException("Inisira um valor para Depositar!");
+            Moeda valorDeposito = this.view.getValorDeposito();
             Conta conta = this.view.getContaAtual();
             if (conta == null) throw new RuntimeException("Nenhuma conta selecionada!");
             if(conta.getTipo().equalsIgnoreCase("Conta Corrente")){
                 cc = (ContaCorrente)conta;
                 cc.deposita(valorDeposito);
                 contaDao.setSaldo(conta);
-                this.view.showInfo("Deposito Aplicado com sucesso!");
+                this.view.showInfo("Deposito aplicado com sucesso!");
                 this.view.showSaldo();
             }else{
                 ci = (ContaInvestimento)conta;
                 ci.deposita(valorDeposito);
                 contaDao.setSaldo(conta);
-                this.view.showInfo("Saque aplicado com sucesso!");
+                this.view.showInfo("Deposito aplicado com sucesso!");
                 this.view.showSaldo();
             }
         }catch(Exception e){

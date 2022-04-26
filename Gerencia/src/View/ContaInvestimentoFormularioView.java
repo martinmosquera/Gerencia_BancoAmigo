@@ -6,6 +6,7 @@
 package View;
 
 import Model.conta.ContaInvestimento;
+import Model.conta.Moeda;
 
 /**
  *
@@ -124,14 +125,13 @@ public class ContaInvestimentoFormularioView extends javax.swing.JPanel {
 
     public ContaInvestimento getContaInvestimento() {
           ContaInvestimento ci = new ContaInvestimento();
-          double dep_ini = 0.0;
+          if(txtDepositoInicial.getText().equalsIgnoreCase(""))throw new RuntimeException("preencha o campo de Deposito Inicial");
         try{
-            dep_ini = Double.valueOf(txtDepositoInicial.getText());
-            ci.deposita(dep_ini);
+            Moeda dep_ini = new Moeda(txtDepositoInicial.getText());
             ci.setDepositoInicial(dep_ini);
             ci.setSaldo(dep_ini);
             return ci;
-        }catch(NumberFormatException e){
+        }catch(Exception e){
             throw new RuntimeException("Erro no formulario! "+e.getMessage());
         }
     }

@@ -12,10 +12,10 @@ import Model.cliente.Cliente;
  * @author Martin, Janaina, Nicolle, Rafael
  */
 public interface ContaI {
-    public boolean deposita(double valor);
-    public boolean saca(double valor);
+    public boolean deposita(Moeda valor);
+    public boolean saca(Moeda valor);
     public Cliente getDono();
     public int getNumero();
-    public double getSaldo();
+    public Moeda getSaldo();
     public void remunera();
 }
