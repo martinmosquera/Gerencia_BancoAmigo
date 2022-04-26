@@ -19,7 +19,6 @@ import javax.swing.JPanel;
  */
 public class JanelaContaView extends JPanel {
     
-    private GerenciaController controller;
     private Cliente clienteClicado;
     private String TipoConta = "";
 
@@ -105,7 +104,6 @@ public class JanelaContaView extends JPanel {
     }
     
     public void setController(GerenciaController controller){
-        this.controller = controller;
         this.botonesConta1.setController(controller);
         this.tabelaClienteView1.setController(controller);
     }

@@ -43,9 +43,9 @@ public class BancoView extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        cienteView1 = new View.JanelaClienteView();
-        contaView2 = new View.JanelaContaView();
-        janelaManipulaView1 = new View.JanelaManipulaView();
+        clienteView = new View.JanelaClienteView();
+        contaView = new View.JanelaContaView();
+        janelaManipulaView = new View.JanelaManipulaView();
         labelTotalCo = new javax.swing.JLabel();
         labelTotalCli = new javax.swing.JLabel();
 
@@ -64,9 +64,9 @@ public class BancoView extends javax.swing.JFrame {
                 jTabbedPane1MouseClicked(evt);
             }
         });
-        jTabbedPane1.addTab("Clientes", cienteView1);
-        jTabbedPane1.addTab("Conta", contaView2);
-        jTabbedPane1.addTab("Manipula", janelaManipulaView1);
+        jTabbedPane1.addTab("Clientes", clienteView);
+        jTabbedPane1.addTab("Conta", contaView);
+        jTabbedPane1.addTab("Manipula", janelaManipulaView);
 
         labelTotalCo.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         labelTotalCo.setForeground(new java.awt.Color(0, 102, 102));
@@ -83,7 +83,7 @@ public class BancoView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 733, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(93, 93, 93)
                         .addComponent(jLabel1)
@@ -107,7 +107,7 @@ public class BancoView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(labelTotalCli)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 499, Short.MAX_VALUE))
         );
 
         jTabbedPane1.getAccessibleContext().setAccessibleName("Clientes");
@@ -117,9 +117,9 @@ public class BancoView extends javax.swing.JFrame {
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
         this.clienteClicado = new Cliente();
-        cienteView1.setClienteFormularioNull(clienteClicado);
-        cienteView1.setLinhaClicadaNull();
-        contaView2.setLinhaClicadaNull();
+        clienteView.setClienteFormularioNull(clienteClicado);
+        clienteView.setLinhaClicadaNull();
+        contaView.setLinhaClicadaNull();
         this.clienteClicado = null;
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
@@ -127,9 +127,9 @@ public class BancoView extends javax.swing.JFrame {
      * @param args the command line arguments
      */
  public void setController(GerenciaController controller) {
-        cienteView1.setController(controller);
-        contaView2.setController(controller);
-        janelaManipulaView1.setController(controller);
+        clienteView.setController(controller);
+        contaView.setController(controller);
+        janelaManipulaView.setController(controller);
         
     }
  
@@ -139,34 +139,34 @@ public class BancoView extends javax.swing.JFrame {
     }
  
      public void mostrarListaClientes(List<Cliente> lista) {
-        cienteView1.setListaClientes(lista);
-        contaView2.setListaClientes(lista);
-        cienteView1.setClienteNull();
+        clienteView.setListaClientes(lista);
+        contaView.setListaClientes(lista);
+        clienteView.setClienteNull();
         labelTotalCli.setText("Clientes: "+lista.size());
     } 
 
 
 public Cliente getClienteParaAtualizar(){
-    Cliente cliente = cienteView1.getClienteParaAtualizar();
+    Cliente cliente = clienteView.getClienteParaAtualizar();
     return cliente;
 }
 
 public void setClienteNull(){
     Cliente cliente = new Cliente();
-    cienteView1.setClienteFormularioNull(cliente);
+    clienteView.setClienteFormularioNull(cliente);
 }
 
 
 public Cliente getClienteParaExcluir(){
-    Cliente cliente = cienteView1.getClienteParaExcluir();
+    Cliente cliente = clienteView.getClienteParaExcluir();
     return cliente;
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private View.JanelaClienteView cienteView1;
-    private View.JanelaContaView contaView2;
+    private View.JanelaClienteView clienteView;
+    private View.JanelaContaView contaView;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private View.JanelaManipulaView janelaManipulaView1;
+    private View.JanelaManipulaView janelaManipulaView;
     private javax.swing.JLabel labelTotalCli;
     private javax.swing.JLabel labelTotalCo;
     // End of variables declaration//GEN-END:variables
@@ -181,63 +181,63 @@ public Cliente getClienteParaExcluir(){
     }
     
 public Cliente getClienteParaIncluir(){
-    Cliente cliente = cienteView1.getClienteParaIncluir();
+    Cliente cliente = clienteView.getClienteParaIncluir();
     return cliente;
 }
 public void setClienteClicado(Cliente cliente){
     this.clienteClicado = cliente;
-    this.cienteView1.setClienteClicado(cliente);
+    this.clienteView.setClienteClicado(cliente);
     boolean comConta = false;
     for(Conta c : lista){
         if(cliente.getCpf() == c.getCliente().getCpf()){
-            this.contaView2.setClienteClicado(c);
+            this.contaView.setClienteClicado(c);
             comConta = true;
         }
     }
     if(!comConta){
-        this.contaView2.setClienteClicado(cliente);
+        this.contaView.setClienteClicado(cliente);
     }
 }
 
     public void setInvestimentoNull(){
-        contaView2.setInvestimentoNull();
+        contaView.setInvestimentoNull();
     }
     
     public void setCorrenteNull(){
-        contaView2.setCorrenteNull();
+        contaView.setCorrenteNull();
     }
     
     public Cliente getClienteClicado(){
             return this.clienteClicado;
         }
     public String getTipoConta(){
-        return contaView2.getTipoConta();
+        return contaView.getTipoConta();
     }
     
     public ContaCorrente getContaCorrente(){
         try{
-            return contaView2.getContaCorrente();
+            return contaView.getContaCorrente();
         }catch(Exception e){
             throw new RuntimeException(e.getMessage());
         }
     }
     
     public void setTipoConta(String tipo){
-        this.contaView2.setTipoConta(tipo);
+        this.contaView.setTipoConta(tipo);
     }
 
    
 
     public ContaInvestimento getContaInvestimento() {
         try{
-            return contaView2.getContaInvestimento();
+            return contaView.getContaInvestimento();
         }catch(Exception e){
             throw new RuntimeException(e.getMessage());
         }
     }
     
     public void setContaNum(int num){
-        this.contaView2.setContaNum(num);
+        this.contaView.setContaNum(num);
     }
     
     public void setListaContas(List<Conta> contas){
@@ -246,7 +246,7 @@ public void setClienteClicado(Cliente cliente){
     }
     
     public long getClientebyCpf(){
-        return janelaManipulaView1.getClienteByCpf();
+        return janelaManipulaView.getClienteByCpf();
     }
     
     public List<Conta> getListaContas(){
@@ -254,22 +254,22 @@ public void setClienteClicado(Cliente cliente){
     }
     
     public void setContaManipula(Conta c){
-        janelaManipulaView1.setContaManipula(c);
+        janelaManipulaView.setContaManipula(c);
     }
     
     public void showSaldo(){
-        janelaManipulaView1.showSaldo();
+        janelaManipulaView.showSaldo();
     }
     
     public double getValorSaque(){
-        return janelaManipulaView1.getValorSaque();
+        return janelaManipulaView.getValorSaque();
     }
     public double getValorDeposito(){
-        return janelaManipulaView1.getValorDeposito();
+        return janelaManipulaView.getValorDeposito();
     }
     
     public Conta getContaAtual(){
-        return janelaManipulaView1.getContaAtual();
+        return janelaManipulaView.getContaAtual();
     }
     
     @Override
@@ -280,7 +280,7 @@ public void setClienteClicado(Cliente cliente){
    return retValue;
 }
     public String getSelected(){
-      return cienteView1.getSelected();
+      return clienteView.getSelected();
     }
 }
 

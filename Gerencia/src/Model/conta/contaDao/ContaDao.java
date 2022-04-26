@@ -36,7 +36,7 @@ public class ContaDao {
     }
                     
             
-    public ContaCorrente vincularCC(Cliente cliente, String tipo,ContaCorrente cc){
+    public ContaCorrente vincular(Cliente cliente, String tipo,ContaCorrente cc){
         String msg = "";
         Connection conn = null;
         PreparedStatement stmtVincular = null;
@@ -69,7 +69,7 @@ public class ContaDao {
         }
     }
         
-    public ContaInvestimento vincularCI(Cliente cliente, String tipo,ContaInvestimento ci){
+    public ContaInvestimento vincular(Cliente cliente, String tipo,ContaInvestimento ci){
         String msg = "";
         Connection conn = null;
         PreparedStatement stmtVincular = null;

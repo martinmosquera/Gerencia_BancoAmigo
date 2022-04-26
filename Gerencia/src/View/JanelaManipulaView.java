@@ -16,7 +16,6 @@ public class JanelaManipulaView extends javax.swing.JPanel {
     
     
     private Conta conta;
-    private GerenciaController controller;
     /**
      * Creates new form ManipulaView
      */
@@ -79,7 +78,6 @@ public class JanelaManipulaView extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
    public void setController(GerenciaController controller){
-       this.controller = controller;
        manipulaBuscaView1.setController(controller);
        manipulaBotoesView2.setController(controller);
    }

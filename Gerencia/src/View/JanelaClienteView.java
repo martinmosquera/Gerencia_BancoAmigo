@@ -8,8 +8,6 @@ package View;
 import Controller.GerenciaController;
 import Model.cliente.Cliente;
 import java.util.List;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 /**
  *
@@ -91,27 +89,12 @@ public class JanelaClienteView extends javax.swing.JPanel {
     public Cliente getClienteFormulario() {
        return this.formularioCliente1.getClienteFormulario();
     }
-        /*
-    public void getClienteParaIncluir(Cliente cliente) {
-        tabelaClienteView1.inserirClienteTabela(cliente);
-    }
-*/    
-    public void apresentaErro(String erro) {
-    JOptionPane.showMessageDialog(null,erro + "\n", "Erro", JOptionPane.ERROR_MESSAGE);
-    }
-    
+  
     public void mostrarListaClientes(List<Cliente> lista) {
         tabelaClienteView1.setListaClientesTabela(lista);
     }
-    /*
-    public List<Cliente> getClientesParaExcluir() {
-        return this.tabelaClienteView1.getClientesParaExcluirDaTabela();
-    }*/
     
     public Cliente getClienteParaExcluir() {
-        //se o formulario estiver vazio retorna um usuario nullo
-        
-        //se nao retorna cliente dda tabela
         return this.tabelaClienteView1.getClienteParaExcluirDaTabela();
     }
     
@@ -129,32 +112,10 @@ public class JanelaClienteView extends javax.swing.JPanel {
     
     public void atualizarClientes(Cliente cliente){
         tabelaClienteView1.atualizarClienteNaTabela(cliente);   
-    
-    
     }
-
-    public ClienteBotoesView getBotoesClienteView() {
-        return botoesClienteView1;
-    }
-
-
-
-    public ClienteFormularioView getFormularioClienteView() {
-        return formularioCliente1;
-    }
-
-
-
-    public ClienteTabelaView getTabelaClienteView() {
-    return tabelaClienteView1;
-}
     
     public void setListaClientes(List<Cliente> lista) {
         tabelaClienteView1.setLista(lista);
-    }
-        
-    public ClienteFormularioView getClienteFormularioView(){
-        return this.formularioCliente1;
     }
    
     public Cliente getClienteParaIncluir() {

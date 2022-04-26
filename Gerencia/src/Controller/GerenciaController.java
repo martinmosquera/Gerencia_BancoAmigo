@@ -35,10 +35,15 @@ public class GerenciaController {
     }
     
     private void initController(){
+        // carrega as views, seta os listeners
         this.view.setController(this);
+        // pega a lista dos cliente, carrega na tabela e limpa o form caso tiver dados
         orderClientesBy(this.view.getSelected());
+        //pega a lista das contas
         List<Conta> lista = contaDao.getListaContas();
+        //carrega as contas na view e seta a lista na view
         this.view.setListaContas(lista);
+        // mostra a janela para o usuario
         this.view.initView();
     }
     
@@ -114,7 +119,7 @@ public class GerenciaController {
                 try{
                     cc = this.view.getContaCorrente();
                     if(cc != null){
-                        cc = this.contaDao.vincularCC(cliente,tipo,cc);
+                        cc = this.contaDao.vincular(cliente,tipo,cc);
                         this.view.setContaNum(cc.getNum());
                         this.view.showInfo("Conta # "+cc.getNum()+"\n Vinculada com Cliente "+cc.getCliente().getNome());
                         List<Conta> lista = contaDao.getListaContas();
@@ -131,7 +136,7 @@ public class GerenciaController {
                 try{
                     ci = this.view.getContaInvestimento();
                     if(ci != null){
-                        ci = this.contaDao.vincularCI(cliente,tipo,ci);
+                        ci = this.contaDao.vincular(cliente,tipo,ci);
                         this.view.showInfo("Conta # "+ci.getNum()+"\n Vinculada com Cliente "+ci.getCliente().getNome());
                         List<Conta> lista = contaDao.getListaContas();
                         this.view.setListaContas(lista);
@@ -261,10 +266,15 @@ public class GerenciaController {
         
     public void orderClientesBy(String order){
          try{
+             // pega a lista do banco
             List<Cliente> lista = this.clienteDao.getLista(order);
+            // verifica se a linha é vazia
             if(lista.isEmpty()) this.view.showInfo("Ainda nao tem Clientes");
+            // utilia interface comparable -> ordena a lista
             Collections.sort(lista);
+            //mostra a lista na tabela
             view.mostrarListaClientes(lista);
+            // tira o cliente do formulario
             view.setClienteNull();
         }catch(Exception ex){
             this.view.showInfo("Erro ao listar clientes.\n"+ex.getMessage());

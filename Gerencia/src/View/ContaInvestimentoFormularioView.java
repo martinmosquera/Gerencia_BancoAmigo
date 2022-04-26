@@ -5,10 +5,7 @@
  */
 package View;
 
-import Model.conta.Conta;
-import Model.conta.ContaCorrente;
 import Model.conta.ContaInvestimento;
-import java.awt.Color;
 
 /**
  *
@@ -130,6 +127,7 @@ public class ContaInvestimentoFormularioView extends javax.swing.JPanel {
           double dep_ini = 0.0;
         try{
             dep_ini = Double.valueOf(txtDepositoInicial.getText());
+            ci.deposita(dep_ini);
             ci.setDepositoInicial(dep_ini);
             ci.setSaldo(dep_ini);
             return ci;
