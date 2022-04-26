@@ -49,7 +49,8 @@ public class ContaInvestimento extends Conta{
     
 @Override
     public void remunera(){
-        super.deposita(this.getSaldo().multiplica(new Moeda(0.02)));
+        String dado = "0.02";
+        super.deposita(this.getSaldo().multiplica(new Moeda(dado)));
     }
 
     public Moeda getMontanteMin() {

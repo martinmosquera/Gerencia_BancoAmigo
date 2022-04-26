@@ -27,7 +27,6 @@ public abstract class Conta implements ContaI{
         this.depositoInicial = depini;
     }
     public Conta(Moeda valor){
-        this.num = (int)(Math.random()*1000+1);
         saldo = valor;
         depositoInicial = valor;
     }

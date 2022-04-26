@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.JTable;
 //import org.ufpr.contato.controller.ContatoController;
 import Model.cliente.Cliente;
+import java.util.ArrayList;
 /**
  *
  * @author Martin, Janaina, Nicolle, Rafael
@@ -82,7 +83,7 @@ public class ClienteTabelaView extends javax.swing.JPanel {
     public void setListaClientesTabela(List<Cliente> lista){
         modeloTabelaCliente.setListaCliente(lista);
     }
-    /*
+    
     public List<Cliente> getClientesParaExcluirDaTabela() {
         int [] linhasSelecionadas = this.getTabelaCliente().getSelectedRows();
         List<Cliente> listaExcluir = new ArrayList();
@@ -91,7 +92,7 @@ public class ClienteTabelaView extends javax.swing.JPanel {
         listaExcluir.add(cliente);
         }
         return listaExcluir;
-    }*/
+    }
     
     public Cliente getClienteParaExcluirDaTabela() {
         Cliente cliente = modeloTabelaCliente.getCliente(linhaClicadaParaAtualizacao);

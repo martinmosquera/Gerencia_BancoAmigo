@@ -20,7 +20,6 @@ public class ContaCorrente extends Conta{
     }
     public ContaCorrente(Moeda valor){
         super(valor);     
-        
     }
     public ContaCorrente(){
     
@@ -28,11 +27,16 @@ public class ContaCorrente extends Conta{
     
     @Override
     public boolean saca(Moeda valor) {
-        if(valor.getValor().doubleValue() > (this.getSaldo().getValor().doubleValue() + (this.limite.getValor().doubleValue()))){
+        try{
+            if(valor.getValor().doubleValue() > (this.getSaldo().getValor().doubleValue() + (this.limite.getValor().doubleValue()))){
             throw new RuntimeException("Sua conta não tem saldo Suficiente!!");
         };
-        super.saca(valor);
-        return true;
+            super.saca(valor);
+            return true;
+        }catch(Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
+        
     }
 
     public void setLimite(Moeda d) {
@@ -46,7 +50,8 @@ public class ContaCorrente extends Conta{
     
     @Override
     public void remunera(){
-        Moeda m = this.getSaldo().multiplica(new Moeda(0.01));
+        String dado = "0.01";
+        Moeda m = this.getSaldo().multiplica(new Moeda(dado));
         super.deposita(m);
     }
 }

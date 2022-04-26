@@ -127,9 +127,9 @@ public class ContaDao {
                     cc = new ContaCorrente();
                     cc.setNum(rs.getInt("num_conta"));
                     cc.setTipo(tipo);
-                    cc.setDepositoInicial(new Moeda(rs.getDouble("dep_inicial")));
-                    cc.setLimite(new Moeda(rs.getDouble("limite")));
-                    cc.setSaldo(new Moeda(rs.getDouble("saldo")));
+                    cc.setDepositoInicial(new Moeda(String.valueOf(rs.getDouble("dep_inicial"))));
+                    cc.setLimite(new Moeda(String.valueOf(rs.getDouble("limite"))));
+                    cc.setSaldo(new Moeda(String.valueOf(rs.getDouble("saldo"))));
                     num = rs.getInt("cliente_id");
                     cliente = this.getClientedaConta(num);
                     cc.setCliente(cliente);
@@ -138,8 +138,8 @@ public class ContaDao {
                     ci = new ContaInvestimento();
                     ci.setNum(rs.getInt("num_conta"));
                     ci.setTipo(tipo);
-                    ci.setDepositoInicial(new Moeda(rs.getDouble("dep_inicial")));
-                    ci.setSaldo(new Moeda(rs.getDouble("saldo")));
+                    ci.setDepositoInicial(new Moeda(String.valueOf(rs.getDouble("dep_inicial"))));
+                    ci.setSaldo(new Moeda(String.valueOf(rs.getDouble("saldo"))));
                     num = rs.getInt("cliente_id");
                     cliente = this.getClientedaConta(num);
                     ci.setCliente(cliente);

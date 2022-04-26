@@ -33,22 +33,7 @@ public class Moeda {
         }catch(Exception e){
             throw new RuntimeException(e.getMessage());
         }
-        
     }
-    
-    // Construtor para quando é lido um double
-    public Moeda(double v){
-        try{
-            this.valor = new BigDecimal(v).setScale(4,RoundingMode.HALF_EVEN);
-        }catch(Exception e){
-            throw new RuntimeException(e.getMessage());
-        }
-    }
-    //construtor pasasndo un BigDecimal
-    public Moeda(BigDecimal b){
-        this.valor = b;
-    }
-    
     
     // seto o valor 
     public void setValor(BigDecimal v){

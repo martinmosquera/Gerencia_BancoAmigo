@@ -5,11 +5,8 @@
  */
 package View;
 
-import Model.cliente.Cliente;
-import Model.conta.Conta;
 import Model.conta.ContaCorrente;
 import Model.conta.Moeda;
-import javax.swing.JOptionPane;
 
 /**
  *

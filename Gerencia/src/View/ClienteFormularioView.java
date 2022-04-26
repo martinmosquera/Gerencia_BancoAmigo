@@ -159,10 +159,8 @@ public class ClienteFormularioView extends javax.swing.JPanel {
     public Cliente getClienteParaAtualizar() {
     
     if(ClienteSelecionadoParaAtualizacao==null){
-    return null;
-    
+        return null;
     }
-    
     long Cpf = Long.parseLong(txtCpf.getText()); // faz conversão de string para long
     ClienteSelecionadoParaAtualizacao.setNome(txtNome.getText());
     ClienteSelecionadoParaAtualizacao.setSobrenome(txtSobrenome.getText());
@@ -171,23 +169,7 @@ public class ClienteFormularioView extends javax.swing.JPanel {
     ClienteSelecionadoParaAtualizacao.setEndereco(txtEndereco.getText());
     return ClienteSelecionadoParaAtualizacao;
     }
-    
-    public Cliente getClienteParaExcluir() {
-    
-    if(ClienteSelecionadoParaExcluir==null){
-    return null;
-    
-    }
-    
-    long Cpf = Long.parseLong(txtCpf.getText()); // faz conversão de string para long
-    ClienteSelecionadoParaExcluir.setNome(txtNome.getText());
-    ClienteSelecionadoParaExcluir.setSobrenome(txtSobrenome.getText());
-    ClienteSelecionadoParaExcluir.setRg(txtRg.getText());
-    ClienteSelecionadoParaExcluir.setCpf(Cpf);
-    ClienteSelecionadoParaExcluir.setEndereco(txtEndereco.getText());
-    return ClienteSelecionadoParaExcluir;
-    }
-    
+   
     public void setController(GerenciaController controller){
         this.controller = controller;
     }
