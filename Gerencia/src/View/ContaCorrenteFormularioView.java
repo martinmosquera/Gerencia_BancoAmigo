@@ -105,17 +105,8 @@ public class ContaCorrenteFormularioView extends javax.swing.JPanel {
                 cc.setSaldo(dep_ini);
                 return cc;
              }catch(Exception e){
-                JOptionPane.showMessageDialog(null,e.getMessage(),"Atenção" ,JOptionPane.ERROR_MESSAGE);
-                cc = null;
-                return cc;
-             }
-//        if(dep_ini != 0.0){cc.setDepositoInicial(dep_ini);
-//        cc = null;
-//        }     
-//        if(limite != 0.0){cc.setLimite(limite);
-//        cc = null;
-//        }
-        
+                throw new RuntimeException(e.getMessage());
+             }        
     }
 
     void setVisible() {

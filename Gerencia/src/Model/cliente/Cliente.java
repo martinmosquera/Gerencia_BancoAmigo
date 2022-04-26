@@ -5,7 +5,6 @@
  */
 package Model.cliente;
 
-import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 
@@ -13,7 +12,7 @@ import java.util.List;
  *
  * @author Martin, Janaina, Nicolle, Rafael
  */
-public class Cliente implements Comparable{
+public class Cliente implements Comparable<Cliente>{
 
    
     private int id;
@@ -22,6 +21,7 @@ public class Cliente implements Comparable{
     private String rg;
     private long cpf;
     private String endereco;
+    private String orderBy;
     
     public Cliente(){
     }
@@ -32,15 +32,17 @@ public class Cliente implements Comparable{
         this.rg = rg;
         this.cpf = cpf;
         this.endereco = endereco;
+        this.orderBy = "nome";
     }
 
-    public Cliente(int id, String nome, String sobrenome, String rg, Long cpf, String endereco) {
+    public Cliente(int id, String nome, String sobrenome, String rg, Long cpf, String endereco,String order) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.rg = rg;
         this.cpf = cpf;
         this.endereco = endereco;
+        this.orderBy =order;
     }
 
     public int getId() {
@@ -86,27 +88,31 @@ public class Cliente implements Comparable{
     public String getEndereco() {
         return endereco;
     }
+    
+    public void setOrderBy(String order){
+        this.orderBy = order;
+    }
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
-    }
-    // funcao propia da interface comparable
+    } 
+
     @Override
-    public int compareTo(Object o) {
-        String c2 = (String)o;
-        return (this.getNome().compareToIgnoreCase(c2));  
-    }
-    
-    public static List<Cliente> orderByName(List<Cliente> lista){
-         Collections.sort(lista, (Cliente c1, Cliente c2) -> {
-                return c1.getNome().compareToIgnoreCase(c2.getNome());
-            });
-         return lista;
-    }
-     public static List<Cliente> orderBySobrenome(List<Cliente> lista) {
-       Collections.sort(lista, (Cliente c1, Cliente c2) -> {
-                return c1.getSobrenome().compareToIgnoreCase(c2.getSobrenome());
-            });
-       return lista;
+    public int compareTo(Cliente o) {
+        if(orderBy.equalsIgnoreCase("nome")){
+            return this.getNome().compareToIgnoreCase(o.getNome());
+        }else if(orderBy.equalsIgnoreCase("sobrenome")){
+            return this.getSobrenome().compareToIgnoreCase(o.getSobrenome());
+        }else if(orderBy.equalsIgnoreCase("cpf")){
+            if(this.getCpf() > (o.getCpf()))return 1;
+            else if(this.getCpf() < (o.getCpf()))return -1;
+            else return 0;
+        }else if(orderBy.equalsIgnoreCase("id")){
+            if(this.getId() > (o.getId()))return 1;
+            else if(this.getId() < (o.getId()))return -1;
+            else return 0;
+        }else
+            throw new RuntimeException("Erro na comparação");
     }
 }
+// 

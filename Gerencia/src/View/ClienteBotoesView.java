@@ -32,8 +32,8 @@ public class ClienteBotoesView extends javax.swing.JPanel {
         btnIncluir = new javax.swing.JButton();
         btnAtualizar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
-        btnListar = new javax.swing.JButton();
-        btnListarSobrenome = new javax.swing.JButton();
+        boxOrderBy = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
         btnIncluir.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         btnIncluir.setText("Incluir");
@@ -55,16 +55,17 @@ public class ClienteBotoesView extends javax.swing.JPanel {
             }
         });
 
-        btnListar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        btnListar.setText("Listar por Nome");
-        btnListar.addActionListener(new java.awt.event.ActionListener() {
+        boxOrderBy.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        boxOrderBy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Id", "Nome", "Sobrenome", "Cpf" }));
+        boxOrderBy.setToolTipText("");
+        boxOrderBy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListarActionPerformed(evt);
+                boxOrderByActionPerformed(evt);
             }
         });
 
-        btnListarSobrenome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnListarSobrenome.setText("Listar por Sobrenome");
+        jLabel1.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel1.setText("OrderBy");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -73,31 +74,30 @@ public class ClienteBotoesView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnIncluir)
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAtualizar)
-                .addGap(47, 47, 47)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnExcluir)
-                .addGap(39, 39, 39)
-                .addComponent(btnListar)
-                .addGap(40, 40, 40)
-                .addComponent(btnListarSobrenome)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(boxOrderBy, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnListarSobrenome)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnExcluir)
-                        .addComponent(btnListar))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnIncluir)
                     .addComponent(btnAtualizar)
-                    .addComponent(btnIncluir))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnExcluir)
+                    .addComponent(boxOrderBy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAtualizar, btnExcluir, btnIncluir, btnListar, btnListarSobrenome});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAtualizar, btnExcluir, btnIncluir});
 
     }// </editor-fold>//GEN-END:initComponents
 
@@ -109,24 +109,27 @@ public class ClienteBotoesView extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
-    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+    private void boxOrderByActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxOrderByActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnListarActionPerformed
+    }//GEN-LAST:event_boxOrderByActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> boxOrderBy;
     private javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnIncluir;
-    private javax.swing.JButton btnListar;
-    private javax.swing.JButton btnListarSobrenome;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
   public void setController(GerenciaController controller) {
-        this.btnListar.addActionListener(e -> controller.listarCliente());
         this.btnAtualizar.addActionListener(e -> controller.atualizarCliente());
         this.btnExcluir.addActionListener(e -> controller.excluirCliente());
         this.btnIncluir.addActionListener(e -> controller.incluirCliente());
-        this.btnListarSobrenome.addActionListener(e -> controller.listarClienteSobrenome());
+        this.boxOrderBy.addItemListener(e -> controller.orderClientesBy(boxOrderBy.getSelectedItem().toString()));
     }
+  
+  public String getSelected(){
+      return boxOrderBy.getSelectedItem().toString();
+  }
 }

@@ -8,12 +8,10 @@ package Model.cliente.clienteDao;
 import Model.ConnectionFactory.ConnectionFactory;
 import Model.cliente.Cliente;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,7 +56,7 @@ public class ClienteDao {
         } 
     }
 
-    public List<Cliente> getLista(){
+    public List<Cliente> getLista(String order){
         ResultSet rs = null;
         PreparedStatement stmtLista = null;
         try {
@@ -78,9 +76,8 @@ public class ClienteDao {
                 
                 // adicionando o objeto à lista
                
-                clientes.add(new Cliente(id,nome,sobrenome,rg,cpf,endereco));
+                clientes.add(new Cliente(id,nome,sobrenome,rg,cpf,endereco,order));
             }
-            
             return clientes;
         } catch (SQLException e) {
             throw new RuntimeException("Falha na conexão com o Banco de Dados ao Listar " +e.getMessage());

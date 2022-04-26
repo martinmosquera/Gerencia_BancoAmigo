@@ -23,10 +23,6 @@ import java.util.List;
  * @author Martin, Janaina, Nicolle, Rafael
  */
 public class ContaDao {
-
-    public static void vincularCI(ContaInvestimento ci) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     private ConnectionFactory connectionFactory = new ConnectionFactory();
     private final String stmtVincularCC = "INSERT INTO conta (tipo,dep_inicial,limite,cliente_id,saldo) VALUES (?,?,?,?,?)";
@@ -61,8 +57,7 @@ public class ContaDao {
             cc.setCliente(cliente);
             return cc;
         }catch(SQLException e){
-            msg = e.getMessage();
-            cc.setMsg(msg);
+            throw new RuntimeException(e.getMessage());
         }finally{
             try{
                 rs.close();
@@ -72,7 +67,6 @@ public class ContaDao {
                 throw new RuntimeException("Erro ao fechar a conexão"+e.getMessage());
             }
         }
-        return cc;
     }
         
     public ContaInvestimento vincularCI(Cliente cliente, String tipo,ContaInvestimento ci){
@@ -97,8 +91,7 @@ public class ContaDao {
             ci.setCliente(cliente);
             return ci;
         }catch(SQLException e){
-            msg = e.getMessage();
-            ci.setMsg(msg);
+            throw new RuntimeException(e.getMessage());
         }finally{
             try{
                 rs.close();
@@ -108,8 +101,6 @@ public class ContaDao {
                 throw new RuntimeException("Erro ao fechar a conexão"+e.getMessage());
             }
         }
-        return ci;
-
     }
     
     public List<Conta> getListaContas(){

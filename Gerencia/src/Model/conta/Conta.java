@@ -56,8 +56,8 @@ public abstract class Conta implements ContaI{
     }
 
     public void setDepositoInicial(double depositoInicial) {
-        if(depositoInicial < 0) {
-            throw new RuntimeException("Não pode depositar valores negativos!!");
+        if(depositoInicial <= 0) {
+            throw new RuntimeException("Não pode depositar valores negativos ou 0!!");
         }
         this.depositoInicial = depositoInicial;
     }

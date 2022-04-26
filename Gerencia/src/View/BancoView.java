@@ -14,7 +14,6 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 /**
  *
@@ -25,6 +24,7 @@ public class BancoView extends javax.swing.JFrame {
     GerenciaController controller;
     Cliente clienteClicado = null;
     List<Conta> lista;
+    List<Cliente> clientes;
     /**
      * Creates new form GerenciaView
      */
@@ -279,5 +279,8 @@ public void setClienteClicado(Cliente cliente){
         
    return retValue;
 }
+    public String getSelected(){
+      return cienteView1.getSelected();
+    }
 }
 

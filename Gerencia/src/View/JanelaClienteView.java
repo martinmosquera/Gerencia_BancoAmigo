@@ -180,6 +180,9 @@ public class JanelaClienteView extends javax.swing.JPanel {
         tabelaClienteView1.getTabelaCliente().getSelectionModel().removeSelectionInterval(0,10);
         tabelaClienteView1.setLinhaNull();
     }
+    public String getSelected(){
+      return botoesClienteView1.getSelected();
+    }
     
 }
 

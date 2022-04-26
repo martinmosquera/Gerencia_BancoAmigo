@@ -35,7 +35,6 @@ public class ManipulaBotoesView extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        BtnVerSaldo = new javax.swing.JButton();
         BtnRemunera = new javax.swing.JButton();
         labelSaldo = new javax.swing.JLabel();
         saldo = new javax.swing.JLabel();
@@ -46,16 +45,13 @@ public class ManipulaBotoesView extends javax.swing.JPanel {
         valorDeposito = new javax.swing.JTextField();
         BtnDepositar = new javax.swing.JButton();
 
-        BtnVerSaldo.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        BtnVerSaldo.setText("Ver Saldo");
-
         BtnRemunera.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         BtnRemunera.setText("Remunera");
 
-        labelSaldo.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        labelSaldo.setText("Saldo:");
+        labelSaldo.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        labelSaldo.setText("Saldo R$");
 
-        saldo.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        saldo.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         saldo.setText("####");
 
         labelSaque.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -87,11 +83,6 @@ public class ManipulaBotoesView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(labelSaldo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(saldo))
-                    .addComponent(BtnVerSaldo)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(labelDeposito, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(labelSaque, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -105,18 +96,21 @@ public class ManipulaBotoesView extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(BtnSacar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(BtnDepositar))))))
+                                    .addComponent(BtnDepositar)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(labelSaldo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(saldo)))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BtnVerSaldo)
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelSaldo)
                     .addComponent(saldo))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelSaque)
                     .addComponent(valorSaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -128,7 +122,7 @@ public class ManipulaBotoesView extends javax.swing.JPanel {
                     .addComponent(BtnDepositar))
                 .addGap(18, 18, 18)
                 .addComponent(BtnRemunera)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -155,7 +149,6 @@ public class ManipulaBotoesView extends javax.swing.JPanel {
     private javax.swing.JButton BtnDepositar;
     private javax.swing.JButton BtnRemunera;
     private javax.swing.JButton BtnSacar;
-    private javax.swing.JButton BtnVerSaldo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelDeposito;
     private javax.swing.JLabel labelSaldo;
@@ -167,7 +160,6 @@ public class ManipulaBotoesView extends javax.swing.JPanel {
 
     public void setController(GerenciaController controller){
         this.controller = controller;
-        BtnVerSaldo.addActionListener(e -> controller.showSaldo());
         BtnSacar.addActionListener(e -> controller.sacar());
         BtnDepositar.addActionListener(e -> controller.depositar());
         BtnRemunera.addActionListener(e-> controller.remunerar());

@@ -13,7 +13,6 @@ import Model.cliente.Cliente;
  */
 public class ContaCorrente extends Conta{
     private double limite;
-    private String msg = "";
     
     public ContaCorrente(Cliente cliente,int num,double saldo,double depositoinicial,double limite){
         super(cliente,num,saldo,depositoinicial);
@@ -48,12 +47,5 @@ public class ContaCorrente extends Conta{
     @Override
     public void remunera(){
         this.deposita(this.getSaldo()*0.01);
-    }
-    
-    public void setMsg(String msg){
-        this.msg = msg;
-    }
-    public String getMsg(){
-        return this.msg;
     }
 }

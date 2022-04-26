@@ -13,6 +13,7 @@ import Model.conta.ContaCorrente;
 import Model.conta.ContaInvestimento;
 import Model.conta.contaDao.ContaDao;
 import View.BancoView;
+import java.util.Collections;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -22,9 +23,9 @@ import javax.swing.JOptionPane;
  * @author Martin, Janaina, Nicolle, Rafael
  */
 public class GerenciaController {
-    private BancoView view;
-    private ClienteDao clienteDao;
-    private ContaDao contaDao;
+    private final BancoView view;
+    private final ClienteDao clienteDao;
+    private final ContaDao contaDao;
 
     public GerenciaController(BancoView view, ClienteDao clienteDao,ContaDao contaDao) {
         this.view = view;
@@ -35,29 +36,17 @@ public class GerenciaController {
     
     private void initController(){
         this.view.setController(this);
-        listarCliente();
+        orderClientesBy(this.view.getSelected());
         List<Conta> lista = contaDao.getListaContas();
         this.view.setListaContas(lista);
         this.view.initView();
-    }
-
-    public void listarCliente() {
-        try{
-            List<Cliente> lista = this.clienteDao.getLista();
-            if(lista.size()==0) this.view.showInfo("Ainda nao tem Clientes");
-            lista = Cliente.orderByName(lista);
-            view.mostrarListaClientes(lista);
-            view.setClienteNull();
-        }catch(Exception ex){
-            this.view.showInfo("Erro ao listar clientes.\n"+ex.getMessage());
-        }
     }
     
     public void atualizarCliente() {        
         try{ 
             Cliente cliente = this.view.getClienteParaAtualizar();
             this.clienteDao.atualizar(cliente);
-            listarCliente();
+            orderClientesBy(this.view.getSelected());
         }
         catch (Exception ex){
           this.view.showInfo("Erro ao atualizar clientes.\n"+ex.getMessage());
@@ -72,7 +61,7 @@ public class GerenciaController {
             if(cliente.getNome().equalsIgnoreCase("") || cliente.getEndereco().equalsIgnoreCase("") || cliente.getSobrenome().equalsIgnoreCase("") || cliente.getRg().equalsIgnoreCase("") || cliente.getCpf() == 0)
                 throw new RuntimeException("Preencha todas as informações");
             this.clienteDao.inserir(cliente);
-            listarCliente();
+            orderClientesBy(this.view.getSelected());
         }
         catch (Exception ex){
             this.view.showInfo("Erro ao inserir o Cliente. \n"+ex.getMessage());
@@ -89,7 +78,7 @@ public class GerenciaController {
                 this.clienteDao.excluir(cliente);
                 List<Conta> lista = contaDao.getListaContas();
                 this.view.setListaContas(lista);
-                listarCliente();
+                orderClientesBy(this.view.getSelected());
             };}
         }catch (Exception ex) {
             this.view.showInfo("Erro ao excluir cliente.\n"+ex.getMessage());                   
@@ -118,7 +107,6 @@ public class GerenciaController {
             this.view.showInfo("Escolha um Cliente para vincular");
             return;
         }
-        
         switch(tipo.toLowerCase()){
         
             case "conta corrente":
@@ -133,8 +121,7 @@ public class GerenciaController {
                         this.view.setListaContas(lista);
                     }
                 }catch(Exception e){
-                    if(cc == null) cc.setMsg("");
-                    this.view.showInfo("Não é possivel Vincular a Conta \n"+cc.getMsg());
+                    this.view.showInfo("Não é possivel Vincular a Conta \n"+e.getMessage());
             
                 }
                 break;
@@ -143,14 +130,14 @@ public class GerenciaController {
                 ContaInvestimento ci = null;
                 try{
                     ci = this.view.getContaInvestimento();
-                    if(ci.getDepositoInicial() == 0.0) throw new RuntimeException("-");
-                    ci = this.contaDao.vincularCI(cliente,tipo,ci);
-                    this.view.showInfo("Conta # "+ci.getNum()+"\n Vinculada com Cliente "+ci.getCliente().getNome());
-                    List<Conta> lista = contaDao.getListaContas();
-                    this.view.setListaContas(lista);
+                    if(ci != null){
+                        ci = this.contaDao.vincularCI(cliente,tipo,ci);
+                        this.view.showInfo("Conta # "+ci.getNum()+"\n Vinculada com Cliente "+ci.getCliente().getNome());
+                        List<Conta> lista = contaDao.getListaContas();
+                        this.view.setListaContas(lista);
+                    }  
                 }catch(Exception e){
-                    if(ci == null) ci.setMsg("");
-                    this.view.showInfo("Não é possivel Vincular a Conta \n"+ci.getMsg());
+                    this.view.showInfo("Não é possivel Vincular a Conta \n"+e.getMessage());
                 }
                 break;
                
@@ -168,11 +155,6 @@ public class GerenciaController {
     public void setCorrenteNull(){
         this.view.setCorrenteNull();
     }
-    
-    public void showErro(String info){
-        this.view.showInfo(info);
-    }
-    
     public void resetTipoContaSelector(){
         this.view.setTipoConta("");
     }
@@ -194,8 +176,6 @@ public class GerenciaController {
         }catch(Exception e){
             this.view.showInfo("Erro na pesquisa!\n"+e.getMessage());
         }
-        
-       
     }
     
     public void showSaldo(){
@@ -278,16 +258,16 @@ public class GerenciaController {
             this.view.showInfo(e.getMessage());
         }
     }
-
-    public void listarClienteSobrenome() {
+        
+    public void orderClientesBy(String order){
          try{
-            List<Cliente> lista = this.clienteDao.getLista();
-            if(lista.size()==0) this.view.showInfo("Ainda nao tem Clientes");
-            lista = Cliente.orderBySobrenome(lista);
+            List<Cliente> lista = this.clienteDao.getLista(order);
+            if(lista.isEmpty()) this.view.showInfo("Ainda nao tem Clientes");
+            Collections.sort(lista);
             view.mostrarListaClientes(lista);
             view.setClienteNull();
         }catch(Exception ex){
             this.view.showInfo("Erro ao listar clientes.\n"+ex.getMessage());
         }
-    }
+    }    
 }
