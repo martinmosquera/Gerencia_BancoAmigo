@@ -51,6 +51,7 @@ public class GerenciaController {
     public void atualizarCliente() {        
         try{ 
             Cliente cliente = this.view.getClienteParaAtualizar();
+            cliente.isValid();
             this.clienteDao.atualizar(cliente);
             orderClientesBy(this.view.getSelected());
         }
@@ -64,6 +65,7 @@ public class GerenciaController {
     public void incluirCliente(){
         try{
             Cliente cliente = this.view.getClienteParaIncluir();
+            cliente.isValid();
             if(cliente.getNome().equalsIgnoreCase("") || cliente.getEndereco().equalsIgnoreCase("") || cliente.getSobrenome().equalsIgnoreCase("") || cliente.getRg().equalsIgnoreCase("") || cliente.getCpf() == 0)
                 throw new RuntimeException("Preencha todas as informações");
             this.clienteDao.inserir(cliente);

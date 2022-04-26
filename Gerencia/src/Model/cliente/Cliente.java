@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Martin, Janaina, Nicolle, Rafael
  */
-public class Cliente implements Comparable<Cliente>{
+public class Cliente implements Comparable<Cliente>,Autenticavel{
 
    
     private int id;
@@ -113,6 +113,16 @@ public class Cliente implements Comparable<Cliente>{
             else return 0;
         }else
             throw new RuntimeException("Erro na comparação");
+    }
+
+    @Override
+    public boolean isValid() {
+        
+        if(this.getNome().matches("[(+=-*/^)0-9]!@#$")) throw new RuntimeException("Só é permitido caracteres no nome"); 
+        if(this.getEndereco().matches("[(+=*/^)]")) throw new RuntimeException("Só é permitido caracteres e numeros no endereço");
+        if(this.getSobrenome().matches("[(+=-*/^)0-9]")) throw new RuntimeException("Só é permitido caracteres no sobrenome");
+        if(this.getRg().matches("[(+=%$#@*/^)]")) throw new RuntimeException("Só é permitido numeros e letras no Rg");
+        return true;
     }
 }
 // 
