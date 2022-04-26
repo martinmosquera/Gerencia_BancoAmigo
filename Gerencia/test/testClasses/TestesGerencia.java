@@ -124,7 +124,6 @@ public class TestesGerencia {
             ContaCorrente cc = new ContaCorrente();
             Moeda m = new Moeda("100.00");
             try{
-                
                 cc.setDepositoInicial(m);
                 cc.setSaldo(m);
                 m.setValor(BigDecimal.valueOf(-10.00));
